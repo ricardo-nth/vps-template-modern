@@ -1,0 +1,152 @@
+---
+import Icon from './Icon.astro';
+
+interface Service {
+  title: string;
+  description: string;
+  href?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  icon?: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  services?: Service[];
+}
+
+const {
+  eyebrow = "Our Services",
+  heading = "[Your Services Headline]",
+  intro = "[Brief overview of your services and the value you provide to clients]",
+  ctaText = "View All Services",
+  ctaHref = "/services",
+  services = [
+    {
+      title: "[Service 1]",
+      description: "[Brief description of this service and its benefits]",
+      href: "#service-1",
+      imageSrc: "https://images.unsplash.com/photo-1576765611791-374770ac4db8?auto=format&fit=crop&w=800&q=80",
+      imageAlt: "[Descriptive alt text]",
+    },
+    {
+      title: "[Service 2]",
+      description: "[Brief description of this service and its benefits]",
+      href: "#service-2",
+      imageSrc: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80",
+      imageAlt: "[Descriptive alt text]",
+    },
+    {
+      title: "[Service 3]",
+      description: "[Brief description of this service and its benefits]",
+      href: "#service-3",
+      imageSrc: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80",
+      imageAlt: "[Descriptive alt text]",
+    },
+    {
+      title: "[Service 4]",
+      description: "[Brief description of this service and its benefits]",
+      href: "#service-4",
+      imageSrc: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=800&q=80",
+      imageAlt: "[Descriptive alt text]",
+    },
+    {
+      title: "[Service 5]",
+      description: "[Brief description of this service and its benefits]",
+      href: "#service-5",
+      imageSrc: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
+      imageAlt: "[Descriptive alt text]",
+    },
+  ],
+} = Astro.props as Props;
+---
+
+<section class="bg-secondary/30 py-24 lg:py-32" id="services">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+      <div class="max-w-2xl">
+        {eyebrow && (
+          <p class="text-sm font-bold uppercase tracking-widest text-primary mb-3">
+            {eyebrow}
+          </p>
+        )}
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight text-balance">
+          {heading}
+        </h2>
+        <p class="mt-6 text-lg text-muted-foreground text-balance leading-relaxed">
+          {intro}
+        </p>
+      </div>
+
+      {ctaText && (
+        <div class="hidden md:block">
+          <a
+            href={ctaHref}
+            class="group inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors"
+          >
+            {ctaText}
+            <Icon name="tabler:arrow-right" class="h-5 w-5 transform transition-transform group-hover:translate-x-1" />
+          </a>
+        </div>
+      )}
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {services.map((service, index) => (
+        <a
+          href={service.href || "#"}
+          class={`group relative overflow-hidden rounded-3xl bg-card border border-border/50 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 ${
+            index === 0 ? "md:col-span-2 lg:col-span-2 aspect-[2/1]" : "aspect-square"
+          }`}
+        >
+          <!-- Image Background -->
+          <div class="absolute inset-0">
+            <img
+              src={service.imageSrc}
+              alt={service.imageAlt || service.title}
+              class="h-4/5 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 transition-opacity group-hover:opacity-80"></div>
+          </div>
+
+          <!-- Content -->
+          <div class="absolute inset-0 p-8 flex flex-col justify-end">
+            <div class="transform transition-transform duration-500 translate-y-4 group-hover:translate-y-0">
+              <h3 class="text-2xl font-bold text-white mb-3">
+                {service.title}
+              </h3>
+              <p class="text-white/80 text-base leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all">
+                {service.description}
+              </p>
+              
+              <div class="mt-6 opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                <span class="inline-flex items-center gap-2 text-white font-medium text-sm">
+                  Learn more
+                  <Icon name="tabler:arrow-right" class="h-4 w-4" />
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Mobile CTA -->
+    {ctaText && (
+      <div class="mt-12 md:hidden text-center">
+        <a
+          href={ctaHref}
+          class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-base font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90"
+        >
+          {ctaText}
+        </a>
+      </div>
+    )}
+  </div>
+</section>

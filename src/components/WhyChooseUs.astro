@@ -1,0 +1,140 @@
+---
+import Icon from './Icon.astro';
+
+interface Point {
+  title: string;
+  description: string;
+  iconName: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+  points?: Point[];
+  imageSrc?: string;
+  imageAlt?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  class?: string;
+  id?: string;
+}
+
+const {
+  eyebrow = "Why Choose Us",
+  heading = "[Your Differentiator Headline]",
+  intro = "[Brief explanation of what sets you apart and why clients should choose you]",
+  imageSrc = "https://images.unsplash.com/photo-1584466977773-270f5fcd5864?auto=format&fit=crop&w=900&q=80",
+  imageAlt = "[Descriptive alt text]",
+  ctaText,
+  ctaHref,
+  class: className = "bg-background",
+  id,
+  points = [
+    {
+      title: "[Differentiator 1]",
+      description: "[Brief description of this benefit or feature]",
+      iconName: "tabler:shield-check"
+    },
+    {
+      title: "[Differentiator 2]",
+      description: "[Brief description of this benefit or feature]",
+      iconName: "tabler:clipboard-list"
+    },
+    {
+      title: "[Differentiator 3]",
+      description: "[Brief description of this benefit or feature]",
+      iconName: "tabler:users-group"
+    },
+    {
+      title: "[Differentiator 4]",
+      description: "[Brief description of this benefit or feature]",
+      iconName: "tabler:clock-hour-4"
+    },
+  ],
+} = Astro.props as Props;
+---
+
+<section class={`py-24 lg:py-32 overflow-hidden ${className}`} id={id || "why-us"}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Content Column -->
+      <div class="order-2 lg:order-1">
+        {eyebrow && (
+          <p class="text-sm font-bold uppercase tracking-widest text-primary mb-3">
+            {eyebrow}
+          </p>
+        )}
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight text-balance mb-6">
+          {heading}
+        </h2>
+        <p class="text-lg text-muted-foreground text-balance leading-relaxed mb-12">
+          {intro}
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-8 mb-10">
+          {points.map((point) => (
+            <div class="flex flex-col gap-4 group">
+              <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <Icon name={point.iconName} size="24" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-foreground mb-2">{point.title}</h3>
+                <p class="text-sm text-muted-foreground leading-relaxed">{point.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {ctaText && ctaHref && (
+          <div>
+            <a
+              href={ctaHref}
+              class="inline-flex items-center gap-2 text-primary font-semibold text-lg hover:text-primary/80 transition-colors group"
+            >
+              {ctaText}
+              <span class="transform transition-transform group-hover:translate-x-1">→</span>
+            </a>
+          </div>
+        )}
+      </div>
+
+      <!-- Image Column -->
+      <div class="order-1 lg:order-2 relative">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/4] group">
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            class="absolute inset-0 w-full h-4/5 object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+          
+          <!-- Floating Quote Card -->
+          <div class="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-white/20 transform transition-transform duration-500 hover:-translate-y-2">
+            <div class="flex gap-1 mb-3">
+              {[1, 2, 3, 4, 5].map(() => (
+                <Icon name="tabler:star" class="w-5 h-5 text-yellow-400 fill-current" />
+              ))}
+            </div>
+            <p class="text-foreground font-medium italic mb-4">
+              "[Client testimonial - what they loved about working with you]"
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                [X]
+              </div>
+              <div>
+                <p class="text-sm font-bold text-foreground">[Client Name]</p>
+                <p class="text-xs text-muted-foreground">[Client Role/Relationship]</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute -top-12 -right-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary rounded-full blur-3xl -z-10"></div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,163 @@
+---
+/**
+ * index.astro - Homepage
+ *
+ * Demonstrates the full implementation of:
+ * - Two-tier layout system (TechnicalLayout → SiteLayout)
+ * - SEO optimization with meta tags and schema markup
+ * - Image optimization with Astro's Image component
+ * - Tailwind CSS styling
+ * - Performance best practices
+ */
+
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+// ============================================================================
+// ORIGINAL IMPORTS (Commented for easy revert)
+// ============================================================================
+// import { Image } from 'astro:assets';
+// import astroLogo from '../assets/astro.svg';
+// import background from '../assets/background.svg';
+
+// ============================================================================
+// HEALTHCARE IMPORTS (Active)
+// ============================================================================
+import Hero from '../components/Hero.astro';
+import ServicesOverview from '../components/ServicesOverview.astro';
+import AboutUs from '../components/AboutUs.astro';
+import WhyChooseUs from '../components/WhyChooseUs.astro';
+import TeamSection from '../components/TeamSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+
+// Page metadata
+const metadata = {
+  title: 'Home - [Business Name]',
+  description: '[Your homepage meta description - summarize your business and key services in 150-160 characters]',
+  schema: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Home - [Business Name]',
+    description: '[Your homepage description for search engines]',
+  },
+};
+---
+
+<SiteLayout metadata={metadata}>
+
+  <!-- ============================================================================
+       HEALTHCARE HOMEPAGE CONTENT (Active)
+       ============================================================================ -->
+
+  <!-- Hero Section -->
+  <Hero
+    heading="[Your Headline] - [What Makes You Different]"
+    subheading="[Brief description of your services and the value you provide to clients]"
+    primaryCtaText="Our Services"
+    primaryCtaHref="#services"
+    secondaryCtaText="Contact Us"
+    secondaryCtaHref="#contact"
+    rating="[Rating]"
+    ratingLabel="[Rating Source]"
+    imageSrc="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+    imageAlt="[Descriptive alt text for hero image]"
+  />
+
+  <!-- Services Section -->
+  <ServicesOverview
+    eyebrow="Our Services"
+    heading="[Your Services Headline]"
+    intro="[Brief overview of your services and expertise]"
+    ctaText="View Services"
+    ctaHref="/services"
+    services={[
+      {
+        title: "[Service 1]",
+        description: "[Brief description of this service and its benefits]",
+        href: "#service-1",
+        imageSrc: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "[Descriptive alt text]"
+      },
+      {
+        title: "[Service 2]",
+        description: "[Brief description of this service and its benefits]",
+        href: "#service-2",
+        imageSrc: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "[Descriptive alt text]"
+      },
+      {
+        title: "[Service 3]",
+        description: "[Brief description of this service and its benefits]",
+        href: "#service-3",
+        imageSrc: "https://images.unsplash.com/photo-1576765611791-374770ac4db8?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "[Descriptive alt text]"
+      },
+      {
+        title: "[Service 4]",
+        description: "[Brief description of this service and its benefits]",
+        href: "#service-4",
+        imageSrc: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "[Descriptive alt text]"
+      },
+      {
+        title: "[Service 5]",
+        description: "[Brief description of this service and its benefits]",
+        href: "#service-5",
+        imageSrc: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "[Descriptive alt text]"
+      }
+    ]}
+  />
+
+  <!-- About Us Section -->
+  <AboutUs />
+
+  <!-- Why Choose Us Section -->
+  <WhyChooseUs
+    eyebrow="Why Choose Us"
+    heading="[Your Differentiator Headline]"
+    intro="[Brief explanation of what sets you apart and why clients should choose you]"
+    imageSrc="https://images.unsplash.com/photo-1584466977773-270f5fcd5864?auto=format&fit=crop&w=900&q=80"
+    imageAlt="[Descriptive alt text]"
+    ctaText="Learn Our Approach"
+    ctaHref="/our-service-model"
+    class="bg-secondary/30"
+    points={[
+      {
+        title: "[Differentiator 1]",
+        description: "[Brief description of this benefit or credential]",
+        iconName: "tabler:shield-check"
+      },
+      {
+        title: "[Differentiator 2]",
+        description: "[Brief description of this benefit or credential]",
+        iconName: "tabler:heart-handshake"
+      },
+      {
+        title: "[Differentiator 3]",
+        description: "[Brief description of this benefit or credential]",
+        iconName: "tabler:users-group"
+      },
+      {
+        title: "[Differentiator 4]",
+        description: "[Brief description of this benefit or credential]",
+        iconName: "tabler:building-community"
+      }
+    ]}
+  />
+
+  <!-- Team Section -->
+  <TeamSection
+    heading="Meet Our Team"
+    intro="[Brief description of your team and their expertise]"
+  />
+
+  <!-- Contact Section -->
+  <ContactSection
+    heading="Get In Touch"
+    intro="[Brief call-to-action encouraging visitors to contact you]"
+    phoneLabel="[Your Phone]"
+    phoneHref="tel:[YourPhoneNumber]"
+    address="[Your City, Region]"
+  />
+
+</SiteLayout>

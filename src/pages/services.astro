@@ -1,0 +1,85 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import { siteConfig } from '@/config/site';
+import PageHero from '@components/PageHero.astro';
+import SupportedLivingFeatures from '@components/SupportedLivingFeatures.astro';
+import ServiceSpecialties from '@components/ServiceSpecialties.astro';
+import CompliancePillars from '@components/CompliancePillars.astro';
+import CareDeliveryProcess from '@components/CareDeliveryProcess.astro';
+import ContactSection from '@components/ContactSection.astro';
+
+const metadata = {
+  title: `Services - ${siteConfig.name}`,
+  description: `[Your services page meta description - summarize your services in 150-160 characters]`,
+  schema: {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: '[Your Services]',
+    description: '[Your services description for search engines]',
+    mainEntity: {
+      '@type': 'Service',
+      name: '[Your Main Service]',
+      description: '[Brief description of your main service offering]',
+      serviceType: '[Service Type]',
+      provider: {
+        '@type': 'Organization',
+        name: siteConfig.name
+      },
+      areaServed: '[Your Service Area]',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: '[Your Services]',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: '[Service 1]'
+            }
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: '[Service 2]'
+            }
+          }
+        ]
+      }
+    }
+  }
+};
+---
+
+<SiteLayout metadata={metadata}>
+  <PageHero
+    heading="[Your Services Page Headline]"
+    subheading="[Brief description of your services and how they help clients]"
+    primaryCtaText="Enquire Today"
+    primaryCtaHref="/contact"
+    secondaryCtaText="Explore Services"
+    secondaryCtaHref="#features"
+    imageSrc="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+    imageAlt="[Descriptive alt text]"
+  />
+
+  <section id="features">
+    <SupportedLivingFeatures />
+  </section>
+
+  <ServiceSpecialties />
+
+  <CompliancePillars />
+
+  <CareDeliveryProcess />
+
+  <ContactSection
+    heading="Ready to Get Started?"
+    intro="[Brief call-to-action encouraging visitors to contact you about your services]"
+    phoneLabel="[Your Phone]"
+    phoneHref="tel:[YourPhoneNumber]"
+    emailLabel="[email]@yourdomain.co.uk"
+    emailHref="mailto:[email]@yourdomain.co.uk"
+    address="[Your City, Region]"
+  />
+</SiteLayout>

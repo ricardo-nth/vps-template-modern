@@ -1,0 +1,176 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  heading?: string;
+  subheading?: string;
+  primaryCtaText?: string;
+  primaryCtaHref?: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+  rating?: string;
+  ratingLabel?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+}
+
+const {
+  heading = "[Your Tagline] - [What Makes You Different]",
+  subheading = "[Brief description of your services and the value you provide to clients. Focus on outcomes and benefits.]",
+  primaryCtaText = "Get Started",
+  primaryCtaHref = "#contact",
+  secondaryCtaText = "Learn More",
+  secondaryCtaHref = "#services",
+  rating = "[Rating]",
+  ratingLabel = "[Rating Source]",
+  imageSrc = "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+  imageAlt = "[Descriptive alt text for hero image]",
+} = Astro.props as Props;
+---
+
+<section class="relative overflow-hidden bg-background py-8 md:py-12 lg:py-18">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+      <!-- Content Column -->
+      <div class="max-w-2xl">
+        <!-- Trust Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 animate-fade-in-up">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+          </span>
+          {ratingLabel}: {rating}
+        </div>
+
+        <!-- Heading -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance mb-6 animate-fade-in-up delay-100">
+          {heading}
+        </h1>
+
+        <!-- Subheading -->
+        <p class="text-lg sm:text-xl text-muted-foreground text-balance mb-8 animate-fade-in-up delay-200">
+          {subheading}
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-300">
+          <a
+            href={primaryCtaHref}
+            class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90 hover:shadow-primary/40 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            {primaryCtaText}
+          </a>
+          <a
+            href={secondaryCtaHref}
+            class="inline-flex items-center justify-center rounded-full bg-white border border-input px-8 py-3.5 text-base font-semibold text-foreground shadow-sm transition-all hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            {secondaryCtaText}
+          </a>
+        </div>
+
+        <!-- Stats / Trust Indicators -->
+        <div class="mt-12 pt-8 border-t border-border grid grid-cols-3 gap-8 animate-fade-in-up delay-500">
+          <div>
+            <p class="text-3xl font-bold text-primary">24/7</p>
+            <p class="text-sm text-muted-foreground">Support Available</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-primary">500+</p>
+            <p class="text-sm text-muted-foreground">Patients Served</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-primary">98%</p>
+            <p class="text-sm text-muted-foreground">Satisfaction Rate</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Column -->
+      <div class="relative lg:h-[640px] w-full hidden lg:block animate-fade-in-left delay-300">
+        <div class="absolute h-5/6 inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-[2rem] transform rotate-3"></div>
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          class="relative rounded-[2rem] shadow-2xl object-cover w-full h-5/6 transform -rotate-3 transition-transform hover:rotate-0 duration-700"
+        />
+        
+        <!-- Floating Card -->
+        <div class="absolute bottom-12 -left-12 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-xl max-w-xs border border-white/20 animate-bounce-slow">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+              <Icon name="tabler:check" class="h-6 w-6" />
+            </div>
+            <div>
+              <p class="font-semibold text-foreground">Verified Excellence</p>
+              <p class="text-xs text-muted-foreground">Top-rated care provider</p>
+            </div>
+          </div>
+          <div class="flex -space-x-2">
+            {[1, 2, 3, 4].map((i) => (
+              <img
+                class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                src={`https://randomuser.me/api/portraits/women/${i + 40}.jpg`}
+                alt=""
+              />
+            ))}
+            <div class="h-8 w-8 rounded-full bg-muted flex items-center justify-center text-xs font-medium ring-2 ring-white">
+              +2k
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-left {
+    animation: fade-in-left 1s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce-slow 4s infinite ease-in-out;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-500 { animation-delay: 500ms; }
+</style>

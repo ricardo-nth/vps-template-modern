@@ -1,0 +1,147 @@
+---
+import Icon from './Icon.astro';
+
+interface NavLink {
+  label: string;
+  href: string;
+  active?: boolean;
+}
+
+interface Props {
+  brandName?: string;
+  brandHref?: string;
+  navLinks?: NavLink[];
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const {
+  brandName = "Healthcare",
+  brandHref = "/",
+  navLinks = [
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Our Service Model", href: "/our-service-model" },
+    { label: "Contact", href: "/contact" }
+  ],
+  ctaText = "Book a Consultation",
+  ctaHref = "#contact",
+} = Astro.props as Props;
+
+// Determine active link based on current path
+const currentPath = Astro.url.pathname;
+const activeNavLinks = navLinks.map(link => ({
+  ...link,
+  active: currentPath === link.href
+}));
+---
+
+<header class="sticky top-0 z-50 w-full transition-all duration-300 glass">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Brand -->
+      <a href={brandHref} class="flex items-center gap-3 group">
+        <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105">
+          <span class="text-xl font-bold">P</span>
+        </div>
+        <span class="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+          {brandName}
+        </span>
+      </a>
+
+      <!-- Desktop navigation -->
+      <div class="hidden md:flex items-center gap-8">
+        <ul class="flex items-center gap-8 text-sm font-medium">
+          {activeNavLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class={`relative py-2 transition-colors hover:text-primary ${
+                  link.active ? "text-primary font-semibold" : "text-muted-foreground"
+                }`}
+              >
+                {link.label}
+                {link.active && (
+                  <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full"></span>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {ctaText && (
+          <a
+            href={ctaHref}
+            class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90 hover:shadow-primary/40 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            {ctaText}
+          </a>
+        )}
+      </div>
+
+      <!-- Mobile menu button -->
+      <button
+        type="button"
+        class="hs-collapse-toggle md:hidden inline-flex items-center justify-center rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        data-hs-collapse="#healthcare-mobile-nav"
+        aria-controls="healthcare-mobile-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <Icon 
+          name="tabler:menu-2" 
+          class="hs-collapse-open:hidden h-6 w-6" 
+        />
+        <Icon 
+          name="tabler:x" 
+          class="hs-collapse-open:block hidden h-6 w-6" 
+        />
+      </button>
+    </div>
+
+    <!-- Mobile navigation -->
+    <div id="healthcare-mobile-nav" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:hidden">
+      <div class="pb-6 pt-2 space-y-4">
+        <ul class="space-y-1">
+          {activeNavLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class={`block rounded-lg px-4 py-3 text-base font-medium transition-colors hover:bg-muted ${
+                  link.active ? "bg-primary/10 text-primary" : "text-foreground"
+                }`}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {ctaText && (
+          <div class="px-4 pt-2">
+            <a
+              href={ctaHref}
+              class="flex w-full items-center justify-center rounded-xl bg-primary px-4 py-3 text-base font-semibold text-primary-foreground shadow-md transition-all hover:bg-primary/90"
+            >
+              {ctaText}
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Add scroll effect to navbar
+  const header = document.querySelector('header');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      header?.classList.add('shadow-sm');
+    } else {
+      header?.classList.remove('shadow-sm');
+    }
+  });
+</script>

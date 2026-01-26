@@ -1,0 +1,221 @@
+/* ============================================================================
+   ORIGINAL GLOBAL.CSS (Commented for easy revert)
+   ============================================================================
+   To revert to original styling, uncomment this section and remove the
+   Healthcare Color System section below.
+
+@import "tailwindcss";
+@import "preline/variants.css";
+@source "../../node_modules/preline/dist/*.js";
+
+@theme inline {
+    --font-sans: var(--font-inter);
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@custom-variant hover (&:hover);
+
+*:focus-visible {
+  outline: 2px solid #3245ff;
+  outline-offset: 2px;
+}
+   ============================================================================ */
+
+/* ============================================================================
+   HEALTHCARE COLOR SYSTEM (Active)
+   ============================================================================ */
+
+@import "tailwindcss";
+@import "preline/variants.css";
+@source "../../node_modules/preline/dist/*.js";
+
+/**
+ * Design token palette for the healthcare template.
+ *
+ * CUSTOMIZATION GUIDE:
+ * ====================
+ * To rebrand for a client, adjust the color values below.
+ * The template uses purple/lilac by default - replace with client brand colors.
+ *
+ * KEY TOKENS TO CUSTOMIZE:
+ * ------------------------
+ * --primary: Main brand color (header bar, CTAs, accents)
+ * --ring: Focus ring color (should match primary for consistency)
+ *
+ * COMMON COLOR EXAMPLES (copy into --primary and --ring):
+ * --------------------------------------------------------
+ * Purple (default):  oklch(0.62 0.19 259.76)
+ * Lilac (lighter):   oklch(0.75 0.15 290)
+ * Lavender:          oklch(0.70 0.12 285)
+ * Teal:              oklch(0.65 0.15 200)
+ * Blue:              oklch(0.55 0.20 240)
+ * Green:             oklch(0.60 0.18 150)
+ * Orange:            oklch(0.65 0.18 50)
+ * Pink:              oklch(0.70 0.18 340)
+ *
+ * TIP: Use a tool like https://oklch.com to pick custom colors
+ *      in OKLCH format for consistent brightness across themes.
+ *
+ * All other tokens (background, foreground, card, muted, border) are neutral
+ * grays that work with any brand color - usually no need to change these.
+ */
+
+:root {
+  /* Neutral surfaces - usually don't need to change */
+  --background: oklch(1.00 0 0);           /* Page background (white) */
+  --foreground: oklch(0.32 0 0);           /* Main text (dark gray) */
+  --card: oklch(1.00 0 0);                 /* Card background (white) */
+  --card-foreground: oklch(0.32 0 0);      /* Card text (dark gray) */
+
+  /* BRAND COLORS - PalCare Purple, Lilac & Grey */
+  --primary: oklch(0.45 0.18 310);         /* 🎨 Main brand color (deep purple #7B2192) */
+  --primary-foreground: oklch(1.00 0 0);   /* Text on primary (white) */
+
+  /* Subtle backgrounds - Lilac tones */
+  --secondary: oklch(0.95 0.03 300);       /* Light lilac/purple sections */
+  --secondary-foreground: oklch(0.40 0.08 300);
+
+  /* Custom navigation colors */
+  --nav-primary-bg: oklch(0.92 0.04 310);      /* Lilac for primary nav (#ECDFF1) */
+  --nav-primary-text: oklch(0.35 0.12 310);    /* Dark purple text for primary nav */
+  --nav-secondary-bg: oklch(0.45 0.18 310);    /* Deep purple for secondary nav (#7B2192) */
+  --nav-secondary-text: oklch(1.00 0 0);       /* White text for secondary nav */
+
+  /* Muted/subtle text - Grey tones */
+  --muted: oklch(0.96 0.01 300);
+  --muted-foreground: oklch(0.50 0.02 300); /* Muted grey-purple text */
+
+  /* Accent - Lighter lilac for highlights */
+  --accent: oklch(0.85 0.08 300);          /* Lilac accent */
+  --accent-foreground: oklch(0.35 0.12 300);
+
+  /* Error/destructive states */
+  --destructive: oklch(0.64 0.21 25.39);
+  --destructive-foreground: oklch(1 0 0);
+
+  /* Borders and inputs - Light grey with purple tint */
+  --border: oklch(0.90 0.02 300);
+  --input: oklch(0.90 0.02 300);
+
+  /* Focus ring - matches primary purple */
+  --ring: oklch(0.45 0.18 310);            /* 🎨 Focus ring (deep purple #7B2192) */
+
+  /* Hero overlays (if using hero components) */
+  --hero-overlay: oklch(1 0 0 / 0.8);
+  --hero-overlay-foreground: oklch(0.32 0 0);
+}
+
+.dark {
+  /* Dark mode - neutral surfaces */
+  --background: oklch(0.20 0 0);           /* Dark background */
+  --foreground: oklch(0.92 0 0);           /* Light text */
+  --card: oklch(0.27 0 0);                 /* Slightly lighter cards */
+  --card-foreground: oklch(0.92 0 0);      /* Light text on cards */
+
+  /* BRAND COLORS - Keep same as light mode or adjust for dark */
+  --primary: oklch(0.62 0.19 259.76);      /* 🎨 Main brand color (purple) */
+  --primary-foreground: oklch(1.00 0 0);   /* Text on primary (white) */
+
+  /* Dark mode backgrounds */
+  --secondary: oklch(0.27 0 0);
+  --secondary-foreground: oklch(0.92 0 0);
+
+  /* Muted text in dark mode */
+  --muted: oklch(0.27 0 0);
+  --muted-foreground: oklch(0.72 0 0);
+
+  /* Accent */
+  --accent: oklch(0.38 0.14 265.59);
+  --accent-foreground: oklch(0.88 0.06 254.63);
+
+  /* Error states */
+  --destructive: oklch(0.64 0.21 25.39);
+  --destructive-foreground: oklch(1 0 0);
+
+  /* Dark borders */
+  --border: oklch(0.37 0 0);
+  --input: oklch(0.37 0 0);
+
+  /* Focus ring - matches primary */
+  --ring: oklch(0.62 0.19 259.76);         /* 🎨 Focus ring (matches primary) */
+
+  /* Hero overlays */
+  --hero-overlay: oklch(0.20 0 0 / 0.8);
+  --hero-overlay-foreground: oklch(0.92 0 0);
+}
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-hero-overlay: var(--hero-overlay);
+  --color-hero-overlay-foreground: var(--hero-overlay-foreground);
+  --color-nav-primary: var(--nav-primary-bg);
+  --color-nav-primary-foreground: var(--nav-primary-text);
+  --color-nav-secondary: var(--nav-secondary-bg);
+  --color-nav-secondary-foreground: var(--nav-secondary-text);
+}
+
+/* Adds pointer cursor to buttons */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* Defaults hover styles on all devices */
+@custom-variant hover (&:hover);
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   PREMIUM UTILITIES
+   ============================================================================ */
+
+@layer utilities {
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border-b border-white/20;
+  }
+  
+  .dark .glass {
+    @apply bg-black/80 border-white/10;
+  }
+
+  /* Text Balance for headlines */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Smooth text rendering */
+  .antialiased-premium {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
