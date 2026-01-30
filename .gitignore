@@ -26,3 +26,6 @@ pnpm-debug.log*
 # legacy tooling (do not commit secrets)
 .kilocode/mcp.json
 .vercel
+
+# Factory AI specs and working files
+.factory/
