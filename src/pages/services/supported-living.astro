@@ -1,0 +1,57 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import { siteConfig } from '@/config/site';
+import PageHero from '@components/PageHero.astro';
+import CareDeliveryProcess from '@components/CareDeliveryProcess.astro';
+import CompliancePillars from '@components/CompliancePillars.astro';
+import ServiceSpecialties from '@components/ServiceSpecialties.astro';
+import ContactSection from '@components/ContactSection.astro';
+
+const metadata = {
+  title: `Supported Living Services - ${siteConfig.name}`,
+  description: '[Your supported living services meta description - summarize this service offering in 150-160 characters]',
+  schema: {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Supported Living Services',
+    description: '[Your supported living services description for search engines]',
+    serviceType: '[Service Type]',
+    provider: {
+      '@type': 'Organization',
+      name: siteConfig.name
+    },
+    areaServed: '[Your Service Area]'
+  }
+};
+---
+
+<SiteLayout metadata={metadata}>
+  <PageHero
+    heading="Supported Living Services"
+    subheading="[Brief description of your supported living services and how you help clients build independence]"
+    primaryCtaText="Speak With Our Team"
+    primaryCtaHref="/contact"
+    secondaryCtaText="Our Care Process"
+    secondaryCtaHref="#care-process"
+    imageSrc="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+    imageAlt="[Descriptive alt text]"
+  />
+
+  <section id="care-process">
+    <CareDeliveryProcess />
+  </section>
+
+  <CompliancePillars />
+
+  <ServiceSpecialties />
+
+  <ContactSection
+    heading="Plan Care That Fits Your Needs"
+    intro="[Brief call-to-action encouraging visitors to discuss supported living services]"
+    phoneLabel="[Your Phone]"
+    phoneHref="tel:[Your Phone]"
+    emailLabel="[Your Email]"
+    emailHref="mailto:[Your Email]"
+    address="[Your City, Region]"
+  />
+</SiteLayout>

@@ -2,6 +2,7 @@
 import SiteLayout from '@layouts/SiteLayout.astro';
 import { siteConfig } from '@/config/site';
 import PageHero from '@components/PageHero.astro';
+import ServicesOverview from '@components/ServicesOverview.astro';
 import SupportedLivingFeatures from '@components/SupportedLivingFeatures.astro';
 import ServiceSpecialties from '@components/ServiceSpecialties.astro';
 import CompliancePillars from '@components/CompliancePillars.astro';
@@ -63,6 +64,49 @@ const metadata = {
     imageAlt="[Descriptive alt text]"
   />
 
+  <ServicesOverview
+    eyebrow="Service Categories"
+    heading="[Your Services Overview Headline]"
+    intro="[Brief overview of your key service areas and who they support]"
+    services={[
+      {
+        title: "Supported Living",
+        description: "[Brief description of your supported living offering and outcomes]",
+        href: "/services/supported-living",
+        imageSrc: "https://images.unsplash.com/photo-1576765611791-374770ac4db8?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "[Descriptive alt text]"
+      },
+      {
+        title: "[Service 2]",
+        description: "[Brief description of this service and its benefits]",
+        href: "#service-2",
+        imageSrc: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "[Descriptive alt text]"
+      },
+      {
+        title: "[Service 3]",
+        description: "[Brief description of this service and its benefits]",
+        href: "#service-3",
+        imageSrc: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "[Descriptive alt text]"
+      },
+      {
+        title: "[Service 4]",
+        description: "[Brief description of this service and its benefits]",
+        href: "#service-4",
+        imageSrc: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "[Descriptive alt text]"
+      },
+      {
+        title: "[Service 5]",
+        description: "[Brief description of this service and its benefits]",
+        href: "#service-5",
+        imageSrc: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "[Descriptive alt text]"
+      }
+    ]}
+  />
+
   <section id="features">
     <SupportedLivingFeatures />
   </section>
@@ -77,9 +121,9 @@ const metadata = {
     heading="Ready to Get Started?"
     intro="[Brief call-to-action encouraging visitors to contact you about your services]"
     phoneLabel="[Your Phone]"
-    phoneHref="tel:[YourPhoneNumber]"
-    emailLabel="[email]@yourdomain.co.uk"
-    emailHref="mailto:[email]@yourdomain.co.uk"
+    phoneHref="tel:[Your Phone]"
+    emailLabel="[Your Email]"
+    emailHref="mailto:[Your Email]"
     address="[Your City, Region]"
   />
 </SiteLayout>
