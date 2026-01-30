@@ -110,7 +110,8 @@ const {
             <img
               src={service.imageSrc}
               alt={service.imageAlt || service.title}
-              class="h-4/5 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80'; this.alt='Healthcare service placeholder';"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 transition-opacity group-hover:opacity-80"></div>
           </div>

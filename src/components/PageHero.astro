@@ -66,6 +66,7 @@ const {
               src={imageSrc}
               alt={imageAlt}
               class="relative rounded-[2rem] shadow-2xl object-cover w-full h-5/6 transform -rotate-3 transition-transform hover:rotate-0 duration-700"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=2070&q=80'; this.alt='Healthcare hero image';"
             />
             
             {/* Floating Card */}
@@ -85,6 +86,7 @@ const {
                     class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
                     src={`https://randomuser.me/api/portraits/women/${i + 40}.jpg`}
                     alt=""
+                    onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=User&background=e5e7eb&color=6b7280&size=128';"
                   />
                 ))}
                 <div class="h-8 w-8 rounded-full bg-muted flex items-center justify-center text-xs font-medium ring-2 ring-white">
