@@ -1,38 +1,77 @@
-# Modern - Healthcare Website Template
+# Modern Healthcare Template
 
-A clean, minimal, and contemporary Astro.js template designed for healthcare and care agencies.
+A contemporary, clean Astro.js template for healthcare agencies with bold typography and modern layouts.
+
+🔗 **Live Demo:** https://vps-template-modern.vercel.app
+
+## Features
+
+- Astro 5.x
+- Tailwind CSS v4
+- TypeScript
+- SEO optimized
+- Fast performance
+- Modern design
 
 ## Quick Start
 
-1. Click "Use This Template" on GitHub
-2. Clone your new repository
-3. Run `pnpm install`
-4. Update `src/config/site.ts` with your business details
-5. Replace placeholder content in pages and components
-6. Run `pnpm dev` to preview
+1. Click **Use This Template** on GitHub.
+2. Clone your new repository.
+3. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+4. Start the dev server:
+   ```bash
+   pnpm dev
+   ```
+5. Update `src/config/site.ts` with your business details.
+6. Replace placeholder content in pages and components.
 
 ## Customization Checklist
 
-- [ ] Update site.ts with your business name and description
-- [ ] Replace [Business Name] placeholders throughout
-- [ ] Add your contact details
-- [ ] Update services and about content
-- [ ] Add real testimonials
-- [ ] Replace placeholder images with your own
-- [ ] Update favicon and logo
+- [ ] Update `site.ts` configuration
+- [ ] Replace all `[Business Name]` placeholders
+- [ ] Add contact information
+- [ ] Update service content
+- [ ] Customize compliance/CQC sections
+- [ ] Add team members
+- [ ] Replace images
+- [ ] Update branding
 
-## Need Help?
+## Project Structure
 
-**Want this template professionally customized for your business?**
+```
+src/
+  components/    # UI components
+  config/        # Site configuration
+  layouts/       # Layouts
+  pages/         # Routes and page content
+  styles/        # Global styles
+public/          # Static assets
+```
 
-Visit [vertexplatformsolutions.com/offers/healthcare-agencies](https://vertexplatformsolutions.com/offers/healthcare-agencies) to get your website built and hosted - you just provide content, we handle everything else.
+## Service Detail Pages
+
+Includes a supported living example at `/services/supported-living` with compliance sections.
+
+## Available Scripts
+
+- `pnpm dev` — Start development server
+- `pnpm build` — Build for production
+- `pnpm preview` — Preview production build
+- `pnpm astro` — Run Astro CLI
+
+## Need Professional Help?
+
+Visit https://vertexplatformsolutions.com/offers/healthcare-agencies
 
 ## Tech Stack
 
-- Astro.js 5.x
+- Astro 5.x
 - Tailwind CSS v4
 - TypeScript
 
 ## License
 
-MIT - Use freely for personal or commercial projects.
+MIT
