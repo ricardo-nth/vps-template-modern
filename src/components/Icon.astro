@@ -47,7 +47,7 @@ interface Props {
   
   /**
    * Whether the icon is decorative (hidden from screen readers)
-   * @default false
+   * @default true
    */
   'aria-hidden'?: boolean;
 }
@@ -61,7 +61,7 @@ const {
   title,
   desc,
   'aria-label': ariaLabel,
-  'aria-hidden': ariaHidden = false,
+  'aria-hidden': ariaHidden = true,
   ...rest
 } = Astro.props;
 
