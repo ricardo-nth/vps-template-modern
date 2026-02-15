@@ -100,37 +100,57 @@ const metadata = {
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-background border border-secondary/40 rounded-lg p-6 text-center">
-          <div class="flex justify-center mb-4">
-            <Icon name="tabler:users" class="w-12 h-12 text-primary" />
+      <div class="space-y-8">
+        <!-- Hero card: Adults with Learning Disabilities -->
+        <div class="bg-background border border-border rounded-xl p-8">
+          <div class="flex items-start gap-6">
+            <div class="bg-accent/10 text-accent p-3 rounded-lg flex-shrink-0">
+              <Icon name="tabler:users" class="w-8 h-8" />
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-foreground mb-3">Adults with Learning Disabilities</h3>
+              <p class="text-muted-foreground text-lg">Person-centred support that builds confidence and independence.</p>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold text-foreground mb-3">Adults with Learning Disabilities</h3>
-          <p class="text-muted-foreground">Person-centred support that builds confidence and independence.</p>
         </div>
 
-        <div class="bg-background border border-secondary/40 rounded-lg p-6 text-center">
-          <div class="flex justify-center mb-4">
-            <Icon name="tabler:brain" class="w-12 h-12 text-primary" />
+        <!-- Remaining 3 cards in grid -->
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-background border border-border rounded-xl p-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-accent/10 text-accent p-3 rounded-lg flex-shrink-0">
+                <Icon name="tabler:brain" class="w-6 h-6" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-foreground mb-2">Autistic Adults</h3>
+                <p class="text-muted-foreground">Structured, predictable support designed around individual preferences.</p>
+              </div>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold text-foreground mb-3">Autistic Adults</h3>
-          <p class="text-muted-foreground">Structured, predictable support designed around individual preferences.</p>
-        </div>
 
-        <div class="bg-background border border-secondary/40 rounded-lg p-6 text-center">
-          <div class="flex justify-center mb-4">
-            <Icon name="tabler:heart-handshake" class="w-12 h-12 text-primary" />
+          <div class="bg-background border border-border rounded-xl p-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-accent/10 text-accent p-3 rounded-lg flex-shrink-0">
+                <Icon name="tabler:heart-handshake" class="w-6 h-6" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-foreground mb-2">Additional or Emerging Needs</h3>
+                <p class="text-muted-foreground">Flexible support that adapts as needs change over time.</p>
+              </div>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold text-foreground mb-3">Additional or Emerging Needs</h3>
-          <p class="text-muted-foreground">Flexible support that adapts as needs change over time.</p>
-        </div>
 
-        <div class="bg-background border border-secondary/40 rounded-lg p-6 text-center">
-          <div class="flex justify-center mb-4">
-            <Icon name="tabler:home-share" class="w-12 h-12 text-primary" />
+          <div class="bg-background border border-border rounded-xl p-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-accent/10 text-accent p-3 rounded-lg flex-shrink-0">
+                <Icon name="tabler:home-share" class="w-6 h-6" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-foreground mb-2">Relationship-Based Services</h3>
+                <p class="text-muted-foreground">People who thrive in smaller, consistent, familiar support settings.</p>
+              </div>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold text-foreground mb-3">Relationship-Based Services</h3>
-          <p class="text-muted-foreground">People who thrive in smaller, consistent, familiar support settings.</p>
         </div>
       </div>
     </div>
@@ -382,37 +402,25 @@ const metadata = {
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-background border border-secondary/40 rounded-lg p-6">
-          <div class="flex justify-center mb-4">
-            <Icon name="tabler:building-estate" class="w-10 h-10 text-primary" />
-          </div>
-          <h3 class="text-lg font-semibold text-foreground mb-2 text-center">Local Authorities & Commissioners</h3>
-          <p class="text-muted-foreground text-sm text-center">Partnership working to deliver high-quality, person-centred support.</p>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="border-l-4 border-primary pl-6">
+          <h3 class="text-lg font-semibold text-foreground mb-2">Local Authorities & Commissioners</h3>
+          <p class="text-muted-foreground text-sm">Partnership working to deliver high-quality, person-centred support.</p>
         </div>
 
-        <div class="bg-background border border-secondary/40 rounded-lg p-6">
-          <div class="flex justify-center mb-4">
-            <Icon name="tabler:wallet" class="w-10 h-10 text-primary" />
-          </div>
-          <h3 class="text-lg font-semibold text-foreground mb-2 text-center">Direct Payments</h3>
-          <p class="text-muted-foreground text-sm text-center">Supporting individuals who manage their own care budgets.</p>
+        <div class="border-l-4 border-accent pl-6">
+          <h3 class="text-lg font-semibold text-foreground mb-2">Direct Payments</h3>
+          <p class="text-muted-foreground text-sm">Supporting individuals who manage their own care budgets.</p>
         </div>
 
-        <div class="bg-background border border-secondary/40 rounded-lg p-6">
-          <div class="flex justify-center mb-4">
-            <Icon name="tabler:users" class="w-10 h-10 text-primary" />
-          </div>
-          <h3 class="text-lg font-semibold text-foreground mb-2 text-center">Private & Family-Funded Arrangements</h3>
-          <p class="text-muted-foreground text-sm text-center">Flexible support options for self-funded individuals and families.</p>
+        <div class="border-l-4 border-primary pl-6">
+          <h3 class="text-lg font-semibold text-foreground mb-2">Private & Family-Funded Arrangements</h3>
+          <p class="text-muted-foreground text-sm">Flexible support options for self-funded individuals and families.</p>
         </div>
 
-        <div class="bg-background border border-secondary/40 rounded-lg p-6">
-          <div class="flex justify-center mb-4">
-            <Icon name="tabler:heart-handshake" class="w-10 h-10 text-primary" />
-          </div>
-          <h3 class="text-lg font-semibold text-foreground mb-2 text-center">Professional Partners</h3>
-          <p class="text-muted-foreground text-sm text-center">Close collaboration with social workers, care managers, housing providers, families, and advocates.</p>
+        <div class="border-l-4 border-accent pl-6">
+          <h3 class="text-lg font-semibold text-foreground mb-2">Professional Partners</h3>
+          <p class="text-muted-foreground text-sm">Close collaboration with social workers, care managers, housing providers, families, and advocates.</p>
         </div>
       </div>
     </div>
