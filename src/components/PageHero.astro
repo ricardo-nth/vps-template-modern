@@ -13,6 +13,7 @@ interface Props {
   socialProofTitle?: string;
   socialProofSubtitle?: string;
   socialProofCountLabel?: string;
+  bgClass?: string;
 }
 
 const {
@@ -27,10 +28,11 @@ const {
   socialProofTitle = "CQC Registered",
   socialProofSubtitle = "Regulated care provider",
   socialProofCountLabel = "28+",
+  bgClass = "bg-primary",
 } = Astro.props as Props;
 ---
 
-<section class="relative bg-primary py-12 lg:py-2 overflow-hidden">
+<section class={`relative ${bgClass} py-12 lg:py-2 overflow-hidden`}>
   <div class="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
