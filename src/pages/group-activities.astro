@@ -1,0 +1,204 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import PageHero from '@components/PageHero.astro';
+import ContactSection from '@components/ContactSection.astro';
+import { Icon } from 'astro-icon/components';
+
+const metadata = {
+  title: 'Group Activities - Team Care Support',
+  description: 'Group activities, skill-building sessions, and community access programmes for adults with learning disabilities in Nottinghamshire.',
+  schema: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Group Activities Services',
+    description: 'Group activities and skill-building programmes for adults with learning disabilities in Nottinghamshire.'
+  }
+};
+
+const activities = [
+  {
+    icon: 'tabler:bulb',
+    title: 'Skill-Building & Life Skills Groups',
+    description: 'Cooking, budgeting, personal organisation, confidence building, and practical skills for independent living.'
+  },
+  {
+    icon: 'tabler:walk',
+    title: 'Community Access & Events',
+    description: 'Visiting local attractions, parks, cafes, shops, community centres, and exploring Nottinghamshire together.'
+  },
+  {
+    icon: 'tabler:palette',
+    title: 'Shared Interest Activities',
+    description: 'Arts & crafts, music, sports, gardening, gaming, film clubs, and activities based on what people enjoy.'
+  },
+  {
+    icon: 'tabler:users-group',
+    title: 'Social Sessions',
+    description: 'Structured social time to build friendships, reduce isolation, and develop meaningful relationships.'
+  },
+  {
+    icon: 'tabler:briefcase',
+    title: 'Volunteering & Employment Pathways',
+    description: 'Supported opportunities to explore work, volunteering, and skill development in real-world settings.'
+  },
+  {
+    icon: 'tabler:school',
+    title: 'Education & Training',
+    description: 'Informal learning, courses, digital skills, communication workshops, and opportunities to develop new abilities.'
+  }
+];
+
+const benefits = [
+  'Reduce social isolation and loneliness',
+  'Build real friendships and relationships',
+  'Develop practical skills for daily living',
+  'Increase confidence and self-esteem',
+  'Create meaningful routines and structure',
+  'Promote community belonging — feeling part of something, not isolated within it'
+];
+
+const approachPoints = [
+  {
+    title: 'Person-Centred Planning',
+    description: 'Activities are planned around what people enjoy, not a fixed timetable. We listen to what matters to individuals.'
+  },
+  {
+    title: 'Small Group Sizes',
+    description: 'We keep groups small for comfort and meaningful interaction. Everyone has space to participate at their own pace.'
+  },
+  {
+    title: 'Facilitation, Not Domination',
+    description: 'Support staff facilitate activities but don\'t dominate — we encourage independence and peer interaction.'
+  },
+  {
+    title: 'Community Settings',
+    description: 'Activities take place in community settings wherever possible, promoting real inclusion and belonging.'
+  },
+  {
+    title: 'Regular Feedback',
+    description: 'We regularly ask participants what they enjoy and what they\'d like to try. Feedback shapes what we offer.'
+  }
+];
+---
+<SiteLayout metadata={metadata}>
+  <PageHero
+    heading="Group Activities & Social Sessions"
+    subheading="Building skills, friendships, and confidence through shared experiences and community access."
+    bgClass="bg-[#9ED9C3]"
+    primaryCtaText="Make a Referral"
+    primaryCtaHref="/referral"
+    secondaryCtaText="Contact Us"
+    secondaryCtaHref="/contact"
+  />
+
+  <!-- Section 1: What We Offer -->
+  <section class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">What We Offer</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          Our group activities and social sessions are designed to build skills, reduce isolation, and create opportunities for meaningful connection and community participation.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {activities.map((activity) => (
+          <div class="bg-card border border-border rounded-lg p-6 hover:border-accent transition-colors">
+            <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+              <Icon name={activity.icon} class="w-6 h-6 text-accent" />
+            </div>
+            <h3 class="text-xl font-semibold text-foreground mb-3">{activity.title}</h3>
+            <p class="text-muted-foreground">{activity.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Why Group Activities Matter -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-6">Why Group Activities Matter</h2>
+          <p class="text-lg text-muted-foreground mb-6">
+            Group activities are more than just something to do — they're opportunities to build connections, develop skills, and feel part of a community.
+          </p>
+          <p class="text-muted-foreground">
+            For many people we support, group activities provide structure, purpose, and the chance to develop meaningful relationships outside of formal care settings. They create space for people to be themselves, try new things, and belong.
+          </p>
+        </div>
+
+        <div class="bg-card border border-border rounded-lg p-8">
+          <h3 class="text-xl font-semibold text-foreground mb-6">Benefits of Group Activities</h3>
+          <ul class="space-y-4">
+            {benefits.map((benefit) => (
+              <li class="flex items-start gap-3">
+                <Icon name="tabler:check" class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span class="text-muted-foreground">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Our Approach -->
+  <section class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Approach</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          We design group activities around what people want to do, not what we think they should do. Every session is shaped by the people who take part.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {approachPoints.map((point) => (
+          <div class="border-l-4 border-accent pl-6">
+            <h3 class="text-xl font-semibold text-foreground mb-3">{point.title}</h3>
+            <p class="text-muted-foreground">{point.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Getting Involved -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-6">Getting Involved</h2>
+      <div class="space-y-4 text-lg text-muted-foreground">
+        <p>
+          Group activities are available to people accessing our supported living and domiciliary care services.
+        </p>
+        <p>
+          We welcome referrals from professionals, families, and individuals who think they might benefit from our group activities and social sessions.
+        </p>
+        <p>
+          Contact us to find out what's currently running, what we're planning, and how you or someone you support can get involved.
+        </p>
+      </div>
+
+      <div class="mt-12 flex flex-wrap gap-4 justify-center">
+        <a href="/referral" class="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent/90 text-accent-foreground font-medium rounded-lg transition-colors">
+          Make a Referral
+          <Icon name="tabler:arrow-right" class="w-5 h-5" />
+        </a>
+        <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 border border-border hover:border-accent bg-card text-foreground font-medium rounded-lg transition-colors">
+          Contact Us
+          <Icon name="tabler:mail" class="w-5 h-5" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ContactSection
+    heading="Join Our Activities"
+    intro="Get in touch to find out about upcoming group activities and how to get involved."
+    phoneLabel="0115 845 0220"
+    phoneHref="tel:01158450220"
+    address="Nottingham, Nottinghamshire"
+  />
+</SiteLayout>

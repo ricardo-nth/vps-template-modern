@@ -1,77 +1,88 @@
-# Modern Healthcare Template
+# Team Care Support & Accommodation
 
-A contemporary, clean Astro.js template for healthcare agencies with bold typography and modern layouts.
+Marketing website for Team Care Domiciliary Support Ltd, a Nottingham-based provider of domiciliary care and supported living services.
 
-🔗 **Live Demo:** https://vps-template-modern.vercel.app
+## Client
 
-## Features
+**Team Care Domiciliary Support Ltd**
+Company Registration: 16012175
+Location: Nottingham, UK
 
-- Astro 5.x
-- Tailwind CSS v4
-- TypeScript
-- SEO optimized
-- Fast performance
-- Modern design
+## About
 
-## Quick Start
+Team Care provides specialized support services for adults with:
+- Learning disabilities
+- Autism spectrum conditions
+- Mental health conditions
+- Physical disabilities
 
-1. Click **Use This Template** on GitHub.
-2. Clone your new repository.
-3. Install dependencies:
-   ```bash
-   pnpm install
-   ```
-4. Start the dev server:
-   ```bash
-   pnpm dev
-   ```
-5. Update `src/config/site.ts` with your business details.
-6. Replace placeholder content in pages and components.
+Services include domiciliary care and supported living accommodation across Nottingham and surrounding areas.
 
-## Customization Checklist
+## Tech Stack
 
-- [ ] Update `site.ts` configuration
-- [ ] Replace all `[Business Name]` placeholders
-- [ ] Add contact information
-- [ ] Update service content
-- [ ] Customize compliance/CQC sections
-- [ ] Add team members
-- [ ] Replace images
-- [ ] Update branding
+- **Framework**: Astro 5.x
+- **Styling**: Tailwind CSS v4
+- **Language**: TypeScript
+- **Icons**: astro-icon (Tabler icon set)
+- **UI Components**: Preline UI
+- **Output**: Static site generation
+
+## Getting Started
+
+Install dependencies:
+```bash
+pnpm install
+```
+
+Start development server:
+```bash
+pnpm dev
+```
+
+Build for production:
+```bash
+pnpm build
+```
+
+Preview production build:
+```bash
+pnpm preview
+```
 
 ## Project Structure
 
 ```
 src/
-  components/    # UI components
-  config/        # Site configuration
-  layouts/       # Layouts
-  pages/         # Routes and page content
-  styles/        # Global styles
-public/          # Static assets
+  assets/         # Images and media files (optimized by Astro)
+  components/     # Reusable UI components
+  config/         # Site configuration and constants
+  layouts/        # Page layouts and templates
+  pages/          # Routes and page content
+  styles/         # Global styles and Tailwind config
+public/           # Static assets (served as-is)
 ```
 
-## Service Detail Pages
+## Configuration
 
-Includes a supported living example at `/services/supported-living` with compliance sections.
+Site configuration is managed in `src/config/site.ts`. Update this file with:
+- Business contact details
+- Service offerings
+- CQC registration information
+- Company metadata
 
-## Available Scripts
+## Deployment
 
-- `pnpm dev` — Start development server
-- `pnpm build` — Build for production
-- `pnpm preview` — Preview production build
-- `pnpm astro` — Run Astro CLI
+This is a static site that can be deployed to any static hosting platform:
+- Vercel (recommended)
+- Netlify
+- Cloudflare Pages
+- AWS S3 + CloudFront
 
-## Need Professional Help?
+Build output is generated in the `dist/` directory.
 
-Visit https://vertexplatformsolutions.com/offers/healthcare-agencies
+## Development Notes
 
-## Tech Stack
-
-- Astro 5.x
-- Tailwind CSS v4
-- TypeScript
-
-## License
-
-MIT
+- Images should be placed in `src/assets/` for automatic optimization
+- Use `public/` only for files that must be served as-is (favicons, etc.)
+- Follow existing component patterns when adding new features
+- Run `pnpm build` before pushing to verify production build

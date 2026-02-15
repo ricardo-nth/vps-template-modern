@@ -1,9 +1,8 @@
 /**
- * Global site configuration for the Astro starter template
+ * Global site configuration
  *
- * Update values here to customize the template for a new project.
- * This config is used for base Schema.org structured data only.
- * SEO meta tags are configured per-page in frontmatter.
+ * Update values here to customize for the project.
+ * Used for base Schema.org structured data on every page.
  */
 
 export interface SiteConfig {
@@ -14,9 +13,9 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: '[Business Name]',
+  name: 'Team Care Support & Accommodation',
   description:
-    '[Your business description - what you do and who you serve]',
+    'Person-centred domiciliary care and supported living services for adults across Nottinghamshire. Building independence, not dependence.',
 };
 
 /**
@@ -48,4 +47,3 @@ export function getBaseSchemas(site: URL) {
     },
   ];
 }
-

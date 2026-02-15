@@ -41,7 +41,7 @@
  * CUSTOMIZATION GUIDE:
  * ====================
  * To rebrand for a client, adjust the color values below.
- * The template uses purple/lilac by default - replace with client brand colors.
+ * The template uses teal/mint/coral by default - replace with client brand colors.
  *
  * KEY TOKENS TO CUSTOMIZE:
  * ------------------------
@@ -50,10 +50,11 @@
  *
  * COMMON COLOR EXAMPLES (copy into --primary and --ring):
  * --------------------------------------------------------
- * Purple (default):  oklch(0.62 0.19 259.76)
+ * Teal (default):    oklch(0.76 0.08 210)
+ * Mint:              oklch(0.83 0.08 165)
+ * Coral:             oklch(0.78 0.10 20)
  * Lilac (lighter):   oklch(0.75 0.15 290)
  * Lavender:          oklch(0.70 0.12 285)
- * Teal:              oklch(0.65 0.15 200)
  * Blue:              oklch(0.55 0.20 240)
  * Green:             oklch(0.60 0.18 150)
  * Orange:            oklch(0.65 0.18 50)
@@ -69,46 +70,46 @@
 :root {
   /* Neutral surfaces - usually don't need to change */
   --background: oklch(1.00 0 0);           /* Page background (white) */
-  --foreground: oklch(0.32 0 0);           /* Main text (dark gray) */
+  --foreground: oklch(0.28 0 0);           /* Main text (charcoal #2E2E2E) */
   --card: oklch(1.00 0 0);                 /* Card background (white) */
-  --card-foreground: oklch(0.32 0 0);      /* Card text (dark gray) */
+  --card-foreground: oklch(0.28 0 0);      /* Card text (charcoal) */
 
-  /* BRAND COLORS - PalCare Purple, Lilac & Grey */
-  --primary: oklch(0.45 0.18 310);         /* 🎨 Main brand color (deep purple #7B2192) */
+  /* BRAND COLORS - Team Care Teal, Mint & Coral */
+  --primary: oklch(0.76 0.08 210);         /* 🎨 Main brand color (soft teal #6BBED2) */
   --primary-foreground: oklch(1.00 0 0);   /* Text on primary (white) */
 
-  /* Subtle backgrounds - Lilac tones */
-  --secondary: oklch(0.95 0.03 300);       /* Light lilac/purple sections */
-  --secondary-foreground: oklch(0.40 0.08 300);
+  /* Subtle backgrounds - Coral tones */
+  --secondary: oklch(0.93 0.03 20);        /* Light coral sections */
+  --secondary-foreground: oklch(0.55 0.08 20);
 
   /* Custom navigation colors */
-  --nav-primary-bg: oklch(0.92 0.04 310);      /* Lilac for primary nav (#ECDFF1) */
-  --nav-primary-text: oklch(0.35 0.12 310);    /* Dark purple text for primary nav */
-  --nav-secondary-bg: oklch(0.45 0.18 310);    /* Deep purple for secondary nav (#7B2192) */
+  --nav-primary-bg: oklch(0.95 0.03 210);      /* Very light teal for primary nav */
+  --nav-primary-text: oklch(0.45 0.08 210);    /* Darker teal text for primary nav */
+  --nav-secondary-bg: oklch(0.76 0.08 210);    /* Soft teal for secondary nav (#6BBED2) */
   --nav-secondary-text: oklch(1.00 0 0);       /* White text for secondary nav */
 
-  /* Muted/subtle text - Grey tones */
-  --muted: oklch(0.96 0.01 300);
-  --muted-foreground: oklch(0.50 0.02 300); /* Muted grey-purple text */
+  /* Muted/subtle text - Grey with teal tint */
+  --muted: oklch(0.96 0.01 210);
+  --muted-foreground: oklch(0.50 0.02 210); /* Muted grey-teal text */
 
-  /* Accent - Lighter lilac for highlights */
-  --accent: oklch(0.85 0.08 300);          /* Lilac accent */
-  --accent-foreground: oklch(0.35 0.12 300);
+  /* Accent - Mint green for highlights */
+  --accent: oklch(0.83 0.08 165);          /* Mint green accent (#9ED9C3) */
+  --accent-foreground: oklch(0.40 0.08 165);
 
-  /* Error/destructive states */
-  --destructive: oklch(0.64 0.21 25.39);
+  /* Error/destructive states - Muted rose */
+  --destructive: oklch(0.70 0.12 10);      /* Muted rose (#E88FA3) */
   --destructive-foreground: oklch(1 0 0);
 
-  /* Borders and inputs - Light grey with purple tint */
-  --border: oklch(0.90 0.02 300);
-  --input: oklch(0.90 0.02 300);
+  /* Borders and inputs - Light grey with teal tint */
+  --border: oklch(0.90 0.02 210);
+  --input: oklch(0.90 0.02 210);
 
-  /* Focus ring - matches primary purple */
-  --ring: oklch(0.45 0.18 310);            /* 🎨 Focus ring (deep purple #7B2192) */
+  /* Focus ring - matches primary teal */
+  --ring: oklch(0.76 0.08 210);            /* 🎨 Focus ring (soft teal #6BBED2) */
 
   /* Hero overlays (if using hero components) */
   --hero-overlay: oklch(1 0 0 / 0.8);
-  --hero-overlay-foreground: oklch(0.32 0 0);
+  --hero-overlay-foreground: oklch(0.28 0 0);
 }
 
 .dark {
@@ -118,8 +119,8 @@
   --card: oklch(0.27 0 0);                 /* Slightly lighter cards */
   --card-foreground: oklch(0.92 0 0);      /* Light text on cards */
 
-  /* BRAND COLORS - Keep same as light mode or adjust for dark */
-  --primary: oklch(0.62 0.19 259.76);      /* 🎨 Main brand color (purple) */
+  /* BRAND COLORS - Brighter teal for dark mode visibility */
+  --primary: oklch(0.78 0.09 210);         /* 🎨 Slightly brighter teal for dark backgrounds */
   --primary-foreground: oklch(1.00 0 0);   /* Text on primary (white) */
 
   /* Dark mode backgrounds */
@@ -130,20 +131,20 @@
   --muted: oklch(0.27 0 0);
   --muted-foreground: oklch(0.72 0 0);
 
-  /* Accent */
-  --accent: oklch(0.38 0.14 265.59);
-  --accent-foreground: oklch(0.88 0.06 254.63);
+  /* Accent - Mint green for dark mode */
+  --accent: oklch(0.70 0.10 165);
+  --accent-foreground: oklch(0.90 0.06 165);
 
-  /* Error states */
-  --destructive: oklch(0.64 0.21 25.39);
+  /* Error states - Muted rose */
+  --destructive: oklch(0.70 0.12 10);
   --destructive-foreground: oklch(1 0 0);
 
   /* Dark borders */
   --border: oklch(0.37 0 0);
   --input: oklch(0.37 0 0);
 
-  /* Focus ring - matches primary */
-  --ring: oklch(0.62 0.19 259.76);         /* 🎨 Focus ring (matches primary) */
+  /* Focus ring - matches primary teal */
+  --ring: oklch(0.78 0.09 210);            /* 🎨 Focus ring (matches primary teal) */
 
   /* Hero overlays */
   --hero-overlay: oklch(0.20 0 0 / 0.8);

@@ -1,0 +1,362 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import PageHero from '@components/PageHero.astro';
+import ContactSection from '@components/ContactSection.astro';
+import Icon from '@components/Icon.astro';
+
+const metadata = {
+  title: 'Make a Referral - Team Care Support',
+  description: 'Refer someone for supported living or domiciliary care services. We accept professional referrals, family referrals, and self-referrals.',
+  schema: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Make a Referral',
+    description: 'Refer someone for our care services.'
+  }
+};
+---
+<SiteLayout metadata={metadata}>
+  <PageHero
+    heading='Make a <span class="text-accent">Referral</span>'
+    subheading="Whether you are a professional, family member, or self-referring, we are here to help. Get in touch to discuss how we can support you."
+    primaryCtaText="Call Us Now"
+    primaryCtaHref="tel:01158450220"
+    secondaryCtaText="Email Us"
+    secondaryCtaHref="mailto:help@teamcaresupport.com"
+  />
+
+  <!-- Who Can Refer -->
+  <section class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-4">Who Can Refer</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          We welcome referrals from professionals, families, and individuals seeking support
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Professional Referrals -->
+        <div class="bg-white border border-border rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg mb-6 mx-auto">
+            <Icon name="tabler:briefcase" class="w-8 h-8 text-primary" />
+          </div>
+          <h3 class="text-xl font-semibold text-foreground mb-4 text-center">Professional Referrals</h3>
+          <p class="text-muted-foreground text-center">
+            Social workers, care managers, commissioners, healthcare professionals. We work with local authorities across Nottinghamshire.
+          </p>
+        </div>
+
+        <!-- Family & Advocate Referrals -->
+        <div class="bg-white border border-border rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-center w-16 h-16 bg-accent/10 rounded-lg mb-6 mx-auto">
+            <Icon name="tabler:heart" class="w-8 h-8 text-accent" />
+          </div>
+          <h3 class="text-xl font-semibold text-foreground mb-4 text-center">Family & Advocate Referrals</h3>
+          <p class="text-muted-foreground text-center">
+            Family members, friends, or advocates can refer someone they care about. We will guide you through the process.
+          </p>
+        </div>
+
+        <!-- Self-Referrals -->
+        <div class="bg-white border border-border rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg mb-6 mx-auto">
+            <Icon name="tabler:user" class="w-8 h-8 text-primary" />
+          </div>
+          <h3 class="text-xl font-semibold text-foreground mb-4 text-center">Self-Referrals</h3>
+          <p class="text-muted-foreground text-center">
+            Individuals can refer themselves. Contact us directly to discuss your needs and how we can help.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Referral Process -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-4">Our Referral Process</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          A clear, straightforward process from initial contact to service commencement
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        <!-- Step 1 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center w-12 h-12 bg-primary text-white rounded-full font-bold text-lg">1</div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-foreground mb-2">Initial Contact</h3>
+            <p class="text-muted-foreground">
+              Call us on 0115 845 0220 or email help@teamcaresupport.com to discuss the referral
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center w-12 h-12 bg-primary text-white rounded-full font-bold text-lg">2</div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-foreground mb-2">Information Gathering</h3>
+            <p class="text-muted-foreground">
+              We collect relevant details about the individual's needs, preferences, and circumstances
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center w-12 h-12 bg-primary text-white rounded-full font-bold text-lg">3</div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-foreground mb-2">Assessment</h3>
+            <p class="text-muted-foreground">
+              Our Care Manager arranges a comprehensive needs assessment and risk evaluation
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center w-12 h-12 bg-primary text-white rounded-full font-bold text-lg">4</div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-foreground mb-2">Care Planning</h3>
+            <p class="text-muted-foreground">
+              We develop a person-centred support plan in partnership with the individual and their network
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center w-12 h-12 bg-primary text-white rounded-full font-bold text-lg">5</div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-foreground mb-2">Matching</h3>
+            <p class="text-muted-foreground">
+              We select care workers based on personality, skills, and shared interests
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center w-12 h-12 bg-primary text-white rounded-full font-bold text-lg">6</div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-foreground mb-2">Service Commencement</h3>
+            <p class="text-muted-foreground">
+              Support begins with regular reviews to ensure quality and responsiveness
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Need -->
+  <section class="py-24 bg-background">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-4">What We Need</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          Information helpful for a referral
+        </p>
+      </div>
+
+      <div class="bg-white border border-border rounded-lg p-8 shadow-sm">
+        <ul class="space-y-4 text-muted-foreground">
+          <li class="flex items-start gap-3">
+            <Icon name="tabler:check" class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+            <span>Name, age, and contact details</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <Icon name="tabler:check" class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+            <span>Current living situation</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <Icon name="tabler:check" class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+            <span>Nature of support needs (personal care, supported living, etc.)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <Icon name="tabler:check" class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+            <span>Any relevant assessments or care plans</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <Icon name="tabler:check" class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+            <span>Funding arrangements (local authority, direct payments, private)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <Icon name="tabler:check" class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+            <span>Any specific preferences or requirements</span>
+          </li>
+        </ul>
+
+        <div class="mt-8 p-4 bg-accent/10 border border-accent/20 rounded-lg">
+          <p class="text-sm text-foreground">
+            <strong>Note:</strong> Don't worry if you don't have all this information — we can work through it together.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Funding Options -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-4">Funding Options</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          Flexible funding arrangements to meet different circumstances
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white border border-border rounded-lg p-6 shadow-sm">
+          <div class="flex items-center gap-3 mb-3">
+            <Icon name="tabler:building" class="w-6 h-6 text-primary" />
+            <h3 class="text-lg font-semibold text-foreground">Local Authority Commissioning</h3>
+          </div>
+          <p class="text-muted-foreground">
+            We work directly with local authorities across Nottinghamshire to provide commissioned care services.
+          </p>
+        </div>
+
+        <div class="bg-white border border-border rounded-lg p-6 shadow-sm">
+          <div class="flex items-center gap-3 mb-3">
+            <Icon name="tabler:wallet" class="w-6 h-6 text-primary" />
+            <h3 class="text-lg font-semibold text-foreground">Direct Payments</h3>
+          </div>
+          <p class="text-muted-foreground">
+            We accept direct payments for individuals managing their own care budgets.
+          </p>
+        </div>
+
+        <div class="bg-white border border-border rounded-lg p-6 shadow-sm md:col-span-2">
+          <div class="flex items-center gap-3 mb-3">
+            <Icon name="tabler:users" class="w-6 h-6 text-primary" />
+            <h3 class="text-lg font-semibold text-foreground">Private and Family-Funded Arrangements</h3>
+          </div>
+          <p class="text-muted-foreground">
+            We work collaboratively with commissioners, social workers, and families to create sustainable placements that meet individual needs and preferences.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Placeholder -->
+  <section class="py-24 bg-background">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-4">Submit a Referral</h2>
+        <p class="text-lg text-muted-foreground">
+          Complete the form below or contact us directly
+        </p>
+      </div>
+
+      <form class="bg-white border border-border rounded-lg p-8 shadow-sm space-y-6">
+        <!-- Name -->
+        <div>
+          <label for="name" class="block text-sm font-medium text-foreground mb-2">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            placeholder="Full name"
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-foreground mb-2">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            placeholder="your.email@example.com"
+          />
+        </div>
+
+        <!-- Phone -->
+        <div>
+          <label for="phone" class="block text-sm font-medium text-foreground mb-2">Phone</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            placeholder="Phone number"
+          />
+        </div>
+
+        <!-- Referral Type -->
+        <div>
+          <label for="referralType" class="block text-sm font-medium text-foreground mb-2">Referral Type</label>
+          <select
+            id="referralType"
+            name="referralType"
+            required
+            class="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          >
+            <option value="">Select referral type</option>
+            <option value="professional">Professional</option>
+            <option value="family">Family</option>
+            <option value="self">Self-referral</option>
+          </select>
+        </div>
+
+        <!-- Brief Description -->
+        <div>
+          <label for="description" class="block text-sm font-medium text-foreground mb-2">Brief Description</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="5"
+            required
+            class="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            placeholder="Please provide details about the support needs and any relevant information..."
+          ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+          <button
+            type="submit"
+            class="w-full bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            Submit Referral
+          </button>
+        </div>
+
+        <!-- Alternative Contact Note -->
+        <div class="text-center text-sm text-muted-foreground">
+          Alternatively, call us on <a href="tel:01158450220" class="text-primary hover:underline font-medium">0115 845 0220</a> or email <a href="mailto:help@teamcaresupport.com" class="text-primary hover:underline font-medium">help@teamcaresupport.com</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <ContactSection
+    heading="Need Help With a Referral?"
+    intro="Our team is available to walk you through the referral process and answer any questions."
+    phoneLabel="0115 845 0220"
+    phoneHref="tel:01158450220"
+    address="Nottingham, Nottinghamshire"
+  />
+</SiteLayout>

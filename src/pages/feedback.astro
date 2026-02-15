@@ -1,0 +1,248 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import PageHero from '@components/PageHero.astro';
+import ContactSection from '@components/ContactSection.astro';
+import Icon from '@components/Icon.astro';
+
+const metadata = {
+  title: 'Feedback & Complaints - Team Care Support',
+  description: 'Share feedback, compliments, or raise a complaint about our services. We operate openly and transparently.',
+  schema: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Feedback & Complaints',
+    description: 'Share your feedback or raise a complaint about our services.'
+  }
+};
+---
+<SiteLayout metadata={metadata}>
+  <PageHero
+    heading='Feedback & <span class="text-accent">Complaints</span>'
+    subheading="We operate openly and transparently. Your feedback helps us improve and deliver better services."
+    primaryCtaText="Share Feedback"
+    primaryCtaHref="#feedback-form"
+  />
+
+  <!-- We Welcome Your Feedback -->
+  <section class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6">We Welcome Your Feedback</h2>
+        <p class="text-lg text-muted-foreground mb-6">
+          Team Care encourages both compliments and complaints. We operate in an open, transparent manner and believe constant feedback is the only way to improve our services.
+        </p>
+        <p class="text-lg text-muted-foreground">
+          <strong>Both complaints and compliments are important.</strong> Complaints help us identify issues and make improvements. Compliments help us recognise what works and celebrate good practice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Make a Complaint -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="text-3xl font-bold mb-6">How to Make a Complaint</h2>
+        <p class="text-lg text-muted-foreground">
+          We take all complaints seriously and follow a clear, transparent process.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div class="flex items-start gap-6">
+          <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <span class="text-xl font-bold text-accent">1</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Contact Us Directly</h3>
+            <p class="text-muted-foreground">
+              Speak to your care worker, supervisor, or the Registered Manager.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-6">
+          <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <span class="text-xl font-bold text-accent">2</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Acknowledgement</h3>
+            <p class="text-muted-foreground">
+              We will acknowledge your complaint and begin investigation.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-6">
+          <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <span class="text-xl font-bold text-accent">3</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Investigation</h3>
+            <p class="text-muted-foreground">
+              The complaint is fully investigated with relevant bodies informed.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-6">
+          <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <span class="text-xl font-bold text-accent">4</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Response</h3>
+            <p class="text-muted-foreground">
+              You receive a response within agreed timescales.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-6">
+          <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <span class="text-xl font-bold text-accent">5</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">Escalation</h3>
+            <p class="text-muted-foreground">
+              If not satisfied, you can escalate to external bodies.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mx-auto mt-16 bg-background p-8 rounded-lg">
+        <h3 class="text-xl font-semibold mb-6">Contact for Complaints</h3>
+        <div class="space-y-3 text-muted-foreground">
+          <p><strong>Registered Manager:</strong> Kerry McCulloch</p>
+          <p><strong>Address:</strong> Foxhall Lodge, Foxhall Rd, Forest Fields, Nottingham NG7 6LH</p>
+          <p><strong>Email:</strong> <a href="mailto:kerry@teamcarecompliance.org.uk" class="text-accent hover:underline">kerry@teamcarecompliance.org.uk</a></p>
+          <p><strong>Tel:</strong> <a href="tel:01158450220" class="text-accent hover:underline">0115 845 0220</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- External Bodies -->
+  <section class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="text-3xl font-bold mb-6">External Bodies</h2>
+        <p class="text-lg text-muted-foreground">
+          If you are not satisfied with our response, you can contact:
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-secondary/30 p-8 rounded-lg">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+            <Icon name="tabler:building" class="w-6 h-6 text-accent" />
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Local Government Ombudsman (LGO)</h3>
+          <div class="space-y-2 text-muted-foreground">
+            <p><strong>Email:</strong> <a href="mailto:advice@lgo.org.uk" class="text-accent hover:underline">advice@lgo.org.uk</a></p>
+            <p><strong>Tel:</strong> <a href="tel:03000610614" class="text-accent hover:underline">0300 061 0614</a></p>
+            <p><strong>Website:</strong> <a href="https://www.lgo.org.uk" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">www.lgo.org.uk</a></p>
+          </div>
+        </div>
+
+        <div class="bg-secondary/30 p-8 rounded-lg">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+            <Icon name="tabler:shield-check" class="w-6 h-6 text-accent" />
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Care Quality Commission (CQC)</h3>
+          <div class="space-y-2 text-muted-foreground">
+            <p><strong>Address:</strong> Citygate, Gallowgate, Newcastle upon Tyne, NE1 4PA</p>
+            <p><strong>Email:</strong> <a href="mailto:enquiries@cqc.org.uk" class="text-accent hover:underline">enquiries@cqc.org.uk</a></p>
+            <p><strong>Tel:</strong> <a href="tel:03000616161" class="text-accent hover:underline">03000 616161</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feedback Form -->
+  <section id="feedback-form" class="py-24 bg-secondary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-6">Share Your Feedback</h2>
+          <p class="text-lg text-muted-foreground">
+            We aim to acknowledge all feedback within 5 working days.
+          </p>
+        </div>
+
+        <form class="bg-background p-8 rounded-lg space-y-6">
+          <div>
+            <label for="name" class="block text-sm font-medium mb-2">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+              placeholder="Your name"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium mb-2">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+              placeholder="your.email@example.com"
+            />
+          </div>
+
+          <div>
+            <label for="feedback-type" class="block text-sm font-medium mb-2">Feedback Type</label>
+            <select
+              id="feedback-type"
+              name="feedback-type"
+              required
+              class="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+            >
+              <option value="">Select type...</option>
+              <option value="compliment">Compliment</option>
+              <option value="complaint">Complaint</option>
+              <option value="suggestion">Suggestion</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              required
+              class="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent resize-none"
+              placeholder="Please share your feedback..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors"
+          >
+            Submit Feedback
+          </button>
+
+          <p class="text-sm text-muted-foreground text-center">
+            This form is a visual placeholder. Please contact us directly using the details above.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <ContactSection
+    heading="Get in Touch"
+    intro="Prefer to speak with us directly? We're here to listen."
+    phoneLabel="0115 845 0220"
+    phoneHref="tel:01158450220"
+    address="Nottingham, Nottinghamshire"
+  />
+</SiteLayout>

@@ -1,0 +1,263 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import PageHero from '@components/PageHero.astro';
+import ContactSection from '@components/ContactSection.astro';
+import Icon from '@components/Icon.astro';
+
+const metadata = {
+  title: 'Virtual & Blended Support - Team Care Support',
+  description: 'Remote emotional support, daily check-ins, and blended care combining face-to-face and virtual support across Nottinghamshire.',
+  schema: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Virtual & Blended Support Services',
+    description: 'Remote emotional support and blended care services across Nottinghamshire.'
+  }
+};
+---
+<SiteLayout metadata={metadata}>
+  <PageHero
+    heading="Virtual & Blended Support"
+    subheading="Support that adapts as you grow. Our blended model combines face-to-face care with remote emotional support, encouraging confidence and self-management."
+    bgClass="bg-[#E88FA3]"
+    primaryCtaText="Make a Referral"
+    primaryCtaHref="/referral"
+    secondaryCtaText="Learn More"
+    secondaryCtaHref="#how-it-works"
+  />
+
+  <!-- Section 1: What Is Blended Support -->
+  <section class="py-24 bg-background" id="how-it-works">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-3xl font-bold text-foreground mb-6">What Is Blended Support?</h2>
+          <div class="prose prose-lg max-w-none text-muted-foreground">
+            <p>Blended support combines traditional face-to-face care with remote emotional support and prompts. This approach isn't a replacement for in-person care — it's a complement that enhances independence while maintaining connection.</p>
+            <p>As people grow in confidence and develop self-management skills, the balance shifts. Physical visits may reduce, while remote check-ins continue to provide reassurance and routine structure.</p>
+            <p>The goal is progression, not dependency. Blended support creates a pathway toward greater autonomy, smoother transitions, and confidence in managing everyday challenges.</p>
+          </div>
+        </div>
+        <div class="grid gap-6">
+          <div class="bg-card border border-border rounded-lg p-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-accent/10 text-accent p-3 rounded-lg">
+                <Icon name="tabler:users" class="w-6 h-6" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-foreground mb-2">Encourages Confidence</h3>
+                <p class="text-muted-foreground">Remote support helps build self-management skills without constant physical presence.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-card border border-border rounded-lg p-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-accent/10 text-accent p-3 rounded-lg">
+                <Icon name="tabler:chart-line" class="w-6 h-6" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-foreground mb-2">Adapts as You Grow</h3>
+                <p class="text-muted-foreground">Support evolves based on progress, rather than remaining static or creating unnecessary reliance.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-card border border-border rounded-lg p-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-accent/10 text-accent p-3 rounded-lg">
+                <Icon name="tabler:arrows-down-up" class="w-6 h-6" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-foreground mb-2">Smoother Transitions</h3>
+                <p class="text-muted-foreground">Step-down support makes moving to lower-level care less disruptive and more sustainable.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: What Remote Support Includes -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-foreground mb-4">What Remote Support Includes</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">From daily reassurance to routine reminders, remote support fills gaps without requiring constant in-person visits.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-card border border-border rounded-lg p-6">
+          <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
+            <Icon name="tabler:heart-handshake" class="w-6 h-6" />
+          </div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Emotional Reassurance</h3>
+          <p class="text-muted-foreground">Regular check-ins to provide emotional support, reduce anxiety, and maintain connection.</p>
+        </div>
+        <div class="bg-card border border-border rounded-lg p-6">
+          <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
+            <Icon name="tabler:clock" class="w-6 h-6" />
+          </div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Routine Reminders</h3>
+          <p class="text-muted-foreground">Prompts for appointments, medication, daily structure, and important tasks.</p>
+        </div>
+        <div class="bg-card border border-border rounded-lg p-6">
+          <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
+            <Icon name="tabler:mood-smile" class="w-6 h-6" />
+          </div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Anxiety & Mood Support</h3>
+          <p class="text-muted-foreground">Support during moments of low mood, worry, or uncertainty — a calming voice when needed.</p>
+        </div>
+        <div class="bg-card border border-border rounded-lg p-6">
+          <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
+            <Icon name="tabler:stairs-down" class="w-6 h-6" />
+          </div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Step-Down Support</h3>
+          <p class="text-muted-foreground">Gradual reduction in physical presence as independence and confidence increase.</p>
+        </div>
+        <div class="bg-card border border-border rounded-lg p-6">
+          <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
+            <Icon name="tabler:phone-check" class="w-6 h-6" />
+          </div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Daily Check-Ins</h3>
+          <p class="text-muted-foreground">Scheduled calls to maintain routine, offer reassurance, and monitor wellbeing.</p>
+        </div>
+        <div class="bg-card border border-border rounded-lg p-6">
+          <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
+            <Icon name="tabler:devices" class="w-6 h-6" />
+          </div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Technology-Enabled Care</h3>
+          <p class="text-muted-foreground">Video calls, messaging, and digital tools to stay connected without physical visits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Who Benefits -->
+  <section class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-foreground mb-4">Who Benefits from Blended Support?</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">This model works best for individuals who need emotional support and routine structure, but not constant physical presence.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="bg-card border border-border rounded-lg p-8">
+          <div class="flex items-start gap-4">
+            <div class="bg-accent/10 text-accent p-2 rounded-lg flex-shrink-0">
+              <Icon name="tabler:home-move" class="w-5 h-5" />
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-foreground mb-2">People Transitioning to Independence</h3>
+              <p class="text-muted-foreground">Moving from supported living to more independent settings, with ongoing reassurance.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-card border border-border rounded-lg p-8">
+          <div class="flex items-start gap-4">
+            <div class="bg-accent/10 text-accent p-2 rounded-lg flex-shrink-0">
+              <Icon name="tabler:heart" class="w-5 h-5" />
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-foreground mb-2">Those Needing Emotional, Not Physical Support</h3>
+              <p class="text-muted-foreground">Individuals who benefit from connection and reassurance, without requiring hands-on care.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-card border border-border rounded-lg p-8">
+          <div class="flex items-start gap-4">
+            <div class="bg-accent/10 text-accent p-2 rounded-lg flex-shrink-0">
+              <Icon name="tabler:arrow-down" class="w-5 h-5" />
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-foreground mb-2">Stepping Down from Higher-Level Care</h3>
+              <p class="text-muted-foreground">Reducing intensive support packages while maintaining confidence and routine.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-card border border-border rounded-lg p-8">
+          <div class="flex items-start gap-4">
+            <div class="bg-accent/10 text-accent p-2 rounded-lg flex-shrink-0">
+              <Icon name="tabler:growth" class="w-5 h-5" />
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-foreground mb-2">Building Self-Management Skills</h3>
+              <p class="text-muted-foreground">Developing confidence in daily routines, decision-making, and personal organisation.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-card border border-border rounded-lg p-8 md:col-span-2">
+          <div class="flex items-start gap-4">
+            <div class="bg-accent/10 text-accent p-2 rounded-lg flex-shrink-0">
+              <Icon name="tabler:cloud-rain" class="w-5 h-5" />
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-foreground mb-2">Managing Anxiety, Low Mood, or Routine Challenges</h3>
+              <p class="text-muted-foreground">Regular check-ins and prompts provide structure, reassurance, and a safety net during difficult moments.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: How It Works -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-foreground mb-4">How It Works</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">A simple, flexible process that evolves with your needs.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="relative">
+          <div class="bg-card border border-border rounded-lg p-8 h-full">
+            <div class="bg-accent/10 text-accent font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center mb-4">1</div>
+            <h3 class="text-xl font-semibold text-foreground mb-3">Assessment</h3>
+            <p class="text-muted-foreground">Understand current needs, goals, and the right balance of in-person and remote support.</p>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="bg-card border border-border rounded-lg p-8 h-full">
+            <div class="bg-accent/10 text-accent font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center mb-4">2</div>
+            <h3 class="text-xl font-semibold text-foreground mb-3">Blended Plan</h3>
+            <p class="text-muted-foreground">Create a personalised mix of face-to-face visits and scheduled remote check-ins.</p>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="bg-card border border-border rounded-lg p-8 h-full">
+            <div class="bg-accent/10 text-accent font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center mb-4">3</div>
+            <h3 class="text-xl font-semibold text-foreground mb-3">Regular Review</h3>
+            <p class="text-muted-foreground">Adjust the balance as confidence and skills grow, ensuring support remains relevant.</p>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="bg-card border border-border rounded-lg p-8 h-full">
+            <div class="bg-accent/10 text-accent font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center mb-4">4</div>
+            <h3 class="text-xl font-semibold text-foreground mb-3">Step-Down</h3>
+            <p class="text-muted-foreground">Gradually reduce support as independence increases, celebrating progress along the way.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: A Pathway Forward -->
+  <section class="py-24 bg-background">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-accent/10 text-accent p-4 rounded-full w-fit mx-auto mb-6">
+        <Icon name="tabler:route" class="w-8 h-8" />
+      </div>
+      <h2 class="text-3xl font-bold text-foreground mb-6">A Pathway Forward</h2>
+      <div class="prose prose-lg max-w-none text-muted-foreground">
+        <p>Support is a stepping stone, not a final destination. As independence increases, individuals may reduce on-site support, transition into domiciliary care, or move toward greater autonomy.</p>
+        <p>The goal is always forward movement. Blended support provides the reassurance and structure needed during transitions, without creating unnecessary dependency.</p>
+        <p>Every person's journey is different. Our role is to adapt, encourage, and step back when the time is right.</p>
+      </div>
+    </div>
+  </section>
+
+  <ContactSection
+    heading="Explore Blended Support"
+    intro="Get in touch to find out if virtual and blended support could work for you or someone you care about."
+    phoneLabel="0115 845 0220"
+    phoneHref="tel:01158450220"
+    address="Nottingham, Nottinghamshire"
+  />
+</SiteLayout>

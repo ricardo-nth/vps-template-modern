@@ -1,0 +1,241 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import PageHero from '@components/PageHero.astro';
+import ContactSection from '@components/ContactSection.astro';
+import Icon from '@components/Icon.astro';
+
+const metadata = {
+  title: 'Care at Home - Team Care Support',
+  description: 'Professional domiciliary care services across Nottinghamshire. Personal care, medication support, companionship, respite, live-in care, and crisis management.',
+  schema: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Care at Home Services',
+    description: 'Professional domiciliary care services across Nottinghamshire.'
+  }
+};
+
+const services = [
+  {
+    icon: 'tabler:heart-handshake',
+    title: 'Personal Care',
+    description: 'Assistance with washing, dressing, grooming, and maintaining dignity in your daily routine.'
+  },
+  {
+    icon: 'tabler:pill',
+    title: 'Medication Support',
+    description: 'Safe administration, prompts, and management to ensure you take the right medication at the right time.'
+  },
+  {
+    icon: 'tabler:users',
+    title: 'Companionship Care',
+    description: 'Social interaction, reducing loneliness, and providing emotional support.'
+  },
+  {
+    icon: 'tabler:clock',
+    title: 'Respite Care',
+    description: 'Short-term relief for family carers, giving you peace of mind and time to recharge.'
+  },
+  {
+    icon: 'tabler:home-heart',
+    title: 'Live-In Care',
+    description: '24-hour in-home care for dementia and long-term conditions, providing round-the-clock support.'
+  },
+  {
+    icon: 'tabler:alert-circle',
+    title: 'Crisis Management',
+    description: 'Fast, effective interventions during increased emotional or mental health need.'
+  }
+];
+
+const differentiators = [
+  {
+    icon: 'tabler:urgent',
+    title: 'Urgent Support',
+    description: 'We aim to provide urgent care within 24 hours of your initial call.'
+  },
+  {
+    icon: 'tabler:school',
+    title: 'Fully Trained Carers',
+    description: 'No agency staff, no untrained workers. Every care worker is fully trained and directly employed.'
+  },
+  {
+    icon: 'tabler:star',
+    title: 'High-Quality Care',
+    description: 'Comprehensive, person-centred care even in urgent situations.'
+  },
+  {
+    icon: 'tabler:puzzle',
+    title: 'Matched by Interest',
+    description: 'Care workers selected based on personality fit and shared interests, not just availability.'
+  },
+  {
+    icon: 'tabler:hospital',
+    title: 'Preventing Hospital Admissions',
+    description: 'Personalised care and crisis management at home to avoid unnecessary hospital stays.'
+  },
+  {
+    icon: 'tabler:arrow-back',
+    title: 'Post-Discharge Support',
+    description: 'Smooth transition from hospital back to independent living at home.'
+  }
+];
+
+const deliverySteps = [
+  {
+    number: '1',
+    title: 'Initial Assessment',
+    description: 'Our Care Manager meets you, completes a full needs and risk assessment to understand your requirements.'
+  },
+  {
+    number: '2',
+    title: 'Getting to Know You',
+    description: 'We learn about your likes, dislikes, hobbies, and interests to match you with the right care worker.'
+  },
+  {
+    number: '3',
+    title: 'Care Worker Matching',
+    description: 'Our Manager reviews care workers to select the best personality and skills match for you.'
+  },
+  {
+    number: '4',
+    title: 'Ongoing Review',
+    description: 'Your care plan is reviewed after 3 months initially, then at least every 6 months to ensure it meets your needs.'
+  },
+  {
+    number: '5',
+    title: 'Family Involvement',
+    description: 'Changes to your care are agreed with you and relevant family members, keeping everyone informed.'
+  }
+];
+
+const specialisms = [
+  { icon: 'tabler:users', text: 'Adults over 65 / under 65' },
+  { icon: 'tabler:brain', text: 'Dementia care' },
+  { icon: 'tabler:heart', text: 'Learning disabilities' },
+  { icon: 'tabler:mood-smile', text: 'Mental health conditions' },
+  { icon: 'tabler:accessible', text: 'Physical disabilities' },
+  { icon: 'tabler:eye-off', text: 'Sensory impairments' },
+  { icon: 'tabler:bottle', text: 'Substance misuse support' },
+  { icon: 'tabler:flower', text: 'Palliative and end-of-life care' }
+];
+---
+<SiteLayout metadata={metadata}>
+  <PageHero
+    heading="Compassionate Care at Home"
+    subheading="Professional, person-centred domiciliary care that helps you stay independent in your own home. Tailored support, fully trained carers, no agency staff."
+    bgClass="bg-[#F2A3A0]"
+    primaryCtaText="Make a Referral"
+    primaryCtaHref="/referral"
+    secondaryCtaText="Call Us"
+    secondaryCtaHref="tel:01158450220"
+  />
+
+  <!-- Our Care Services -->
+  <section class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-foreground sm:text-4xl mb-4">Our Care Services</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          Team Care provides domiciliary care to adults aged 18-65 and 65+, enabling you to stay in your own home and retain independence. Our care packages are tailored and adapted to your individual needs.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map(service => (
+          <div class="bg-card rounded-lg p-6 border border-border hover:border-accent transition-colors">
+            <div class="mb-4">
+              <Icon name={service.icon} class="w-12 h-12 text-accent" />
+            </div>
+            <h3 class="text-xl font-semibold text-foreground mb-2">{service.title}</h3>
+            <p class="text-muted-foreground">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What Makes Us Different -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-foreground sm:text-4xl mb-4">What Makes Us Different</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          We go beyond standard care provision to deliver truly person-centred support that makes a real difference to your life.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {differentiators.map(diff => (
+          <div class="bg-background rounded-lg p-6 border border-border">
+            <div class="mb-4">
+              <Icon name={diff.icon} class="w-10 h-10 text-accent" />
+            </div>
+            <h3 class="text-xl font-semibold text-foreground mb-2">{diff.title}</h3>
+            <p class="text-muted-foreground">{diff.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How Care is Delivered -->
+  <section class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-foreground sm:text-4xl mb-4">How Care is Delivered</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          Our systematic approach ensures you receive the right care from the right person, with ongoing support and review.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-8">
+        {deliverySteps.map((step, index) => (
+          <div class="flex gap-6">
+            <div class="flex-shrink-0">
+              <div class="flex items-center justify-center w-12 h-12 rounded-full bg-accent text-accent-foreground text-xl font-bold">
+                {step.number}
+              </div>
+            </div>
+            <div class="flex-grow pt-1">
+              <h3 class="text-xl font-semibold text-foreground mb-2">{step.title}</h3>
+              <p class="text-muted-foreground">{step.description}</p>
+              {index < deliverySteps.length - 1 && (
+                <div class="mt-6 ml-6 h-8 w-0.5 bg-border"></div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Specialist Support -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-foreground sm:text-4xl mb-4">Specialist Support</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          Our experienced care workers are trained to support a wide range of needs and conditions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        {specialisms.map(specialism => (
+          <div class="flex items-center gap-3 bg-background rounded-lg p-4 border border-border">
+            <Icon name={specialism.icon} class="w-6 h-6 text-accent flex-shrink-0" />
+            <span class="text-foreground">{specialism.text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactSection
+    heading="Arrange Care at Home"
+    intro="Get in touch to discuss your care needs or to arrange an assessment."
+    phoneLabel="0115 845 0220"
+    phoneHref="tel:01158450220"
+    address="Nottingham, Nottinghamshire"
+  />
+</SiteLayout>

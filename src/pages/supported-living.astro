@@ -1,0 +1,428 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import PageHero from '@components/PageHero.astro';
+import ContactSection from '@components/ContactSection.astro';
+import Icon from '@components/Icon.astro';
+
+const metadata = {
+  title: 'Supported Living - Team Care Support',
+  description: 'Modern, person-centred supported living for adults with learning disabilities across Nottinghamshire. Building independence through choice, control, and community.',
+  schema: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Supported Living Services',
+    description: 'Person-centred supported living services for adults with learning disabilities in Nottinghamshire.'
+  }
+};
+---
+<SiteLayout metadata={metadata}>
+  <PageHero
+    heading="Supported Living That Grows Independence"
+    subheading="Modern, person-centred supported living for adults with learning disabilities — designed around real outcomes, real choice, and real independence."
+    primaryCtaText="Make a Referral"
+    primaryCtaHref="/referral"
+    secondaryCtaText="Contact Us"
+    secondaryCtaHref="/contact"
+  />
+
+  <!-- Section 1: Our Supported Living Model -->
+  <section class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Left: Explanation -->
+        <div>
+          <h2 class="text-3xl font-bold text-foreground mb-6">Our Supported Living Model</h2>
+          <div class="space-y-4 text-lg text-muted-foreground">
+            <p>
+              We provide supported living in small shared homes, self-contained flats, and cluster models across community-based settings in Nottinghamshire.
+            </p>
+            <p>
+              Each person holds their own tenancy — housing and support are kept separate, ensuring real choice and control.
+            </p>
+            <p>
+              Support is tailored to each individual, not one-size-fits-all. We offer flexible daytime support, sleep-in or waking night cover, and 24/7 support where required, delivered through a blend of face-to-face and remote assistance.
+            </p>
+            <p>
+              As people grow in confidence and independence, support levels can increase or reduce to match their changing needs.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Accommodation Options -->
+        <div class="space-y-4">
+          <div class="bg-secondary/20 border border-secondary/30 rounded-lg p-6">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0">
+                <Icon name="tabler:home-heart" class="w-8 h-8 text-accent" />
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-foreground mb-2">Shared Supported Living Homes</h3>
+                <p class="text-muted-foreground">Small, relationship-based homes where people live together with tailored support.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-secondary/20 border border-secondary/30 rounded-lg p-6">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0">
+                <Icon name="tabler:building" class="w-8 h-8 text-accent" />
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-foreground mb-2">Self-Contained Flats</h3>
+                <p class="text-muted-foreground">Independent living with support that comes to you — on your terms.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-secondary/20 border border-secondary/30 rounded-lg p-6">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0">
+                <Icon name="tabler:building-community" class="w-8 h-8 text-accent" />
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-foreground mb-2">Cluster Models</h3>
+                <p class="text-muted-foreground">Grouped accommodation with shared support services and community connection.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Who We Support -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-foreground mb-4">Who We Support</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          Our supported living services are designed for adults who benefit from smaller, relationship-based support that grows with them.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-background border border-secondary/40 rounded-lg p-6 text-center">
+          <div class="flex justify-center mb-4">
+            <Icon name="tabler:users" class="w-12 h-12 text-primary" />
+          </div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Adults with Learning Disabilities</h3>
+          <p class="text-muted-foreground">Person-centred support that builds confidence and independence.</p>
+        </div>
+
+        <div class="bg-background border border-secondary/40 rounded-lg p-6 text-center">
+          <div class="flex justify-center mb-4">
+            <Icon name="tabler:brain" class="w-12 h-12 text-primary" />
+          </div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Autistic Adults</h3>
+          <p class="text-muted-foreground">Structured, predictable support designed around individual preferences.</p>
+        </div>
+
+        <div class="bg-background border border-secondary/40 rounded-lg p-6 text-center">
+          <div class="flex justify-center mb-4">
+            <Icon name="tabler:heart-handshake" class="w-12 h-12 text-primary" />
+          </div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Additional or Emerging Needs</h3>
+          <p class="text-muted-foreground">Flexible support that adapts as needs change over time.</p>
+        </div>
+
+        <div class="bg-background border border-secondary/40 rounded-lg p-6 text-center">
+          <div class="flex justify-center mb-4">
+            <Icon name="tabler:home-share" class="w-12 h-12 text-primary" />
+          </div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Relationship-Based Services</h3>
+          <p class="text-muted-foreground">People who thrive in smaller, consistent, familiar support settings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Outcomes That Matter -->
+  <section class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-foreground mb-4">Outcomes That Matter</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          We measure success by the real-world outcomes people achieve — independence, meaningful days, and connection to their community.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Column 1: Independence & Life Skills -->
+        <div class="bg-secondary/20 border border-secondary/30 rounded-lg p-8">
+          <div class="flex justify-center mb-6">
+            <Icon name="tabler:target" class="w-12 h-12 text-accent" />
+          </div>
+          <h3 class="text-2xl font-semibold text-foreground mb-4 text-center">Independence & Life Skills</h3>
+          <ul class="space-y-3 text-muted-foreground">
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Cooking and meal planning</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Shopping and budgeting</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Money management</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Personal organisation</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Building confidence</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Meaningful Days -->
+        <div class="bg-secondary/20 border border-secondary/30 rounded-lg p-8">
+          <div class="flex justify-center mb-6">
+            <Icon name="tabler:calendar-event" class="w-12 h-12 text-accent" />
+          </div>
+          <h3 class="text-2xl font-semibold text-foreground mb-4 text-center">Meaningful Days</h3>
+          <ul class="space-y-3 text-muted-foreground">
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Volunteering opportunities</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Employment pathways</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Education and training</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Hobbies and interests</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Purpose and routine</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Community Connection -->
+        <div class="bg-secondary/20 border border-secondary/30 rounded-lg p-8">
+          <div class="flex justify-center mb-6">
+            <Icon name="tabler:users-group" class="w-12 h-12 text-accent" />
+          </div>
+          <h3 class="text-2xl font-semibold text-foreground mb-4 text-center">Community Connection</h3>
+          <ul class="space-y-3 text-muted-foreground">
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Building friendships</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Accessing local activities</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Feeling part of the community</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Social inclusion</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Reducing isolation</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Blended Support Model -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <div class="flex justify-center mb-6">
+            <Icon name="tabler:device-mobile" class="w-16 h-16 text-primary" />
+          </div>
+          <h2 class="text-3xl font-bold text-foreground mb-4">Blended Support Model</h2>
+          <p class="text-lg text-muted-foreground">
+            We combine in-person and remote support to deliver the right help at the right time — encouraging independence while staying connected.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="bg-background border border-secondary/40 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+              <Icon name="tabler:phone" class="w-6 h-6 text-accent" />
+              Emotional Reassurance & Check-Ins
+            </h3>
+            <p class="text-muted-foreground">Regular contact to provide reassurance, check wellbeing, and stay connected between visits.</p>
+          </div>
+
+          <div class="bg-background border border-secondary/40 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+              <Icon name="tabler:bell" class="w-6 h-6 text-accent" />
+              Routine Reminders
+            </h3>
+            <p class="text-muted-foreground">Appointment prompts, medication reminders, and daily structure support — all delivered remotely.</p>
+          </div>
+
+          <div class="bg-background border border-secondary/40 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+              <Icon name="tabler:mood-smile" class="w-6 h-6 text-accent" />
+              Support During Difficult Times
+            </h3>
+            <p class="text-muted-foreground">Quick access to support during anxiety, low mood, or when someone just needs to talk.</p>
+          </div>
+
+          <div class="bg-background border border-secondary/40 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+              <Icon name="tabler:stairs-up" class="w-6 h-6 text-accent" />
+              Step-Down Support
+            </h3>
+            <p class="text-muted-foreground">As independence grows, remote support provides a gentle transition, reducing face-to-face hours while staying connected.</p>
+          </div>
+        </div>
+
+        <div class="bg-primary/10 border border-primary/30 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-foreground mb-3">Benefits of Blended Support</h3>
+          <ul class="space-y-2 text-muted-foreground">
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Encourages confidence and self-reliance</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Reduces unnecessary physical presence, promoting independence</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Supports smoother transitions as needs change</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="tabler:check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span>Maintains connection while respecting privacy and autonomy</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Choice, Control & Co-Production -->
+  <section class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <div class="flex justify-center mb-6">
+            <Icon name="tabler:hand-click" class="w-16 h-16 text-primary" />
+          </div>
+          <h2 class="text-3xl font-bold text-foreground mb-4">Choice, Control & Co-Production</h2>
+          <p class="text-lg text-muted-foreground">
+            Supported living means real choice. People are in control — of where they live, who supports them, and how support is delivered.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <Icon name="tabler:home-check" class="w-8 h-8 text-accent" />
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-foreground mb-2">People Choose Where They Live</h3>
+              <p class="text-muted-foreground">Tenancy choice, location preference, and control over their own home environment.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <Icon name="tabler:user-check" class="w-8 h-8 text-accent" />
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-foreground mb-2">People Choose Who Supports Them</h3>
+              <p class="text-muted-foreground">Matching with support workers who fit their personality, communication style, and interests.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <Icon name="tabler:clock-check" class="w-8 h-8 text-accent" />
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-foreground mb-2">People Choose How & When Support is Delivered</h3>
+              <p class="text-muted-foreground">Flexible schedules, support preferences, and the right balance of face-to-face and remote assistance.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <Icon name="tabler:target-arrow" class="w-8 h-8 text-accent" />
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-foreground mb-2">People Set Their Own Goals & Outcomes</h3>
+              <p class="text-muted-foreground">Support plans are co-produced — centred on what matters most to the individual and reviewed regularly to ensure they stay relevant.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Working Together -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-foreground mb-4">Working Together</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          We work collaboratively with local authorities, families, and professionals to deliver the best outcomes for the people we support.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-background border border-secondary/40 rounded-lg p-6">
+          <div class="flex justify-center mb-4">
+            <Icon name="tabler:building-estate" class="w-10 h-10 text-primary" />
+          </div>
+          <h3 class="text-lg font-semibold text-foreground mb-2 text-center">Local Authorities & Commissioners</h3>
+          <p class="text-muted-foreground text-sm text-center">Partnership working to deliver high-quality, person-centred support.</p>
+        </div>
+
+        <div class="bg-background border border-secondary/40 rounded-lg p-6">
+          <div class="flex justify-center mb-4">
+            <Icon name="tabler:wallet" class="w-10 h-10 text-primary" />
+          </div>
+          <h3 class="text-lg font-semibold text-foreground mb-2 text-center">Direct Payments</h3>
+          <p class="text-muted-foreground text-sm text-center">Supporting individuals who manage their own care budgets.</p>
+        </div>
+
+        <div class="bg-background border border-secondary/40 rounded-lg p-6">
+          <div class="flex justify-center mb-4">
+            <Icon name="tabler:users" class="w-10 h-10 text-primary" />
+          </div>
+          <h3 class="text-lg font-semibold text-foreground mb-2 text-center">Private & Family-Funded Arrangements</h3>
+          <p class="text-muted-foreground text-sm text-center">Flexible support options for self-funded individuals and families.</p>
+        </div>
+
+        <div class="bg-background border border-secondary/40 rounded-lg p-6">
+          <div class="flex justify-center mb-4">
+            <Icon name="tabler:heart-handshake" class="w-10 h-10 text-primary" />
+          </div>
+          <h3 class="text-lg font-semibold text-foreground mb-2 text-center">Professional Partners</h3>
+          <p class="text-muted-foreground text-sm text-center">Close collaboration with social workers, care managers, housing providers, families, and advocates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactSection
+    heading="Discuss Supported Living"
+    intro="Get in touch to learn more about our supported living services or to make a referral."
+    phoneLabel="0115 845 0220"
+    phoneHref="tel:01158450220"
+    address="Nottingham, Nottinghamshire"
+  />
+</SiteLayout>

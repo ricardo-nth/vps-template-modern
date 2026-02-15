@@ -15,16 +15,16 @@ interface Props {
 }
 
 const {
-  heading = "[Your Tagline] - [What Makes You Different]",
-  subheading = "[Brief description of your services and the value you provide to clients. Focus on outcomes and benefits.]",
-  primaryCtaText = "Get Started",
-  primaryCtaHref = "#contact",
-  secondaryCtaText = "Learn More",
+  heading = "Support That Builds Independence, Not Dependence",
+  subheading = "Person-centred domiciliary care and supported living for adults across Nottinghamshire.",
+  primaryCtaText = "Make a Referral",
+  primaryCtaHref = "/referral",
+  secondaryCtaText = "Our Services",
   secondaryCtaHref = "#services",
   rating = "[Rating]",
   ratingLabel = "[Rating Source]",
   imageSrc = "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-  imageAlt = "[Descriptive alt text for hero image]",
+  imageAlt = "Person-centred care and community support",
 } = Astro.props as Props;
 ---
 
@@ -34,13 +34,15 @@ const {
       <!-- Content Column -->
       <div class="max-w-2xl">
         <!-- Trust Badge -->
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 animate-fade-in-up">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-          </span>
-          {ratingLabel}: {rating}
-        </div>
+        {rating && !rating.startsWith('[') && (
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 animate-fade-in-up">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            {ratingLabel}: {rating}
+          </div>
+        )}
 
         <!-- Heading -->
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance mb-6 animate-fade-in-up delay-100">
@@ -75,12 +77,12 @@ const {
             <p class="text-sm text-muted-foreground">Support Available</p>
           </div>
           <div>
-            <p class="text-3xl font-bold text-primary">500+</p>
-            <p class="text-sm text-muted-foreground">Patients Served</p>
+            <p class="text-3xl font-bold text-primary">28+</p>
+            <p class="text-sm text-muted-foreground">Years Experience</p>
           </div>
           <div>
-            <p class="text-3xl font-bold text-primary">98%</p>
-            <p class="text-sm text-muted-foreground">Satisfaction Rate</p>
+            <p class="text-3xl font-bold text-primary">100%</p>
+            <p class="text-sm text-muted-foreground">Trained Staff</p>
           </div>
         </div>
       </div>
@@ -102,8 +104,8 @@ const {
               <Icon name="tabler:check" class="h-6 w-6" />
             </div>
             <div>
-              <p class="font-semibold text-foreground">Verified Excellence</p>
-              <p class="text-xs text-muted-foreground">Top-rated care provider</p>
+              <p class="font-semibold text-foreground">Person-Centred Care</p>
+              <p class="text-xs text-muted-foreground">CQC registered provider</p>
             </div>
           </div>
           <div class="flex -space-x-2">
@@ -116,7 +118,7 @@ const {
               />
             ))}
             <div class="h-8 w-8 rounded-full bg-muted flex items-center justify-center text-xs font-medium ring-2 ring-white">
-              +2k
+              +28yrs
             </div>
           </div>
         </div>
