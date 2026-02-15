@@ -1,5 +1,6 @@
 ---
 import Icon from '@components/Icon.astro';
+import logoSvg from '@assets/logo.svg';
 
 interface FooterLink {
   label: string;
@@ -20,24 +21,23 @@ interface Props {
 }
 
 const {
-  brandName = "[Business Name]",
-  tagline = "[Your company tagline - a brief statement about your mission and values]",
-  address = "[Your City, Region]",
-  phoneLabel = "[Your Phone]",
-  phoneHref = "tel:[Your Phone]",
-  emailLabel = "[Your Email]",
-  emailHref = "mailto:[Your Email]",
+  brandName = "Team Care Support",
+  tagline = "Person-centred domiciliary care and supported living services across Nottinghamshire. Building independence, not dependence.",
+  address = "Foxhall Lodge, Foxhall Road, Forest Fields, Nottingham NG7 6LH",
+  phoneLabel = "0115 845 0220",
+  phoneHref = "tel:01158450220",
+  emailLabel = "help@teamcaresupport.com",
+  emailHref = "mailto:help@teamcaresupport.com",
   navLinks = [
-    { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
-    { label: "Our Approach", href: "/our-service-model" },
+    { label: "Supported Living", href: "/supported-living" },
+    { label: "Care at Home", href: "/care-at-home" },
+    { label: "About Us", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
   legalLinks = [
+    { label: "Quality & Compliance", href: "/quality" },
+    { label: "Feedback & Complaints", href: "/feedback" },
     { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms of Service", href: "/terms" },
-    { label: "Cookie Policy", href: "/cookies" },
-    { label: "Accessibility", href: "/accessibility" },
   ],
   socialLinks = [
     { platform: "Facebook", href: "#", icon: "tabler:brand-facebook" },
@@ -52,16 +52,11 @@ const currentYear = new Date().getFullYear();
 
 <footer class="bg-card border-t border-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-10 gap-12 mb-16">
       <!-- Brand Column -->
       <div class="lg:col-span-4 space-y-6">
         <a href="/" class="flex items-center gap-3 group">
-          <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/20">
-            <span class="text-xl font-bold">P</span>
-          </div>
-          <span class="text-xl font-bold tracking-tight text-foreground">
-            {brandName}
-          </span>
+          <img src={logoSvg.src} alt="Team Care Support" class="h-12 w-auto" />
         </a>
         <p class="text-muted-foreground leading-relaxed max-w-sm">
           {tagline}
@@ -85,7 +80,7 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <!-- Quick Links -->
-      <div class="lg:col-span-2">
+      <div class="lg:col-span-3">
         <h3 class="font-semibold text-foreground mb-6">Quick Links</h3>
         <ul class="space-y-4">
           {navLinks.map((link) => (
@@ -124,26 +119,6 @@ const currentYear = new Date().getFullYear();
         </ul>
       </div>
 
-      <!-- Newsletter -->
-      <div class="lg:col-span-3">
-        <h3 class="font-semibold text-foreground mb-6">Stay Updated</h3>
-        <p class="text-sm text-muted-foreground mb-4">
-          Subscribe to our newsletter for the latest health tips and news.
-        </p>
-        <form class="space-y-3">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            class="w-full px-4 py-2 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-          />
-          <button
-            type="submit"
-            class="w-full px-4 py-2 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors shadow-sm"
-          >
-            Subscribe
-          </button>
-        </form>
-      </div>
     </div>
 
     <!-- Bottom Bar -->

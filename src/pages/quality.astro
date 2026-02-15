@@ -1,0 +1,246 @@
+---
+import SiteLayout from '@layouts/SiteLayout.astro';
+import PageHero from '@components/PageHero.astro';
+import ContactSection from '@components/ContactSection.astro';
+import Icon from '@components/Icon.astro';
+
+const metadata = {
+  title: 'Quality & Compliance - Team Care Support',
+  description: 'Our commitment to quality, CQC compliance, safeguarding, governance, and continuous improvement in care delivery.',
+  schema: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Quality & Compliance',
+    description: 'Our commitment to quality, compliance, and safeguarding.'
+  }
+};
+---
+<SiteLayout metadata={metadata}>
+  <PageHero
+    heading='Quality & <span class="text-accent">Compliance</span>'
+    subheading="Quality is not just about compliance — it is about how people feel living in our services."
+    primaryCtaText="Make a Referral"
+    primaryCtaHref="/referral"
+  />
+
+  <!-- CQC Registration -->
+  <section class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="text-3xl font-bold mb-6">CQC Registration</h2>
+        <p class="text-lg text-muted-foreground">
+          Team Care Domiciliary Support Ltd is registered with the Care Quality Commission (CQC) to provide personal care services.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-secondary/30 p-8 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4">Regulated Activity</h3>
+          <p class="text-muted-foreground">Personal care</p>
+        </div>
+
+        <div class="bg-secondary/30 p-8 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4">Registered Manager</h3>
+          <p class="text-muted-foreground">Kerry Gail McCulloch</p>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mx-auto mt-12 text-center">
+        <p class="text-muted-foreground">
+          Our services operate in line with CQC regulatory requirements. Supported living is delivered in accordance with <strong>Registering the Right Support</strong>, <strong>Building the Right Support</strong>, and the <strong>Real Tenancy Test</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Commitment to Quality -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="text-3xl font-bold mb-6">Our Commitment to Quality</h2>
+        <p class="text-lg text-muted-foreground">
+          We maintain the highest standards across all areas of our service delivery.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-background p-8 rounded-lg">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+            <Icon name="tabler:shield-check" class="w-6 h-6 text-accent" />
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Safeguarding</h3>
+          <p class="text-muted-foreground">
+            Robust safeguarding practices, clear policies, comprehensive staff training, and a culture of vigilance to protect the people we support.
+          </p>
+        </div>
+
+        <div class="bg-background p-8 rounded-lg">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+            <Icon name="tabler:user-check" class="w-6 h-6 text-accent" />
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Safe Recruitment</h3>
+          <p class="text-muted-foreground">
+            2-stage interview process, minimum 2 references, enhanced DBS checks, and verified qualifications for every member of staff.
+          </p>
+        </div>
+
+        <div class="bg-background p-8 rounded-lg">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+            <Icon name="tabler:school" class="w-6 h-6 text-accent" />
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Staff Training</h3>
+          <p class="text-muted-foreground">
+            Structured induction, mandatory training, specialist LD/autism training (Oliver McGowan), PBS, and trauma-informed care.
+          </p>
+        </div>
+
+        <div class="bg-background p-8 rounded-lg">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+            <Icon name="tabler:building" class="w-6 h-6 text-accent" />
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Governance</h3>
+          <p class="text-muted-foreground">
+            Clear operational structure, comprehensive policies and procedures, regular supervision, spot checks, and annual reviews.
+          </p>
+        </div>
+
+        <div class="bg-background p-8 rounded-lg">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+            <Icon name="tabler:chart-bar" class="w-6 h-6 text-accent" />
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Quality Assurance</h3>
+          <p class="text-muted-foreground">
+            Regular telephone surveys (every 6 weeks), annual satisfaction surveys, formal care reviews, and complaints monitoring.
+          </p>
+        </div>
+
+        <div class="bg-background p-8 rounded-lg">
+          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+            <Icon name="tabler:heart" class="w-6 h-6 text-accent" />
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Person-Centred Practice</h3>
+          <p class="text-muted-foreground">
+            Co-produced care plans, regular reviews, with individual preferences and goals central to all decisions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Staff Training Programme -->
+  <section class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="text-3xl font-bold mb-6">Staff Training Programme</h2>
+        <p class="text-lg text-muted-foreground">
+          All staff receive comprehensive training to ensure safe, person-centred, and specialist care delivery.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div>
+          <h3 class="text-xl font-semibold mb-6">Mandatory & Core</h3>
+          <ul class="space-y-3 text-muted-foreground">
+            <li class="flex items-start">
+              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+              <span>Mental Capacity Act (MCA) and DoLS</span>
+            </li>
+            <li class="flex items-start">
+              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+              <span>Person-Centred Care and Record Keeping</span>
+            </li>
+            <li class="flex items-start">
+              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+              <span>Safeguarding Adults (Level 2-3)</span>
+            </li>
+            <li class="flex items-start">
+              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+              <span>Medication Management</span>
+            </li>
+            <li class="flex items-start">
+              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+              <span>Moving and Positioning</span>
+            </li>
+            <li class="flex items-start">
+              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+              <span>Health & Safety, Infection Control, First Aid</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold mb-6">Specialist (LD, Autism & Supported Living)</h3>
+          <ul class="space-y-3 text-muted-foreground">
+            <li class="flex items-start">
+              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+              <span>Oliver McGowan Mandatory Training</span>
+            </li>
+            <li class="flex items-start">
+              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+              <span>Positive Behaviour Support (PBS)</span>
+            </li>
+            <li class="flex items-start">
+              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+              <span>Restrictive Practice Awareness</span>
+            </li>
+            <li class="flex items-start">
+              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+              <span>Trauma-Informed Care</span>
+            </li>
+            <li class="flex items-start">
+              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+              <span>Communication and Sensory Awareness</span>
+            </li>
+            <li class="flex items-start">
+              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+              <span>Mental Health Awareness</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Continuous Improvement -->
+  <section class="py-24 bg-secondary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h2 class="text-3xl font-bold mb-6">Continuous Improvement</h2>
+        <p class="text-lg text-muted-foreground mb-8">
+          Quality is not static — we are committed to ongoing improvement through regular review, feedback, and professional development.
+        </p>
+
+        <div class="text-left space-y-4">
+          <div class="flex items-start">
+            <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+            <p class="text-muted-foreground">Regular care reviews with people and their care workers</p>
+          </div>
+          <div class="flex items-start">
+            <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+            <p class="text-muted-foreground">Formal client satisfaction surveys conducted annually</p>
+          </div>
+          <div class="flex items-start">
+            <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+            <p class="text-muted-foreground">Telephone check-ins every 6 weeks</p>
+          </div>
+          <div class="flex items-start">
+            <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+            <p class="text-muted-foreground">Complaints welcomed as tools for improvement</p>
+          </div>
+          <div class="flex items-start">
+            <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+            <p class="text-muted-foreground">Reflective practice and continuous professional development</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactSection
+    heading="Discuss Quality & Compliance"
+    intro="Get in touch if you have any questions about our standards and compliance."
+    phoneLabel="0115 845 0220"
+    phoneHref="tel:01158450220"
+    address="Nottingham, Nottinghamshire"
+  />
+</SiteLayout>

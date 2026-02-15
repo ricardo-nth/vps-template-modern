@@ -1,0 +1,6 @@
+{"date":null,"title":"Phase 6: Polish & Launch Prep","status":"upcoming","items":["SEO metadata per page","Schema.org markup","Replace placeholder images","Accessibility audit","Performance check","Update astro.config.mjs","Final docs update"]}
+{"date":null,"title":"Phase 5: Utility & Info Pages","status":"upcoming","items":["About Us page","Make a Referral page","Quality & Compliance page","Feedback & Complaints page","Contact page update"]}
+{"date":null,"title":"Phase 4: Service Pages","status":"upcoming","items":["Supported Living page","Care at Home page","Virtual Support page","Group Activities page"]}
+{"date":null,"title":"Phase 3: Homepage Content","status":"upcoming","items":["Hero section","Services overview","About section","Why Choose Us","Contact section","Page metadata"]}
+{"date":null,"title":"Phase 2: Branding & Design Tokens","status":"upcoming","items":["CSS variables with client palette","Logo SVG setup","Header logo","Footer logo","Favicon"]}
+{"date":null,"title":"Phase 1: Project Setup & Site Structure","status":"upcoming","items":["Project CLAUDE.md","README.md","Changelog init","Page shells","Remove old pages","Header nav update","Footer update","Move supported-living route"]}

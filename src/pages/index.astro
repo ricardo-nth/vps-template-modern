@@ -2,108 +2,78 @@
 /**
  * index.astro - Homepage
  *
- * Demonstrates the full implementation of:
- * - Two-tier layout system (TechnicalLayout → SiteLayout)
- * - SEO optimization with meta tags and schema markup
- * - Image optimization with Astro's Image component
- * - Tailwind CSS styling
- * - Performance best practices
+ * Team Care Support & Accommodation homepage showcasing person-centred care services
+ * including supported living, domiciliary care, virtual support, and group activities.
  */
 
 import SiteLayout from '../layouts/SiteLayout.astro';
 
-// ============================================================================
-// ORIGINAL IMPORTS (Commented for easy revert)
-// ============================================================================
-// import { Image } from 'astro:assets';
-// import astroLogo from '../assets/astro.svg';
-// import background from '../assets/background.svg';
-
-// ============================================================================
-// HEALTHCARE IMPORTS (Active)
-// ============================================================================
 import Hero from '../components/Hero.astro';
 import ServicesOverview from '../components/ServicesOverview.astro';
 import AboutUs from '../components/AboutUs.astro';
 import WhyChooseUs from '../components/WhyChooseUs.astro';
-import TeamSection from '../components/TeamSection.astro';
 import ContactSection from '../components/ContactSection.astro';
 
 // Page metadata
 const metadata = {
-  title: 'Home - [Business Name]',
-  description: '[Your homepage meta description - summarize your business and key services in 150-160 characters]',
+  title: 'Team Care Support & Accommodation | Domiciliary Care & Supported Living in Nottinghamshire',
+  description: 'Person-centred domiciliary care and supported living for adults with learning disabilities, autism, and mental health conditions across Nottinghamshire.',
   schema: {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Home - [Business Name]',
-    description: '[Your homepage description for search engines]',
+    name: 'Team Care Support & Accommodation | Domiciliary Care & Supported Living in Nottinghamshire',
+    description: 'Person-centred domiciliary care and supported living for adults with learning disabilities, autism, and mental health conditions across Nottinghamshire.',
   },
 };
 ---
 
 <SiteLayout metadata={metadata}>
 
-  <!-- ============================================================================
-       HEALTHCARE HOMEPAGE CONTENT (Active)
-       ============================================================================ -->
-
   <!-- Hero Section -->
   <Hero
-    heading="[Your Headline] - [What Makes You Different]"
-    subheading="[Brief description of your services and the value you provide to clients]"
-    primaryCtaText="Our Services"
-    primaryCtaHref="#services"
-    secondaryCtaText="Contact Us"
-    secondaryCtaHref="#contact"
-    rating="[Rating]"
-    ratingLabel="[Rating Source]"
-    imageSrc="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-    imageAlt="[Descriptive alt text for hero image]"
+    heading="Support That Builds Independence, Not Dependence"
+    subheading="Person-centred domiciliary care and supported living for adults across Nottinghamshire. We help people build skills, confidence, and meaningful lives."
+    primaryCtaText="Make a Referral"
+    primaryCtaHref="/referral"
+    secondaryCtaText="Our Services"
+    secondaryCtaHref="#services"
+    imageSrc="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+    imageAlt="Person-centred care and support in the community"
   />
 
   <!-- Services Section -->
   <ServicesOverview
     eyebrow="Our Services"
-    heading="[Your Services Headline]"
-    intro="[Brief overview of your services and expertise]"
-    ctaText="View Services"
-    ctaHref="/services"
+    heading="How We Support You"
+    intro="From supported living to domiciliary care, virtual support, and group activities, we deliver flexible, person-centred services designed around individual needs."
     services={[
       {
-        title: "[Service 1]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-1",
+        title: "Supported Living",
+        description: "Small, homely supported living for adults with learning disabilities. Own tenancy, flexible support, and a focus on building real independence.",
+        href: "/supported-living",
         imageSrc: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
+        imageAlt: "Supported living environment with person-centred care"
       },
       {
-        title: "[Service 2]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-2",
+        title: "Care at Home",
+        description: "Professional domiciliary care in your own home. Personal care, medication support, companionship, respite, and crisis management.",
+        href: "/care-at-home",
         imageSrc: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
+        imageAlt: "Domiciliary care support at home"
       },
       {
-        title: "[Service 3]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-3",
+        title: "Virtual & Blended Support",
+        description: "Remote emotional support, check-ins, and routine reminders. A step-down model that encourages confidence and self-management.",
+        href: "/virtual-support",
         imageSrc: "https://images.unsplash.com/photo-1576765611791-374770ac4db8?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
+        imageAlt: "Virtual support and remote care check-ins"
       },
       {
-        title: "[Service 4]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-4",
+        title: "Group Activities",
+        description: "Skill-building sessions, community access, and shared interest activities. Building friendships and confidence through group support.",
+        href: "/group-activities",
         imageSrc: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
-      },
-      {
-        title: "[Service 5]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-5",
-        imageSrc: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
+        imageAlt: "Group activities and community engagement"
       }
     ]}
   />
@@ -111,56 +81,49 @@ const metadata = {
   <!-- About Us Section -->
   <AboutUs
     imageSrc="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80"
-    imageAlt="Healthcare professionals providing care"
+    imageAlt="Team Care Support person-centred approach"
   />
 
   <!-- Why Choose Us Section -->
   <WhyChooseUs
-    eyebrow="Why Choose Us"
-    heading="[Your Differentiator Headline]"
-    intro="[Brief explanation of what sets you apart and why clients should choose you]"
+    eyebrow="Why Team Care"
+    heading="The TEAM CARE Difference"
+    intro="Our values are the foundation of everything we do. TEAM CARE stands for Trust, Empathy, Accountability, Motivation, Collaboration, Attentiveness, Respect, and Empowerment."
     imageSrc="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-    imageAlt="Healthcare team collaborating"
-    ctaText="Learn Our Approach"
-    ctaHref="/our-service-model"
-    class="bg-secondary/30"
+    imageAlt="Team Care values in action"
+    ctaText="About Us"
+    ctaHref="/about"
     points={[
       {
-        title: "[Differentiator 1]",
-        description: "[Brief description of this benefit or credential]",
-        iconName: "tabler:shield-check"
-      },
-      {
-        title: "[Differentiator 2]",
-        description: "[Brief description of this benefit or credential]",
+        title: "Person-Centred Always",
+        description: "Every care plan is co-produced with the individual, focused on what matters most to them — not what fits a rota.",
         iconName: "tabler:heart-handshake"
       },
       {
-        title: "[Differentiator 3]",
-        description: "[Brief description of this benefit or credential]",
+        title: "Independence First",
+        description: "We support people to move forward. Our blended model reduces dependency and builds skills for greater autonomy.",
+        iconName: "tabler:trending-up"
+      },
+      {
+        title: "Matched by Interest",
+        description: "We match care workers to individuals based on shared interests and strengths, not just availability.",
         iconName: "tabler:users-group"
       },
       {
-        title: "[Differentiator 4]",
-        description: "[Brief description of this benefit or credential]",
-        iconName: "tabler:building-community"
+        title: "Quality & Safety",
+        description: "Robust safeguarding, DBS-checked staff, trauma-informed training, and CQC-aligned governance throughout.",
+        iconName: "tabler:shield-check"
       }
     ]}
-  />
-
-  <!-- Team Section -->
-  <TeamSection
-    heading="Meet Our Team"
-    intro="[Brief description of your team and their expertise]"
   />
 
   <!-- Contact Section -->
   <ContactSection
     heading="Get In Touch"
-    intro="[Brief call-to-action encouraging visitors to contact you]"
-    phoneLabel="[Your Phone]"
-    phoneHref="tel:[Your Phone]"
-    address="[Your City, Region]"
+    intro="Ready to discuss how we can support you or someone you care about? We are here to help."
+    phoneLabel="0115 845 0220"
+    phoneHref="tel:01158450220"
+    address="Nottingham, Nottinghamshire"
   />
 
 </SiteLayout>

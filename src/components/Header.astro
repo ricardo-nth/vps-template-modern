@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import logoSvg from '@assets/logo.svg';
 
 interface NavLink {
   label: string;
@@ -16,16 +17,18 @@ interface Props {
 }
 
 const {
-  brandName = "Healthcare",
+  brandName = "Team Care Support",
   brandHref = "/",
   navLinks = [
-    { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
-    { label: "Our Service Model", href: "/our-service-model" },
+    { label: "Supported Living", href: "/supported-living" },
+    { label: "Care at Home", href: "/care-at-home" },
+    { label: "Virtual Support", href: "/virtual-support" },
+    { label: "Group Activities", href: "/group-activities" },
+    { label: "About Us", href: "/about" },
     { label: "Contact", href: "/contact" }
   ],
-  ctaText = "Book a Consultation",
-  ctaHref = "#contact",
+  ctaText = "Make a Referral",
+  ctaHref = "/referral",
 } = Astro.props as Props;
 
 // Determine active link based on current path
@@ -41,12 +44,7 @@ const activeNavLinks = navLinks.map(link => ({
     <div class="flex items-center justify-between h-20">
       <!-- Brand -->
       <a href={brandHref} class="flex items-center gap-3 group">
-        <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105">
-          <span class="text-xl font-bold">P</span>
-        </div>
-        <span class="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
-          {brandName}
-        </span>
+        <img src={logoSvg.src} alt="Team Care Support" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
       </a>
 
       <!-- Desktop navigation -->
