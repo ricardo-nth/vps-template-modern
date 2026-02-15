@@ -2,6 +2,7 @@
 import SiteLayout from '@layouts/SiteLayout.astro';
 import PageHero from '@components/PageHero.astro';
 import ContactSection from '@components/ContactSection.astro';
+import CompliancePillars from '@components/CompliancePillars.astro';
 import Icon from '@components/Icon.astro';
 
 const metadata = {
@@ -24,34 +25,52 @@ const metadata = {
   />
 
   <!-- CQC Registration -->
-  <section class="py-24 bg-background">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <h2 class="text-3xl font-bold mb-6">CQC Registration</h2>
-        <p class="text-lg text-muted-foreground">
-          Team Care Domiciliary Support Ltd is registered with the Care Quality Commission (CQC) to provide personal care services.
-        </p>
-      </div>
+  <CompliancePillars
+    heading="CQC Registration & Standards"
+    subheading="Team Care Domiciliary Support Ltd is registered with the Care Quality Commission. We align our services with CQC's five key quality standards."
+    pillars={[
+      {
+        icon: "tabler:shield-check",
+        title: "Safe",
+        description: "Robust safeguarding, infection control, and risk management exceeding CQC standards.",
+        cqcEvidence: "DBS-checked staff"
+      },
+      {
+        icon: "tabler:target-arrow",
+        title: "Effective",
+        description: "Evidence-based care plans delivering measurable improvements in independence and wellbeing.",
+        cqcEvidence: "Person-centred plans"
+      },
+      {
+        icon: "tabler:heart-handshake",
+        title: "Caring",
+        description: "Compassionate staff trained in dignity, privacy, and person-centred support.",
+        cqcEvidence: "Values-led culture"
+      },
+      {
+        icon: "tabler:list-details",
+        title: "Responsive",
+        description: "Rapid response to changing needs with flexible, adaptive care packages.",
+        cqcEvidence: "24hr support available"
+      },
+      {
+        icon: "tabler:crown",
+        title: "Well-Led",
+        description: "Visionary leadership with transparent governance and continuous improvement culture.",
+        cqcEvidence: "Experienced leadership"
+      }
+    ]}
+  />
 
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div class="bg-secondary/30 p-8 rounded-lg">
-          <h3 class="text-xl font-semibold mb-4">Regulated Activity</h3>
-          <p class="text-muted-foreground">Personal care</p>
-        </div>
-
-        <div class="bg-secondary/30 p-8 rounded-lg">
-          <h3 class="text-xl font-semibold mb-4">Registered Manager</h3>
-          <p class="text-muted-foreground">Kerry Gail McCulloch</p>
-        </div>
-      </div>
-
-      <div class="max-w-3xl mx-auto mt-12 text-center">
-        <p class="text-muted-foreground">
-          Our services operate in line with CQC regulatory requirements. Supported living is delivered in accordance with <strong>Registering the Right Support</strong>, <strong>Building the Right Support</strong>, and the <strong>Real Tenancy Test</strong>.
-        </p>
-      </div>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+    <p class="text-muted-foreground text-sm">
+      Our services operate in line with CQC regulatory requirements. Supported living is delivered in accordance with <strong>Registering the Right Support</strong>, <strong>Building the Right Support</strong>, and the <strong>Real Tenancy Test</strong>.
+    </p>
+    <div class="mt-4 flex justify-center gap-8 text-sm text-muted-foreground">
+      <p><strong class="text-foreground">Regulated Activity:</strong> Personal care</p>
+      <p><strong class="text-foreground">Registered Manager:</strong> Kerry Gail McCulloch</p>
     </div>
-  </section>
+  </div>
 
   <!-- Our Commitment to Quality -->
   <section class="py-24 bg-secondary/30">
@@ -203,33 +222,35 @@ const metadata = {
 
   <!-- Continuous Improvement -->
   <section class="py-24 bg-secondary/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-12">
-        <h2 class="text-3xl font-bold mb-6">Continuous Improvement</h2>
-        <p class="text-lg text-muted-foreground mb-8">
-          Quality is not static — we are committed to ongoing improvement through regular review, feedback, and professional development.
-        </p>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-3xl font-bold text-foreground mb-6">Continuous Improvement</h2>
+          <p class="text-lg text-muted-foreground">
+            Quality is not static — we are committed to ongoing improvement through regular review, feedback, and professional development.
+          </p>
+        </div>
 
-        <div class="text-left space-y-4">
-          <div class="flex items-start">
-            <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-            <p class="text-muted-foreground">Regular care reviews with people and their care workers</p>
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-accent-foreground text-sm font-bold flex-shrink-0">1</div>
+            <p class="text-muted-foreground pt-2">Regular care reviews with people and their care workers</p>
           </div>
-          <div class="flex items-start">
-            <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-            <p class="text-muted-foreground">Formal client satisfaction surveys conducted annually</p>
+          <div class="flex items-start gap-4">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-accent-foreground text-sm font-bold flex-shrink-0">2</div>
+            <p class="text-muted-foreground pt-2">Formal client satisfaction surveys conducted annually</p>
           </div>
-          <div class="flex items-start">
-            <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-            <p class="text-muted-foreground">Telephone check-ins every 6 weeks</p>
+          <div class="flex items-start gap-4">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-accent-foreground text-sm font-bold flex-shrink-0">3</div>
+            <p class="text-muted-foreground pt-2">Telephone check-ins every 6 weeks</p>
           </div>
-          <div class="flex items-start">
-            <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-            <p class="text-muted-foreground">Complaints welcomed as tools for improvement</p>
+          <div class="flex items-start gap-4">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-accent-foreground text-sm font-bold flex-shrink-0">4</div>
+            <p class="text-muted-foreground pt-2">Complaints welcomed as tools for improvement</p>
           </div>
-          <div class="flex items-start">
-            <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-            <p class="text-muted-foreground">Reflective practice and continuous professional development</p>
+          <div class="flex items-start gap-4">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-accent-foreground text-sm font-bold flex-shrink-0">5</div>
+            <p class="text-muted-foreground pt-2">Reflective practice and continuous professional development</p>
           </div>
         </div>
       </div>

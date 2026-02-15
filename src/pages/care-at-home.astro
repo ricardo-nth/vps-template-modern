@@ -141,15 +141,29 @@ const specialisms = [
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map(service => (
-          <div class="bg-card rounded-lg p-6 border border-border hover:border-accent transition-colors">
-            <div class="mb-4">
-              <Icon name={service.icon} class="w-12 h-12 text-accent" />
+      <div class="grid md:grid-cols-2 gap-8">
+        {services.map((service, index) => (
+          index === 0 ? (
+            <div class="md:col-span-2 bg-card rounded-lg p-6 border border-border hover:border-accent transition-colors">
+              <div class="flex items-start gap-4">
+                <div class="bg-accent/10 text-accent p-3 rounded-lg">
+                  <Icon name={service.icon} class="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-foreground mb-2">{service.title}</h3>
+                  <p class="text-muted-foreground">{service.description}</p>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-semibold text-foreground mb-2">{service.title}</h3>
-            <p class="text-muted-foreground">{service.description}</p>
-          </div>
+          ) : (
+            <div class="bg-card rounded-lg p-6 border border-border hover:border-accent transition-colors">
+              <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
+                <Icon name={service.icon} class="w-6 h-6" />
+              </div>
+              <h3 class="text-xl font-semibold text-foreground mb-2">{service.title}</h3>
+              <p class="text-muted-foreground">{service.description}</p>
+            </div>
+          )
         ))}
       </div>
     </div>
@@ -165,12 +179,9 @@ const specialisms = [
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {differentiators.map(diff => (
-          <div class="bg-background rounded-lg p-6 border border-border">
-            <div class="mb-4">
-              <Icon name={diff.icon} class="w-10 h-10 text-accent" />
-            </div>
+          <div class="border-l-4 border-primary pl-6">
             <h3 class="text-xl font-semibold text-foreground mb-2">{diff.title}</h3>
             <p class="text-muted-foreground">{diff.description}</p>
           </div>
@@ -213,20 +224,23 @@ const specialisms = [
   <!-- Specialist Support -->
   <section class="py-24 bg-secondary/30">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-foreground sm:text-4xl mb-4">Specialist Support</h2>
-        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
-          Our experienced care workers are trained to support a wide range of needs and conditions.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-        {specialisms.map(specialism => (
-          <div class="flex items-center gap-3 bg-background rounded-lg p-4 border border-border">
-            <Icon name={specialism.icon} class="w-6 h-6 text-accent flex-shrink-0" />
-            <span class="text-foreground">{specialism.text}</span>
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-3xl font-bold text-foreground sm:text-4xl mb-4">Specialist Support</h2>
+          <p class="text-lg text-muted-foreground">
+            Our experienced care workers are trained to support a wide range of needs and conditions.
+          </p>
+        </div>
+        <div class="bg-card border border-border rounded-xl p-8">
+          <div class="grid sm:grid-cols-2 gap-4">
+            {specialisms.map(specialism => (
+              <div class="flex items-center gap-3">
+                <Icon name="tabler:check" class="w-5 h-5 text-accent flex-shrink-0" />
+                <span class="text-muted-foreground">{specialism.text}</span>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   </section>

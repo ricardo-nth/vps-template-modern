@@ -3,6 +3,7 @@ import SiteLayout from '@layouts/SiteLayout.astro';
 import PageHero from '@components/PageHero.astro';
 import ContactSection from '@components/ContactSection.astro';
 import Icon from '@components/Icon.astro';
+import TeamSection from '@components/TeamSection.astro';
 
 const metadata = {
   title: 'About Us - Team Care Domiciliary Support',
@@ -120,36 +121,25 @@ const approachPrinciples = [
 
   {/* Our Story Section */}
   <section id="story" class="py-24 bg-background">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="relative">
-          <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-muted">
-             {/* Placeholder for a real image - using a colored div for now to represent image area */}
-             <div class="w-full h-full bg-gradient-to-br from-primary/20 to-secondary flex items-center justify-center text-muted-foreground">
-                <span class="text-lg font-medium">Team Care Support Image</span>
-             </div>
-          </div>
-          {/* Decorative element */}
-          <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-accent rounded-full opacity-50 blur-2xl"></div>
-          <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary rounded-full opacity-20 blur-3xl"></div>
-        </div>
-
-        <div>
-          <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-6">Our Story</h2>
-          <h3 class="text-xl text-primary font-medium mb-6">Built on Experience, Driven by Purpose</h3>
-          <div class="space-y-4 text-muted-foreground leading-relaxed text-lg">
-            <p>
-              The directors of Team Care Domiciliary Support Ltd have extensive experience in setting up services, recruiting staff, training, and supporting care organisations. They have seen both good and bad across the industry and are committed to delivering care that genuinely helps individuals, families, and friends.
-            </p>
-            <p>
-              Team Care operates two distinct service models: Domiciliary Care (Care at Home) — providing personal care, companionship, respite, live-in care, and crisis support; and Supported Living — delivered under the trading name Team Care Support & Accommodation, providing small, homely environments for adults with learning disabilities.
-            </p>
-            <p>
-              The company is focused on preventing hospital admissions, supporting smooth discharges, and keeping people independent in their own homes. We believe that with the right support, individuals can maintain their dignity, choice, and control over their lives.
-            </p>
-          </div>
-        </div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-6">Our Story</h2>
+      <h3 class="text-xl text-primary font-medium mb-6">Built on Experience, Driven by Purpose</h3>
+      <div class="space-y-4 text-muted-foreground leading-relaxed text-lg">
+        <p>
+          The directors of Team Care Domiciliary Support Ltd have extensive experience in setting up services, recruiting staff, training, and supporting care organisations. They have seen both good and bad across the industry and are committed to delivering care that genuinely helps individuals, families, and friends.
+        </p>
+        <p>
+          Team Care operates two distinct service models: Domiciliary Care (Care at Home) — providing personal care, companionship, respite, live-in care, and crisis support; and Supported Living — delivered under the trading name Team Care Support & Accommodation, providing small, homely environments for adults with learning disabilities.
+        </p>
+        <p>
+          The company is focused on preventing hospital admissions, supporting smooth discharges, and keeping people independent in their own homes. We believe that with the right support, individuals can maintain their dignity, choice, and control over their lives.
+        </p>
       </div>
+      <blockquote class="border-l-4 border-primary pl-6 mt-8">
+        <p class="text-lg font-medium text-foreground italic">
+          We believe that with the right support, individuals can maintain their dignity, choice, and control over their lives.
+        </p>
+      </blockquote>
     </div>
   </section>
 
@@ -189,16 +179,18 @@ const approachPrinciples = [
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        {approachPrinciples.map((principle) => (
-          <div class="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:border-primary/50">
-            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 text-primary">
-              <Icon name={principle.icon} class="w-6 h-6" />
+      <div class="max-w-4xl mx-auto space-y-8">
+        {approachPrinciples.map((principle, index) => (
+          <div class="flex gap-6">
+            <div class="flex-shrink-0">
+              <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground text-xl font-bold">
+                {index + 1}
+              </div>
             </div>
-            <h3 class="text-lg font-bold text-foreground mb-2">{principle.title}</h3>
-            <p class="text-muted-foreground text-sm leading-relaxed">
-              {principle.description}
-            </p>
+            <div class="flex-grow pt-1">
+              <h3 class="text-xl font-semibold text-foreground mb-2">{principle.title}</h3>
+              <p class="text-muted-foreground">{principle.description}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -206,57 +198,42 @@ const approachPrinciples = [
   </section>
 
   {/* Leadership Section */}
-  <section class="py-24 bg-secondary/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-6">Our Leadership</h2>
-        <p class="text-lg text-muted-foreground">
-          Team Care Domiciliary Support Ltd is led by experienced professionals committed to excellence in care.
-        </p>
-      </div>
+  <TeamSection
+    heading="Our Leadership"
+    intro="Team Care Domiciliary Support Ltd is led by experienced professionals committed to excellence in care."
+    members={[
+      {
+        name: "Kerry Gail McCulloch",
+        role: "Director & Registered Manager",
+        credentials: "Registered Manager",
+        description: "Leading Team Care's domiciliary care and supported living services with extensive experience in care management, staff training, and compliance.",
+        image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Kerry Gail McCulloch"
+      },
+      {
+        name: "Ryan Wesson",
+        role: "Director",
+        credentials: "Supported Living",
+        description: "Overseeing supported living operations, ensuring person-centred environments that promote independence and community inclusion.",
+        image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Ryan Wesson"
+      },
+      {
+        name: "Nicola Dean",
+        role: "Nominated Individual",
+        credentials: "Governance",
+        description: "Responsible for governance oversight, ensuring regulatory compliance and maintaining the highest standards across all services.",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Nicola Dean"
+      }
+    ]}
+  />
 
-      <div class="max-w-3xl mx-auto bg-card border border-border rounded-xl p-8 shadow-sm">
-        <div class="space-y-6">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 text-primary">
-              <Icon name="tabler:user-check" class="w-6 h-6" />
-            </div>
-            <div>
-              <h3 class="text-lg font-bold text-foreground">Kerry Gail McCulloch</h3>
-              <p class="text-primary font-medium">Director & Registered Manager</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 text-primary">
-              <Icon name="tabler:user-check" class="w-6 h-6" />
-            </div>
-            <div>
-              <h3 class="text-lg font-bold text-foreground">Ryan Wesson</h3>
-              <p class="text-primary font-medium">Director (Supported Living)</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 text-primary">
-              <Icon name="tabler:user-check" class="w-6 h-6" />
-            </div>
-            <div>
-              <h3 class="text-lg font-bold text-foreground">Nicola Dean</h3>
-              <p class="text-primary font-medium">Nominated Individual</p>
-            </div>
-          </div>
-
-          <div class="pt-6 border-t border-border">
-            <p class="text-sm text-muted-foreground">
-              <strong class="text-foreground">Team Care Domiciliary Support Ltd</strong><br />
-              Company Registration: 16012175
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="text-center py-4 -mt-16 mb-8">
+    <p class="text-sm text-muted-foreground">
+      <strong class="text-foreground">Team Care Domiciliary Support Ltd</strong> — Company Registration: 16012175
+    </p>
+  </div>
 
   {/* CTA Section */}
   <section class="py-20 bg-primary text-primary-foreground">
