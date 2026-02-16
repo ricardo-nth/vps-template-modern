@@ -72,185 +72,190 @@ const metadata = {
     </div>
   </div>
 
-  <!-- Our Commitment to Quality -->
-  <section class="py-24 bg-secondary/30">
+  <!-- Our Commitment to Quality - Visual cards with stats -->
+  <section class="py-24 bg-background">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <h2 class="text-3xl font-bold mb-6">Our Commitment to Quality</h2>
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Excellence</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-tight">Our Commitment to Quality</h2>
         <p class="text-lg text-muted-foreground">
           We maintain the highest standards across all areas of our service delivery.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-background p-8 rounded-lg">
-          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-            <Icon name="tabler:shield-check" class="w-6 h-6 text-accent" />
+      {/* Quick stats row */}
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        {[
+          { value: '100%', label: 'Staff Trained' },
+          { value: '6', label: 'Weekly Check-ins' },
+          { value: '24hr', label: 'Crisis Response' },
+          { value: 'CQC', label: 'Regulated' }
+        ].map((stat) => (
+          <div class="text-center p-6 rounded-xl bg-card border border-border/60">
+            <p class="text-2xl md:text-3xl font-bold text-primary mb-1">{stat.value}</p>
+            <p class="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</p>
           </div>
-          <h3 class="text-xl font-semibold mb-4">Safeguarding</h3>
-          <p class="text-muted-foreground">
-            Robust safeguarding practices, clear policies, comprehensive staff training, and a culture of vigilance to protect the people we support.
-          </p>
-        </div>
+        ))}
+      </div>
 
-        <div class="bg-background p-8 rounded-lg">
-          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-            <Icon name="tabler:user-check" class="w-6 h-6 text-accent" />
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          { icon: 'tabler:shield-check', title: 'Safeguarding', description: 'Robust safeguarding practices, clear policies, comprehensive staff training, and a culture of vigilance to protect the people we support.' },
+          { icon: 'tabler:user-check', title: 'Safe Recruitment', description: '2-stage interview process, minimum 2 references, enhanced DBS checks, and verified qualifications for every member of staff.' },
+          { icon: 'tabler:school', title: 'Staff Training', description: 'Structured induction, mandatory training, specialist LD/autism training (Oliver McGowan), PBS, and trauma-informed care.' },
+          { icon: 'tabler:building', title: 'Governance', description: 'Clear operational structure, comprehensive policies and procedures, regular supervision, spot checks, and annual reviews.' },
+          { icon: 'tabler:chart-bar', title: 'Quality Assurance', description: 'Regular telephone surveys (every 6 weeks), annual satisfaction surveys, formal care reviews, and complaints monitoring.' },
+          { icon: 'tabler:heart', title: 'Person-Centred Practice', description: 'Co-produced care plans, regular reviews, with individual preferences and goals central to all decisions.' }
+        ].map((item) => (
+          <div class="group relative p-6 rounded-xl bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-1">
+            <div class="absolute -inset-px bg-gradient-to-br from-primary/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-sm"></div>
+            <div class="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20 mb-4 group-hover:bg-primary group-hover:text-primary-foreground group-hover:ring-primary/40 transition-all duration-300">
+              <Icon name={item.icon} class="w-5 h-5" />
+            </div>
+            <h3 class="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
           </div>
-          <h3 class="text-xl font-semibold mb-4">Safe Recruitment</h3>
-          <p class="text-muted-foreground">
-            2-stage interview process, minimum 2 references, enhanced DBS checks, and verified qualifications for every member of staff.
-          </p>
-        </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-        <div class="bg-background p-8 rounded-lg">
-          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-            <Icon name="tabler:school" class="w-6 h-6 text-accent" />
-          </div>
-          <h3 class="text-xl font-semibold mb-4">Staff Training</h3>
-          <p class="text-muted-foreground">
-            Structured induction, mandatory training, specialist LD/autism training (Oliver McGowan), PBS, and trauma-informed care.
+  <!-- Staff Training Programme - Visual with image -->
+  <section class="py-24 bg-background overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        {/* Content side */}
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Training</p>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">Staff Training Programme</h2>
+          <p class="text-lg text-muted-foreground leading-relaxed mb-10">
+            All staff receive comprehensive training to ensure safe, person-centred, and specialist care delivery.
           </p>
+          
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-4">
+                <Icon name="tabler:certificate" class="w-4 h-4 text-primary" />
+                <span class="text-xs font-semibold uppercase tracking-wider text-primary">Mandatory</span>
+              </div>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3 text-sm text-muted-foreground">
+                  <Icon name="tabler:check" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>Mental Capacity Act (MCA) and DoLS</span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-muted-foreground">
+                  <Icon name="tabler:check" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>Person-Centred Care</span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-muted-foreground">
+                  <Icon name="tabler:check" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>Safeguarding Adults</span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-muted-foreground">
+                  <Icon name="tabler:check" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>Medication Management</span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-muted-foreground">
+                  <Icon name="tabler:check" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>Health & Safety, First Aid</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 mb-4">
+                <Icon name="tabler:star" class="w-4 h-4 text-accent" />
+                <span class="text-xs font-semibold uppercase tracking-wider text-accent-foreground">Specialist</span>
+              </div>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3 text-sm text-muted-foreground">
+                  <Icon name="tabler:check" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>Oliver McGowan Training</span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-muted-foreground">
+                  <Icon name="tabler:check" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>Positive Behaviour Support</span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-muted-foreground">
+                  <Icon name="tabler:check" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>Trauma-Informed Care</span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-muted-foreground">
+                  <Icon name="tabler:check" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>Sensory Awareness</span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-muted-foreground">
+                  <Icon name="tabler:check" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>Mental Health Awareness</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-
-        <div class="bg-background p-8 rounded-lg">
-          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-            <Icon name="tabler:building" class="w-6 h-6 text-accent" />
+        
+        {/* Image side */}
+        <div class="relative lg:sticky lg:top-24">
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-primary/10">
+            <img 
+              src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" 
+              alt="Staff training session"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            
+            {/* Training hours badge */}
+            <div class="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm rounded-xl p-5 shadow-lg border border-white/20 max-w-[200px]">
+              <div class="flex items-center gap-3">
+                <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <Icon name="tabler:clock" class="w-5 h-5" />
+                </div>
+                <div>
+                  <p class="text-2xl font-bold text-foreground">40+</p>
+                  <p class="text-xs text-muted-foreground">Training hours per staff</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold mb-4">Governance</h3>
-          <p class="text-muted-foreground">
-            Clear operational structure, comprehensive policies and procedures, regular supervision, spot checks, and annual reviews.
-          </p>
-        </div>
-
-        <div class="bg-background p-8 rounded-lg">
-          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-            <Icon name="tabler:chart-bar" class="w-6 h-6 text-accent" />
-          </div>
-          <h3 class="text-xl font-semibold mb-4">Quality Assurance</h3>
-          <p class="text-muted-foreground">
-            Regular telephone surveys (every 6 weeks), annual satisfaction surveys, formal care reviews, and complaints monitoring.
-          </p>
-        </div>
-
-        <div class="bg-background p-8 rounded-lg">
-          <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-            <Icon name="tabler:heart" class="w-6 h-6 text-accent" />
-          </div>
-          <h3 class="text-xl font-semibold mb-4">Person-Centred Practice</h3>
-          <p class="text-muted-foreground">
-            Co-produced care plans, regular reviews, with individual preferences and goals central to all decisions.
-          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Staff Training Programme -->
+  <!-- Continuous Improvement - Visual section -->
   <section class="py-24 bg-background">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <h2 class="text-3xl font-bold mb-6">Staff Training Programme</h2>
-        <p class="text-lg text-muted-foreground">
-          All staff receive comprehensive training to ensure safe, person-centred, and specialist care delivery.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <h3 class="text-xl font-semibold mb-6">Mandatory & Core</h3>
-          <ul class="space-y-3 text-muted-foreground">
-            <li class="flex items-start">
-              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-              <span>Mental Capacity Act (MCA) and DoLS</span>
-            </li>
-            <li class="flex items-start">
-              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-              <span>Person-Centred Care and Record Keeping</span>
-            </li>
-            <li class="flex items-start">
-              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-              <span>Safeguarding Adults (Level 2-3)</span>
-            </li>
-            <li class="flex items-start">
-              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-              <span>Medication Management</span>
-            </li>
-            <li class="flex items-start">
-              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-              <span>Moving and Positioning</span>
-            </li>
-            <li class="flex items-start">
-              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-              <span>Health & Safety, Infection Control, First Aid</span>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 class="text-xl font-semibold mb-6">Specialist (LD, Autism & Supported Living)</h3>
-          <ul class="space-y-3 text-muted-foreground">
-            <li class="flex items-start">
-              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-              <span>Oliver McGowan Mandatory Training</span>
-            </li>
-            <li class="flex items-start">
-              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-              <span>Positive Behaviour Support (PBS)</span>
-            </li>
-            <li class="flex items-start">
-              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-              <span>Restrictive Practice Awareness</span>
-            </li>
-            <li class="flex items-start">
-              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-              <span>Trauma-Informed Care</span>
-            </li>
-            <li class="flex items-start">
-              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-              <span>Communication and Sensory Awareness</span>
-            </li>
-            <li class="flex items-start">
-              <Icon name="tabler:check" class="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
-              <span>Mental Health Awareness</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Continuous Improvement -->
-  <section class="py-24 bg-secondary/30">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 items-start">
-        <div>
-          <h2 class="text-3xl font-bold text-foreground mb-6">Continuous Improvement</h2>
-          <p class="text-lg text-muted-foreground">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Progress</p>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">Continuous Improvement</h2>
+          <p class="text-lg text-muted-foreground leading-relaxed">
             Quality is not static — we are committed to ongoing improvement through regular review, feedback, and professional development.
           </p>
         </div>
 
-        <div class="space-y-6">
-          <div class="flex items-start gap-4">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-accent-foreground text-sm font-bold flex-shrink-0">1</div>
-            <p class="text-muted-foreground pt-2">Regular care reviews with people and their care workers</p>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-accent-foreground text-sm font-bold flex-shrink-0">2</div>
-            <p class="text-muted-foreground pt-2">Formal client satisfaction surveys conducted annually</p>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-accent-foreground text-sm font-bold flex-shrink-0">3</div>
-            <p class="text-muted-foreground pt-2">Telephone check-ins every 6 weeks</p>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-accent-foreground text-sm font-bold flex-shrink-0">4</div>
-            <p class="text-muted-foreground pt-2">Complaints welcomed as tools for improvement</p>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-accent-foreground text-sm font-bold flex-shrink-0">5</div>
-            <p class="text-muted-foreground pt-2">Reflective practice and continuous professional development</p>
+        <div class="relative">
+          {/* Timeline line */}
+          <div class="absolute left-5 top-4 bottom-4 w-px bg-gradient-to-b from-primary via-accent to-primary/30"></div>
+          
+          <div class="space-y-5">
+            {[
+              { number: '1', text: 'Regular care reviews with people and their care workers' },
+              { number: '2', text: 'Formal client satisfaction surveys conducted annually' },
+              { number: '3', text: 'Telephone check-ins every 6 weeks' },
+              { number: '4', text: 'Complaints welcomed as tools for improvement' },
+              { number: '5', text: 'Reflective practice and continuous professional development' }
+            ].map((item) => (
+              <div class="relative flex gap-4">
+                <div class="flex-shrink-0 relative z-10">
+                  <div class="flex items-center justify-center w-10 h-10 rounded-full bg-background text-primary ring-1 ring-primary/30 font-bold text-sm shadow-sm">
+                    {item.number}
+                  </div>
+                </div>
+                <div class="flex-1 pt-2">
+                  <p class="text-muted-foreground">{item.text}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

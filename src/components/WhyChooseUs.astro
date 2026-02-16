@@ -61,7 +61,7 @@ const {
       <!-- Content Column -->
       <div class="order-2 lg:order-1">
         {eyebrow && (
-          <p class="text-sm font-bold uppercase tracking-widest text-primary mb-3">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
             {eyebrow}
           </p>
         )}
@@ -72,15 +72,22 @@ const {
           {intro}
         </p>
 
-        <div class="grid sm:grid-cols-2 gap-8 mb-10">
+        <!-- Corporate Feature Grid -->
+        <div class="grid sm:grid-cols-2 gap-6 mb-10">
           {points.map((point) => (
-            <div class="flex flex-col gap-4 group">
-              <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                <Icon name={point.iconName} size="24" />
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold text-foreground mb-2">{point.title}</h3>
-                <p class="text-sm text-muted-foreground leading-relaxed">{point.description}</p>
+            <div class="group relative p-6 rounded-xl bg-card/50 border border-border/50 hover:border-primary/30 hover:bg-card transition-all duration-300">
+              <!-- Subtle hover glow -->
+              <div class="absolute -inset-px bg-gradient-to-br from-primary/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+              
+              <div class="flex items-start gap-4">
+                <!-- Corporate icon treatment -->
+                <div class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground group-hover:ring-primary/40 transition-all duration-300">
+                  <Icon name={point.iconName} size="20" />
+                </div>
+                <div>
+                  <h3 class="text-base font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">{point.title}</h3>
+                  <p class="text-sm text-muted-foreground leading-relaxed">{point.description}</p>
+                </div>
               </div>
             </div>
           ))}
@@ -101,40 +108,40 @@ const {
 
       <!-- Image Column -->
       <div class="order-1 lg:order-2 relative">
-        <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/4] group">
+        <div class="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] aspect-[4/4] group">
           <img
             src={imageSrc}
             alt={imageAlt}
             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1584466977773-270f5fcd5864?auto=format&fit=crop&w=900&q=80'; this.alt='Healthcare facility image';"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
           
-          <!-- Floating Quote Card -->
-          <div class="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-white/20 transform transition-transform duration-500 hover:-translate-y-2">
-            <div class="flex gap-1 mb-3">
+          <!-- Premium Testimonial Card -->
+          <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-6 rounded-xl border border-white/20 shadow-xl transform transition-transform duration-500 hover:-translate-y-1">
+            <div class="flex gap-0.5 mb-3">
               {[1, 2, 3, 4, 5].map(() => (
-                <Icon name="tabler:star" class="w-5 h-5 text-yellow-400 fill-current" />
+                <Icon name="tabler:star" class="w-4 h-4 text-amber-400 fill-current" />
               ))}
             </div>
-            <p class="text-foreground font-medium italic mb-4">
+            <p class="text-foreground font-medium text-sm leading-relaxed mb-4">
               "The team genuinely care about the people they support. It feels like family, not just a service."
             </p>
             <div class="flex items-center gap-3">
-              <div class="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+              <div class="h-8 w-8 rounded-full bg-primary/15 flex items-center justify-center text-primary text-xs font-bold ring-1 ring-primary/20">
                 TC
               </div>
               <div>
-                <p class="text-sm font-bold text-foreground">Family Member</p>
+                <p class="text-sm font-semibold text-foreground">Family Member</p>
                 <p class="text-xs text-muted-foreground">Supported Living Service</p>
               </div>
             </div>
           </div>
         </div>
         
-        <!-- Decorative Elements -->
-        <div class="absolute -top-12 -right-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"></div>
-        <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary rounded-full blur-3xl -z-10"></div>
+        <!-- Refined Decorative Elements -->
+        <div class="absolute -top-8 -right-8 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-accent/10 rounded-full blur-3xl -z-10"></div>
       </div>
     </div>
   </div>

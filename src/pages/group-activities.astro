@@ -2,7 +2,7 @@
 import SiteLayout from '@layouts/SiteLayout.astro';
 import PageHero from '@components/PageHero.astro';
 import ContactSection from '@components/ContactSection.astro';
-import { Icon } from 'astro-icon/components';
+import Icon from '@components/Icon.astro';
 
 const metadata = {
   title: 'Group Activities - Team Care Support',
@@ -18,12 +18,13 @@ const metadata = {
 const activities = [
   {
     icon: 'tabler:bulb',
-    title: 'Skill-Building & Life Skills Groups',
-    description: 'Cooking, budgeting, personal organisation, confidence building, and practical skills for independent living.'
+    title: 'Skill-Building & Life Skills',
+    description: 'Cooking, budgeting, personal organisation, confidence building, and practical skills for independent living.',
+    featured: true
   },
   {
     icon: 'tabler:walk',
-    title: 'Community Access & Events',
+    title: 'Community Access',
     description: 'Visiting local attractions, parks, cafes, shops, community centres, and exploring Nottinghamshire together.'
   },
   {
@@ -38,7 +39,7 @@ const activities = [
   },
   {
     icon: 'tabler:briefcase',
-    title: 'Volunteering & Employment Pathways',
+    title: 'Employment Pathways',
     description: 'Supported opportunities to explore work, volunteering, and skill development in real-world settings.'
   },
   {
@@ -49,32 +50,37 @@ const activities = [
 ];
 
 const benefits = [
-  'Reduce social isolation and loneliness',
-  'Build real friendships and relationships',
-  'Develop practical skills for daily living',
-  'Increase confidence and self-esteem',
-  'Create meaningful routines and structure',
-  'Promote community belonging — feeling part of something, not isolated within it'
+  { icon: 'tabler:users', text: 'Reduce social isolation and loneliness' },
+  { icon: 'tabler:heart', text: 'Build real friendships and relationships' },
+  { icon: 'tabler:tools', text: 'Develop practical skills for daily living' },
+  { icon: 'tabler:rocket', text: 'Increase confidence and self-esteem' },
+  { icon: 'tabler:calendar', text: 'Create meaningful routines and structure' },
+  { icon: 'tabler:building-community', text: 'Promote community belonging' }
 ];
 
 const approachPoints = [
   {
+    icon: 'tabler:user-heart',
     title: 'Person-Centred Planning',
     description: 'Activities are planned around what people enjoy, not a fixed timetable. We listen to what matters to individuals.'
   },
   {
+    icon: 'tabler:users',
     title: 'Small Group Sizes',
     description: 'We keep groups small for comfort and meaningful interaction. Everyone has space to participate at their own pace.'
   },
   {
+    icon: 'tabler:hand-off',
     title: 'Facilitation, Not Domination',
     description: 'Support staff facilitate activities but don\'t dominate — we encourage independence and peer interaction.'
   },
   {
+    icon: 'tabler:map-pin',
     title: 'Community Settings',
     description: 'Activities take place in community settings wherever possible, promoting real inclusion and belonging.'
   },
   {
+    icon: 'tabler:message-circle',
     title: 'Regular Feedback',
     description: 'We regularly ask participants what they enjoy and what they\'d like to try. Feedback shapes what we offer.'
   }
@@ -91,105 +97,271 @@ const approachPoints = [
     secondaryCtaHref="/contact"
   />
 
-  <!-- Section 1: What We Offer -->
-  <section class="py-24 bg-background">
+  <!-- Section 1: What We Offer - Bento grid with alternating featured cards -->
+  <section class="py-24 bg-background overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">What We Offer</h2>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Activities</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">What We Offer</h2>
         <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
-          Our group activities and social sessions are designed to build skills, reduce isolation, and create opportunities for meaningful connection and community participation.
+          Our group activities and social sessions are designed to build skills, reduce isolation, and create opportunities for meaningful connection.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {activities.map((activity) => (
-          <div class="bg-card border border-border rounded-lg p-6 hover:border-accent transition-colors">
-            <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
-              <Icon name={activity.icon} class="w-6 h-6 text-accent" />
+      <!-- Bento grid - alternating featured cards for symmetry -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Row 1: Featured left + regular right -->
+        <div class="group relative rounded-2xl overflow-hidden bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 lg:col-span-2 min-h-[300px]">
+          <img 
+            src="https://images.unsplash.com/photo-1516307365426-bea591f05011?auto=format&fit=crop&w=1200&q=80"
+            alt="Skill-Building & Life Skills"
+            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-card via-card/80 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent"></div>
+          
+          <div class="relative h-full flex flex-col justify-end p-8">
+            <div class="mb-4">
+              <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/95 text-primary shadow-xl ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Icon name="tabler:bulb" class="w-6 h-6" />
+              </div>
             </div>
-            <h3 class="text-xl font-semibold text-foreground mb-3">{activity.title}</h3>
-            <p class="text-muted-foreground">{activity.description}</p>
+            <h3 class="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">Skill-Building & Life Skills</h3>
+            <p class="text-base text-muted-foreground leading-relaxed max-w-md">Cooking, budgeting, personal organisation, confidence building, and practical skills for independent living.</p>
           </div>
-        ))}
+        </div>
+        
+        <div class="group relative p-6 rounded-2xl bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
+          <div class="absolute -inset-px bg-gradient-to-b from-primary/[0.03] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="mb-4">
+              <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Icon name="tabler:walk" class="w-5 h-5" />
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">Community Access</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">Visiting local attractions, parks, cafes, shops, community centres, and exploring Nottinghamshire together.</p>
+          </div>
+        </div>
+        
+        <!-- Row 2: Regular left + Featured right -->
+        <div class="group relative p-6 rounded-2xl bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
+          <div class="absolute -inset-px bg-gradient-to-b from-primary/[0.03] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="mb-4">
+              <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Icon name="tabler:palette" class="w-5 h-5" />
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">Shared Interest Activities</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">Arts & crafts, music, sports, gardening, gaming, film clubs, and activities based on what people enjoy.</p>
+          </div>
+        </div>
+        
+        <div class="group relative rounded-2xl overflow-hidden bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 lg:col-span-2 min-h-[300px]">
+          <img 
+            src="https://images.unsplash.com/photo-1529156069898-49953e87b3dc?auto=format&fit=crop&w=1200&q=80"
+            alt="Social Sessions"
+            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-l from-card via-card/80 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent"></div>
+          
+          <div class="relative h-full flex flex-col justify-end p-8 lg:items-end lg:text-right">
+            <div class="mb-4 lg:ml-auto">
+              <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/95 text-primary shadow-xl ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Icon name="tabler:users-group" class="w-6 h-6" />
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">Social Sessions</h3>
+            <p class="text-base text-muted-foreground leading-relaxed lg:max-w-md">Structured social time to build friendships, reduce isolation, and develop meaningful relationships.</p>
+          </div>
+        </div>
+        
+        <!-- Row 3: Featured left + regular right (mirrors row 1) -->
+        <div class="group relative rounded-2xl overflow-hidden bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 lg:col-span-2 min-h-[300px]">
+          <img 
+            src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=80"
+            alt="Employment Pathways"
+            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-card via-card/80 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent"></div>
+          
+          <div class="relative h-full flex flex-col justify-end p-8">
+            <div class="mb-4">
+              <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/95 text-primary shadow-xl ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Icon name="tabler:briefcase" class="w-6 h-6" />
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">Employment Pathways</h3>
+            <p class="text-base text-muted-foreground leading-relaxed max-w-md">Supported opportunities to explore work, volunteering, and skill development in real-world settings.</p>
+          </div>
+        </div>
+        
+        <div class="group relative p-6 rounded-2xl bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
+          <div class="absolute -inset-px bg-gradient-to-b from-primary/[0.03] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="mb-4">
+              <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Icon name="tabler:school" class="w-5 h-5" />
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">Education & Training</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">Informal learning, courses, digital skills, communication workshops, and opportunities to develop new abilities.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 2: Why Group Activities Matter -->
-  <section class="py-24 bg-secondary/30">
+  <!-- Section 2: Why Group Activities Matter - Split layout -->
+  <section class="py-24 bg-muted/30 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-6">Why Group Activities Matter</h2>
-          <p class="text-lg text-muted-foreground mb-6">
-            Group activities are more than just something to do — they're opportunities to build connections, develop skills, and feel part of a community.
-          </p>
-          <p class="text-muted-foreground">
-            For many people we support, group activities provide structure, purpose, and the chance to develop meaningful relationships outside of formal care settings. They create space for people to be themselves, try new things, and belong.
-          </p>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Impact</p>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">Why Group Activities Matter</h2>
+          <div class="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <p>Group activities are more than just something to do — they're opportunities to build connections, develop skills, and feel part of a community.</p>
+            <p>For many people we support, group activities provide structure, purpose, and the chance to develop meaningful relationships outside of formal care settings.</p>
+          </div>
+          
+          <!-- Benefits grid -->
+          <div class="mt-10 grid sm:grid-cols-2 gap-3">
+            {benefits.map((benefit) => (
+              <div class="group flex items-center gap-3 p-3 rounded-lg bg-card/50 border border-border/50 hover:border-primary/30 transition-all duration-300">
+                <div class="inline-flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                  <Icon name={benefit.icon} class="w-4 h-4" />
+                </div>
+                <span class="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{benefit.text}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div class="bg-card border border-border rounded-lg p-8">
-          <h3 class="text-xl font-semibold text-foreground mb-6">Benefits of Group Activities</h3>
-          <ul class="space-y-4">
-            {benefits.map((benefit) => (
-              <li class="flex items-start gap-3">
-                <Icon name="tabler:check" class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span class="text-muted-foreground">{benefit}</span>
-              </li>
-            ))}
-          </ul>
+        <div class="relative">
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-primary/10">
+            <img 
+              src="https://images.unsplash.com/photo-1529156069898-49953e87b3dc?auto=format&fit=crop&w=900&q=80" 
+              alt="Group of adults participating in community activity"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+            
+            <!-- Testimonial overlay -->
+            <div class="absolute bottom-6 left-6 right-6">
+              <div class="bg-white/95 backdrop-blur-sm rounded-xl p-5 shadow-lg border border-white/20">
+                <p class="text-foreground text-sm font-medium mb-2">
+                  "I've made real friends here. It's the highlight of my week."
+                </p>
+                <p class="text-xs text-muted-foreground">— Group Activities Participant</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Floating stat -->
+          <div class="absolute -top-4 -left-4 bg-card border border-border/70 rounded-xl p-4 shadow-xl">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <Icon name="tabler:users-group" class="w-5 h-5" />
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-foreground">6+</p>
+                <p class="text-xs text-muted-foreground">Activity Types</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 3: Our Approach -->
-  <section class="py-24 bg-background">
+  <!-- Section 3: Our Approach - Equal-weighted grid -->
+  <section class="py-24 bg-background overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Approach</h2>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Methodology</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">Our Approach</h2>
         <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
           We design group activities around what people want to do, not what we think they should do. Every session is shaped by the people who take part.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Equal-weighted 3-column grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {approachPoints.map((point) => (
-          <div class="border-l-4 border-accent pl-6">
-            <h3 class="text-xl font-semibold text-foreground mb-3">{point.title}</h3>
-            <p class="text-muted-foreground">{point.description}</p>
+          <div class="group relative p-6 rounded-2xl bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
+            <div class="absolute -inset-px bg-gradient-to-b from-primary/[0.03] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <div class="relative">
+              <div class="mb-4">
+                <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                  <Icon name={point.icon} class="w-5 h-5" />
+                </div>
+              </div>
+              <h3 class="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">{point.title}</h3>
+              <p class="text-sm text-muted-foreground leading-relaxed">{point.description}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Section 4: Getting Involved -->
-  <section class="py-24 bg-secondary/30">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-6">Getting Involved</h2>
-      <div class="space-y-4 text-lg text-muted-foreground">
-        <p>
-          Group activities are available to people accessing our supported living and domiciliary care services.
-        </p>
-        <p>
-          We welcome referrals from professionals, families, and individuals who think they might benefit from our group activities and social sessions.
-        </p>
-        <p>
-          Contact us to find out what's currently running, what we're planning, and how you or someone you support can get involved.
-        </p>
-      </div>
-
-      <div class="mt-12 flex flex-wrap gap-4 justify-center">
-        <a href="/referral" class="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent/90 text-accent-foreground font-medium rounded-lg transition-colors">
-          Make a Referral
-          <Icon name="tabler:arrow-right" class="w-5 h-5" />
-        </a>
-        <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 border border-border hover:border-accent bg-card text-foreground font-medium rounded-lg transition-colors">
-          Contact Us
-          <Icon name="tabler:mail" class="w-5 h-5" />
-        </a>
+  <!-- Section 4: Getting Involved - Full-width image CTA -->
+  <section class="py-24 bg-muted/30 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative rounded-3xl overflow-hidden">
+        <!-- Background image -->
+        <img 
+          src="https://images.unsplash.com/photo-1517457373938-bd0f5c8b3e94?auto=format&fit=crop&w=1400&q=80" 
+          alt="Friends laughing together in community setting"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/40"></div>
+        
+        <!-- Content -->
+        <div class="relative py-16 lg:py-20 px-8 lg:px-16">
+          <div class="max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
+              <Icon name="tabler:users-group" class="w-4 h-4 text-primary" />
+              <span class="text-xs font-semibold text-white uppercase tracking-wider">Join Our Community</span>
+            </div>
+            
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
+              Getting Involved
+            </h2>
+            
+            <p class="text-lg text-white/80 leading-relaxed mb-8">
+              Group activities are available to people accessing our supported living and domiciliary care services. We welcome referrals from professionals, families, and individuals ready to build connections.
+            </p>
+            
+            <div class="flex flex-wrap gap-4">
+              <a href="/referral" class="group inline-flex items-center gap-2 px-6 py-3.5 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl transition-all shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5">
+                <Icon name="tabler:clipboard-list" class="w-5 h-5" />
+                Make a Referral
+                <Icon name="tabler:arrow-right" class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a href="/contact" class="group inline-flex items-center gap-2 px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-all hover:-translate-y-0.5">
+                <Icon name="tabler:message-circle" class="w-5 h-5" />
+                Contact Us
+              </a>
+            </div>
+            
+            <!-- Contact info -->
+            <div class="mt-10 flex flex-wrap gap-6">
+              <div class="flex items-center gap-2 text-sm text-white/70">
+                <Icon name="tabler:phone" class="w-4 h-4" />
+                <span>0115 845 0220 ext 2535</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm text-white/70">
+                <Icon name="tabler:mail" class="w-4 h-4" />
+                <span>help@teamcaresupport.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

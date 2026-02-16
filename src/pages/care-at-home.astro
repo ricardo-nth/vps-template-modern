@@ -2,6 +2,7 @@
 import SiteLayout from '@layouts/SiteLayout.astro';
 import PageHero from '@components/PageHero.astro';
 import ContactSection from '@components/ContactSection.astro';
+import ContentCard from '@components/ContentCard.astro';
 import Icon from '@components/Icon.astro';
 
 const metadata = {
@@ -19,7 +20,8 @@ const services = [
   {
     icon: 'tabler:heart-handshake',
     title: 'Personal Care',
-    description: 'Assistance with washing, dressing, grooming, and maintaining dignity in your daily routine.'
+    description: 'Assistance with washing, dressing, grooming, and maintaining dignity in your daily routine.',
+    featured: true
   },
   {
     icon: 'tabler:pill',
@@ -131,37 +133,91 @@ const specialisms = [
     secondaryCtaHref="tel:01158450220"
   />
 
-  <!-- Our Care Services -->
-  <section class="py-24 bg-background">
+  <!-- Our Care Services - Visual with images -->
+  <section class="py-24 bg-background overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-foreground sm:text-4xl mb-4">Our Care Services</h2>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Services</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">Our Care Services</h2>
         <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
-          Team Care provides domiciliary care to adults aged 18-65 and 65+, enabling you to stay in your own home and retain independence. Our care packages are tailored and adapted to your individual needs.
+          Professional domiciliary care tailored to your needs — enabling you to stay in your own home with dignity and independence.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      {/* Services bento grid with images */}
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {services.map((service, index) => (
           index === 0 ? (
-            <div class="md:col-span-2 bg-card rounded-lg p-6 border border-border hover:border-accent transition-colors">
-              <div class="flex items-start gap-4">
-                <div class="bg-accent/10 text-accent p-3 rounded-lg">
-                  <Icon name={service.icon} class="w-6 h-6" />
+            <!-- Featured card: horizontal layout filling the space -->
+            <div class="group relative rounded-2xl overflow-hidden bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 md:col-span-2 lg:col-span-2 lg:row-span-2 min-h-[400px] lg:min-h-[480px]">
+              <!-- Background image with gradient overlay -->
+              <img 
+                src="https://images.unsplash.com/photo-1576765608866-5b51f8d6eaa4?auto=format&fit=crop&w=1200&q=80"
+                alt={service.title}
+                class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+              />
+              <div class="absolute inset-0 bg-gradient-to-r from-card via-card/80 to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent"></div>
+              
+              <!-- Content positioned over image -->
+              <div class="relative h-full flex flex-col justify-end p-8 lg:p-10">
+                <!-- Icon badge -->
+                <div class="mb-6">
+                  <div class="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-white/95 text-primary shadow-xl ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                    <Icon name={service.icon} class="w-7 h-7" />
+                  </div>
                 </div>
-                <div>
-                  <h3 class="text-xl font-semibold text-foreground mb-2">{service.title}</h3>
-                  <p class="text-muted-foreground">{service.description}</p>
+                
+                <h3 class="text-2xl lg:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p class="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-md">
+                  {service.description}
+                </p>
+                
+                <!-- Featured badge -->
+                <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium ring-1 ring-primary/20 w-fit">
+                  <Icon name="tabler:star" class="w-4 h-4" />
+                  <span>Core Service</span>
                 </div>
               </div>
             </div>
           ) : (
-            <div class="bg-card rounded-lg p-6 border border-border hover:border-accent transition-colors">
-              <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
-                <Icon name={service.icon} class="w-6 h-6" />
+            <!-- Standard cards: image above content -->
+            <div class="group relative rounded-2xl overflow-hidden bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
+              <!-- Image area -->
+              <div class="relative overflow-hidden h-48">
+                <img 
+                  src={[
+                    "https://images.unsplash.com/photo-1576765608866-5b51f8d6eaa4?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1576765608866-5b51f8d6eaa4?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80"
+                  ][index]}
+                  alt={service.title}
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent"></div>
+                
+                <!-- Icon badge -->
+                <div class="absolute top-4 left-4">
+                  <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/95 text-primary shadow-lg ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                    <Icon name={service.icon} class="w-5 h-5" />
+                  </div>
+                </div>
               </div>
-              <h3 class="text-xl font-semibold text-foreground mb-2">{service.title}</h3>
-              <p class="text-muted-foreground">{service.description}</p>
+              
+              <!-- Content -->
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p class="text-sm text-muted-foreground leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
             </div>
           )
         ))}
@@ -169,76 +225,184 @@ const specialisms = [
     </div>
   </section>
 
-  <!-- What Makes Us Different -->
-  <section class="py-24 bg-secondary/30">
+  <!-- What Makes Us Different - Split layout with image -->
+  <section class="py-24 bg-muted/30 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-foreground sm:text-4xl mb-4">What Makes Us Different</h2>
-        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
-          We go beyond standard care provision to deliver truly person-centred support that makes a real difference to your life.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {differentiators.map(diff => (
-          <div class="border-l-4 border-primary pl-6">
-            <h3 class="text-xl font-semibold text-foreground mb-2">{diff.title}</h3>
-            <p class="text-muted-foreground">{diff.description}</p>
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        {/* Left: Differentiators grid */}
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Why Us</p>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">What Makes Us Different</h2>
+          <p class="text-lg text-muted-foreground leading-relaxed mb-8">
+            We go beyond standard care provision to deliver truly person-centred support that makes a real difference to your life.
+          </p>
+          
+          <div class="grid sm:grid-cols-2 gap-4">
+            {differentiators.slice(0, 4).map((diff) => (
+              <div class="group flex gap-4 p-4 rounded-xl bg-card border border-border/60 hover:border-primary/30 transition-all duration-300">
+                <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20 flex-shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                  <Icon name={diff.icon} class="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 class="text-sm font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">{diff.title}</h3>
+                  <p class="text-xs text-muted-foreground leading-relaxed">{diff.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+        
+        {/* Right: Image with testimonial */}
+        <div class="relative">
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-primary/10">
+            <img 
+              src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=900&q=80" 
+              alt="Care at home service"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            
+            {/* Testimonial overlay */}
+            <div class="absolute bottom-6 left-6 right-6">
+              <div class="bg-white/95 backdrop-blur-sm rounded-xl p-5 shadow-lg border border-white/20">
+                <p class="text-foreground text-sm font-medium mb-2">
+                  "The carers feel like family now. Mum looks forward to their visits every day."
+                </p>
+                <p class="text-xs text-muted-foreground">— Family Member, Nottingham</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Floating badge */}
+          <div class="absolute -top-4 -left-4 bg-card border border-border/70 rounded-xl p-4 shadow-xl">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <Icon name="tabler:urgent" class="w-5 h-5" />
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-foreground">24hr</p>
+                <p class="text-xs text-muted-foreground">Urgent Response</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- How Care is Delivered -->
-  <section class="py-24 bg-background">
+  <section class="py-24 bg-muted/30 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-foreground sm:text-4xl mb-4">How Care is Delivered</h2>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Process</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">How Care is Delivered</h2>
         <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
           Our systematic approach ensures you receive the right care from the right person, with ongoing support and review.
         </p>
       </div>
 
-      <div class="max-w-4xl mx-auto space-y-8">
+      <!-- Alternating card layout -->
+      <div class="space-y-6 lg:space-y-8">
         {deliverySteps.map((step, index) => (
-          <div class="flex gap-6">
-            <div class="flex-shrink-0">
-              <div class="flex items-center justify-center w-12 h-12 rounded-full bg-accent text-accent-foreground text-xl font-bold">
-                {step.number}
+          <div class={`group relative ${index % 2 === 1 ? 'lg:pl-16' : 'lg:pr-16'}`}>
+            <div class={`relative flex flex-col lg:flex-row gap-6 lg:gap-10 p-6 lg:p-8 rounded-2xl bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+              <!-- Step number badge -->
+              <div class="flex-shrink-0 flex lg:flex-col items-start lg:items-center gap-4 lg:gap-3">
+                <div class="flex items-center justify-center w-14 h-14 lg:w-16 lg:h-16 rounded-2xl bg-primary text-primary-foreground font-bold text-xl lg:text-2xl shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform duration-300">
+                  {step.number}
+                </div>
+                <div class="hidden lg:block w-px h-full bg-gradient-to-b from-primary/50 to-transparent min-h-[60px]"></div>
               </div>
-            </div>
-            <div class="flex-grow pt-1">
-              <h3 class="text-xl font-semibold text-foreground mb-2">{step.title}</h3>
-              <p class="text-muted-foreground">{step.description}</p>
-              {index < deliverySteps.length - 1 && (
-                <div class="mt-6 ml-6 h-8 w-0.5 bg-border"></div>
-              )}
+              
+              <!-- Content -->
+              <div class="flex-1">
+                <h3 class="text-xl lg:text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">{step.title}</h3>
+                <p class="text-base text-muted-foreground leading-relaxed">{step.description}</p>
+              </div>
+              
+              <!-- Decorative corner -->
+              <div class="absolute top-0 right-0 w-24 h-24 overflow-hidden rounded-tr-2xl">
+                <div class="absolute -top-12 -right-12 w-24 h-24 bg-gradient-to-br from-primary/10 to-transparent rotate-45 group-hover:from-primary/20 transition-colors duration-300"></div>
+              </div>
             </div>
           </div>
         ))}
+      </div>
+      
+      <!-- Bottom CTA -->
+      <div class="mt-12 text-center">
+        <p class="text-muted-foreground mb-4">Ready to start your care journey?</p>
+        <a href="/referral" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+          <span>Make a Referral</span>
+          <Icon name="tabler:arrow-right" class="w-5 h-5" />
+        </a>
       </div>
     </div>
   </section>
 
   <!-- Specialist Support -->
-  <section class="py-24 bg-secondary/30">
+  <section class="py-24 bg-background overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 items-start">
-        <div>
-          <h2 class="text-3xl font-bold text-foreground sm:text-4xl mb-4">Specialist Support</h2>
-          <p class="text-lg text-muted-foreground">
-            Our experienced care workers are trained to support a wide range of needs and conditions.
-          </p>
-        </div>
-        <div class="bg-card border border-border rounded-xl p-8">
-          <div class="grid sm:grid-cols-2 gap-4">
-            {specialisms.map(specialism => (
-              <div class="flex items-center gap-3">
-                <Icon name="tabler:check" class="w-5 h-5 text-accent flex-shrink-0" />
-                <span class="text-muted-foreground">{specialism.text}</span>
+      <div class="relative">
+        <!-- Background decoration -->
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-primary/5 to-accent/5 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-gradient-to-tr from-accent/5 to-primary/5 rounded-full blur-3xl"></div>
+        
+        <div class="relative grid lg:grid-cols-12 gap-12 lg:gap-16">
+          <!-- Left column: Heading and intro -->
+          <div class="lg:col-span-5">
+            <div class="sticky top-8">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Expertise</p>
+              <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">Specialist Support</h2>
+              <p class="text-lg text-muted-foreground leading-relaxed mb-8">
+                Our experienced care workers are trained to support a wide range of needs and conditions, ensuring everyone receives expert care tailored to their specific circumstances.
+              </p>
+              
+              <!-- Stats and trust badges -->
+              <div class="flex flex-wrap gap-6 items-center">
+                <div>
+                  <p class="text-3xl font-bold text-primary">8+</p>
+                  <p class="text-sm text-muted-foreground">Specialisms</p>
+                </div>
+                <div>
+                  <p class="text-3xl font-bold text-primary">100%</p>
+                  <p class="text-sm text-muted-foreground">Trained Staff</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-medium text-primary">
+                    <Icon name="tabler:certificate" class="w-3.5 h-3.5" />
+                    DBS Checked
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-medium text-primary">
+                    <Icon name="tabler:heart-check" class="w-3.5 h-3.5" />
+                    CQC Aligned
+                  </span>
+                </div>
               </div>
-            ))}
+            </div>
+          </div>
+          
+          <!-- Right column: Specialisms grid -->
+          <div class="lg:col-span-7">
+            <div class="grid sm:grid-cols-2 gap-4">
+              {specialisms.map((specialism) => (
+                <div class="group relative p-5 rounded-xl bg-card border border-border/60 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+                  <div class="flex items-center gap-4">
+                    <div class="flex-shrink-0">
+                      <div class="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                        <Icon name={specialism.icon} class="w-5 h-5" />
+                      </div>
+                    </div>
+                    <div class="flex-1">
+                      <span class="font-medium text-foreground group-hover:text-primary transition-colors text-base">{specialism.text}</span>
+                    </div>
+                  </div>
+                  
+                  <!-- Hover accent line -->
+                  <div class="absolute bottom-0 left-5 right-5 h-px bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

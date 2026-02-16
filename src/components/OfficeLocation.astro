@@ -23,31 +23,41 @@ const {
 <section class="py-24 bg-background">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <div class="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary mb-6">
-        <span class="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-        Visit Us
-      </div>
-      <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-6">Our Offices</h2>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Locations</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-6 tracking-tight">Our Offices</h2>
       <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
-        We welcome visits from families and commissioners. Please call ahead to schedule an appointment with our Registered Manager.
+        We welcome visits from families and commissioners. Please call ahead to schedule an appointment.
       </p>
     </div>
 
     {/* Primary Office */}
-    <div class="grid lg:grid-cols-2 gap-12 items-center mb-24">
+    <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
       <div>
-        <div class="flex items-start gap-4 mb-8">
-          <div class="w-12 h-12 rounded-xl bg-secondary text-secondary-foreground flex items-center justify-center shrink-0">
-            <Icon name="tabler:map-pin" class="w-6 h-6" />
+        <div class="relative p-8 rounded-2xl bg-card border border-border/70 overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+          
+          <div class="flex items-start gap-4 mb-6">
+            <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20 flex-shrink-0">
+              <Icon name="tabler:map-pin" class="w-6 h-6" />
+            </div>
+            <div>
+              <h3 class="font-bold text-foreground text-lg mb-1">Registered Location</h3>
+              <p class="text-muted-foreground leading-relaxed">
+                {primaryAddress}
+              </p>
+              <p class="text-sm text-muted-foreground mt-2">
+                Care services operate from this location
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 class="font-bold text-foreground text-lg mb-1">Registered Location</h3>
-            <p class="text-muted-foreground text-lg leading-relaxed">
-              {primaryAddress}
-            </p>
-            <p class="text-sm text-muted-foreground mt-3">
-              Care services operate from this location
-            </p>
+
+          {/* Office hours with primary */}
+          <div class="pt-6 border-t border-border/60">
+            <div class="flex items-center gap-3 text-sm">
+              <Icon name="tabler:clock" class="w-4 h-4 text-primary" />
+              <span class="text-muted-foreground">Mon - Fri, 9am - 5pm</span>
+            </div>
+            <p class="text-xs text-muted-foreground mt-1 ml-7">On-call support available for emergencies</p>
           </div>
         </div>
 
@@ -55,14 +65,15 @@ const {
           href={primaryDirectionsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform duration-200"
+          class="mt-6 inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
         >
           <Icon name="tabler:map-2" class="w-5 h-5" />
           Get Directions
+          <Icon name="tabler:arrow-right" class="w-4 h-4" />
         </a>
       </div>
 
-      <div class="relative h-[400px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-border">
+      <div class="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-border/70">
         <iframe
           src={primaryMapUrl}
           width="100%"
@@ -79,7 +90,7 @@ const {
     {/* Secondary Office */}
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       <div class="order-2 lg:order-1">
-        <div class="relative h-[400px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-border">
+        <div class="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-border/70">
           <iframe
             src={secondaryMapUrl}
             width="100%"
@@ -94,18 +105,31 @@ const {
       </div>
 
       <div class="order-1 lg:order-2">
-        <div class="flex items-start gap-4 mb-8">
-          <div class="w-12 h-12 rounded-xl bg-secondary text-secondary-foreground flex items-center justify-center shrink-0">
-            <Icon name="tabler:briefcase" class="w-6 h-6" />
+        <div class="relative p-8 rounded-2xl bg-card border border-border/70 overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+          
+          <div class="flex items-start gap-4 mb-6">
+            <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20 flex-shrink-0">
+              <Icon name="tabler:briefcase" class="w-6 h-6" />
+            </div>
+            <div>
+              <h3 class="font-bold text-foreground text-lg mb-1">Business Address</h3>
+              <p class="text-muted-foreground leading-relaxed">
+                {secondaryAddress}
+              </p>
+              <p class="text-sm text-muted-foreground mt-2">
+                Business operations and postal address
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 class="font-bold text-foreground text-lg mb-1">Business Address</h3>
-            <p class="text-muted-foreground text-lg leading-relaxed">
-              {secondaryAddress}
-            </p>
-            <p class="text-sm text-muted-foreground mt-3">
-              Business operations and postal address
-            </p>
+
+          {/* Office hours with secondary */}
+          <div class="pt-6 border-t border-border/60">
+            <div class="flex items-center gap-3 text-sm">
+              <Icon name="tabler:clock" class="w-4 h-4 text-primary" />
+              <span class="text-muted-foreground">Mon - Fri, 9am - 5pm</span>
+            </div>
+            <p class="text-xs text-muted-foreground mt-1 ml-7">Postal correspondence address</p>
           </div>
         </div>
 
@@ -113,29 +137,12 @@ const {
           href={secondaryDirectionsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform duration-200"
+          class="mt-6 inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
         >
           <Icon name="tabler:map-2" class="w-5 h-5" />
           Get Directions
+          <Icon name="tabler:arrow-right" class="w-4 h-4" />
         </a>
-      </div>
-    </div>
-
-    {/* Office Hours */}
-    <div class="mt-24 p-8 bg-secondary/30 rounded-2xl border border-border">
-      <div class="flex items-start gap-4">
-        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-          <Icon name="tabler:clock" class="w-6 h-6" />
-        </div>
-        <div>
-          <h3 class="font-bold text-foreground text-lg mb-2">Office Hours</h3>
-          <p class="text-muted-foreground">
-            Monday - Friday, 9am - 5pm
-          </p>
-          <p class="text-sm text-muted-foreground mt-2">
-            On-call support available outside office hours for care emergencies
-          </p>
-        </div>
       </div>
     </div>
   </div>

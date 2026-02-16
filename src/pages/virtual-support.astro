@@ -14,6 +14,36 @@ const metadata = {
     description: 'Remote emotional support and blended care services across Nottinghamshire.'
   }
 };
+
+const blendedFeatures = [
+  { icon: 'tabler:users', title: 'Encourages Confidence', description: 'Remote support helps build self-management skills without constant physical presence.' },
+  { icon: 'tabler:chart-line', title: 'Adapts as You Grow', description: 'Support evolves based on progress, rather than remaining static or creating unnecessary reliance.' },
+  { icon: 'tabler:arrows-down-up', title: 'Smoother Transitions', description: 'Step-down support makes moving to lower-level care less disruptive and more sustainable.' }
+];
+
+const remoteSupportServices = [
+  { icon: 'tabler:heart-handshake', title: 'Emotional Reassurance', description: 'Regular check-ins to provide emotional support, reduce anxiety, and maintain connection.', featured: true },
+  { icon: 'tabler:clock', title: 'Routine Reminders', description: 'Prompts for appointments, medication, daily structure, and important tasks.' },
+  { icon: 'tabler:mood-smile', title: 'Anxiety & Mood Support', description: 'Support during moments of low mood, worry, or uncertainty — a calming voice when needed.' },
+  { icon: 'tabler:stairs-down', title: 'Step-Down Support', description: 'Gradual reduction in physical presence as independence and confidence increase.' },
+  { icon: 'tabler:phone-check', title: 'Daily Check-Ins', description: 'Scheduled calls to maintain routine, offer reassurance, and monitor wellbeing.' },
+  { icon: 'tabler:devices', title: 'Technology-Enabled Care', description: 'Video calls, messaging, and digital tools to stay connected without physical visits.' }
+];
+
+const whoBenefits = [
+  { icon: 'tabler:home-move', title: 'People Transitioning to Independence', description: 'Moving from supported living to more independent settings, with ongoing reassurance.' },
+  { icon: 'tabler:heart', title: 'Those Needing Emotional, Not Physical Support', description: 'Individuals who benefit from connection and reassurance, without requiring hands-on care.' },
+  { icon: 'tabler:arrow-down', title: 'Stepping Down from Higher-Level Care', description: 'Reducing intensive support packages while maintaining confidence and routine.' },
+  { icon: 'tabler:growth', title: 'Building Self-Management Skills', description: 'Developing confidence in daily routines, decision-making, and personal organisation.' },
+  { icon: 'tabler:cloud-rain', title: 'Managing Anxiety, Low Mood, or Routine Challenges', description: 'Regular check-ins and prompts provide structure, reassurance, and a safety net during difficult moments.' }
+];
+
+const howItWorks = [
+  { number: '1', title: 'Assessment', description: 'Understand current needs, goals, and the right balance of in-person and remote support.' },
+  { number: '2', title: 'Blended Plan', description: 'Create a personalised mix of face-to-face visits and scheduled remote check-ins.' },
+  { number: '3', title: 'Regular Review', description: 'Adjust the balance as confidence and skills grow, ensuring support remains relevant.' },
+  { number: '4', title: 'Step-Down', description: 'Gradually reduce support as independence increases, celebrating progress along the way.' }
+];
 ---
 <SiteLayout metadata={metadata}>
   <PageHero
@@ -26,49 +56,54 @@ const metadata = {
     secondaryCtaHref="#how-it-works"
   />
 
-  <!-- Section 1: What Is Blended Support -->
-  <section class="py-24 bg-background" id="how-it-works">
+  <!-- Section 1: What Is Blended Support - Split layout with image -->
+  <section class="py-24 bg-muted/30 overflow-hidden" id="how-it-works">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-12 items-start">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <h2 class="text-3xl font-bold text-foreground mb-6">What Is Blended Support?</h2>
-          <div class="prose prose-lg max-w-none text-muted-foreground">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Overview</p>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">What Is Blended Support?</h2>
+          <div class="space-y-4 text-lg text-muted-foreground leading-relaxed">
             <p>Blended support combines traditional face-to-face care with remote emotional support and prompts. This approach isn't a replacement for in-person care — it's a complement that enhances independence while maintaining connection.</p>
             <p>As people grow in confidence and develop self-management skills, the balance shifts. Physical visits may reduce, while remote check-ins continue to provide reassurance and routine structure.</p>
-            <p>The goal is progression, not dependency. Blended support creates a pathway toward greater autonomy, smoother transitions, and confidence in managing everyday challenges.</p>
+          </div>
+          
+          <!-- Feature cards -->
+          <div class="mt-10 space-y-4">
+            {blendedFeatures.map((feature) => (
+              <div class="group flex gap-4 p-4 rounded-xl bg-card border border-border/60 hover:border-primary/30 transition-all duration-300">
+                <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20 flex-shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                  <Icon name={feature.icon} class="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 class="text-sm font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">{feature.title}</h3>
+                  <p class="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        <div class="grid gap-6">
-          <div class="bg-card border border-border rounded-lg p-6">
-            <div class="flex items-start gap-4">
-              <div class="bg-accent/10 text-accent p-3 rounded-lg">
-                <Icon name="tabler:users" class="w-6 h-6" />
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold text-foreground mb-2">Encourages Confidence</h3>
-                <p class="text-muted-foreground">Remote support helps build self-management skills without constant physical presence.</p>
-              </div>
-            </div>
+        
+        <!-- Image side -->
+        <div class="relative">
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-primary/10">
+            <img 
+              src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=80" 
+              alt="Support worker on video call"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent/5"></div>
           </div>
-          <div class="bg-card border border-border rounded-lg p-6">
-            <div class="flex items-start gap-4">
-              <div class="bg-accent/10 text-accent p-3 rounded-lg">
-                <Icon name="tabler:chart-line" class="w-6 h-6" />
+          
+          <!-- Floating badge -->
+          <div class="absolute -bottom-4 -left-4 bg-card border border-border/70 rounded-xl p-4 shadow-xl">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <Icon name="tabler:devices" class="w-5 h-5" />
               </div>
               <div>
-                <h3 class="text-lg font-semibold text-foreground mb-2">Adapts as You Grow</h3>
-                <p class="text-muted-foreground">Support evolves based on progress, rather than remaining static or creating unnecessary reliance.</p>
-              </div>
-            </div>
-          </div>
-          <div class="bg-card border border-border rounded-lg p-6">
-            <div class="flex items-start gap-4">
-              <div class="bg-accent/10 text-accent p-3 rounded-lg">
-                <Icon name="tabler:arrows-down-up" class="w-6 h-6" />
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold text-foreground mb-2">Smoother Transitions</h3>
-                <p class="text-muted-foreground">Step-down support makes moving to lower-level care less disruptive and more sustainable.</p>
+                <p class="text-sm font-semibold text-foreground">24/7</p>
+                <p class="text-xs text-muted-foreground">Remote Access</p>
               </div>
             </div>
           </div>
@@ -77,178 +112,276 @@ const metadata = {
     </div>
   </section>
 
-  <!-- Section 2: What Remote Support Includes -->
-  <section class="py-24 bg-secondary/30">
+  <!-- Section 2: What Remote Support Includes - Bento grid with alternating featured cards -->
+  <section class="py-24 bg-background overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-foreground mb-4">What Remote Support Includes</h2>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Services</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">What Remote Support Includes</h2>
         <p class="text-lg text-muted-foreground max-w-2xl mx-auto">From daily reassurance to routine reminders, remote support fills gaps without requiring constant in-person visits.</p>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-card border border-border rounded-lg p-6">
-          <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
-            <Icon name="tabler:heart-handshake" class="w-6 h-6" />
+      
+      <!-- Bento grid - alternating featured cards for symmetry -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Row 1: Featured left + regular right -->
+        <div class="group relative rounded-2xl overflow-hidden bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 lg:col-span-2 min-h-[300px]">
+          <img 
+            src="https://images.unsplash.com/photo-1576091160550-2173f3e8a1ed?auto=format&fit=crop&w=1200&q=80"
+            alt="Emotional Reassurance"
+            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-card via-card/80 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent"></div>
+          
+          <div class="relative h-full flex flex-col justify-end p-8">
+            <div class="mb-4">
+              <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/95 text-primary shadow-xl ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Icon name="tabler:heart-handshake" class="w-6 h-6" />
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">Emotional Reassurance</h3>
+            <p class="text-base text-muted-foreground leading-relaxed max-w-md">Regular check-ins to provide emotional support, reduce anxiety, and maintain connection.</p>
           </div>
-          <h3 class="text-xl font-semibold text-foreground mb-3">Emotional Reassurance</h3>
-          <p class="text-muted-foreground">Regular check-ins to provide emotional support, reduce anxiety, and maintain connection.</p>
         </div>
-        <div class="bg-card border border-border rounded-lg p-6">
-          <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
-            <Icon name="tabler:clock" class="w-6 h-6" />
+        
+        <div class="group relative p-6 rounded-2xl bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
+          <div class="absolute -inset-px bg-gradient-to-b from-primary/[0.03] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="mb-4">
+              <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Icon name="tabler:clock" class="w-5 h-5" />
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">Routine Reminders</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">Prompts for appointments, medication, daily structure, and important tasks.</p>
           </div>
-          <h3 class="text-xl font-semibold text-foreground mb-3">Routine Reminders</h3>
-          <p class="text-muted-foreground">Prompts for appointments, medication, daily structure, and important tasks.</p>
         </div>
-        <div class="bg-card border border-border rounded-lg p-6">
-          <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
-            <Icon name="tabler:mood-smile" class="w-6 h-6" />
+        
+        <!-- Row 2: Regular left + Featured right -->
+        <div class="group relative p-6 rounded-2xl bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
+          <div class="absolute -inset-px bg-gradient-to-b from-primary/[0.03] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="mb-4">
+              <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Icon name="tabler:mood-smile" class="w-5 h-5" />
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">Anxiety & Mood Support</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">Support during moments of low mood, worry, or uncertainty — a calming voice when needed.</p>
           </div>
-          <h3 class="text-xl font-semibold text-foreground mb-3">Anxiety & Mood Support</h3>
-          <p class="text-muted-foreground">Support during moments of low mood, worry, or uncertainty — a calming voice when needed.</p>
         </div>
-        <div class="bg-card border border-border rounded-lg p-6">
-          <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
-            <Icon name="tabler:stairs-down" class="w-6 h-6" />
+        
+        <div class="group relative rounded-2xl overflow-hidden bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 lg:col-span-2 min-h-[300px]">
+          <img 
+            src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=80"
+            alt="Daily Check-Ins"
+            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-l from-card via-card/80 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent"></div>
+          
+          <div class="relative h-full flex flex-col justify-end p-8 lg:items-end lg:text-right">
+            <div class="mb-4 lg:ml-auto">
+              <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/95 text-primary shadow-xl ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Icon name="tabler:phone-check" class="w-6 h-6" />
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">Daily Check-Ins</h3>
+            <p class="text-base text-muted-foreground leading-relaxed lg:max-w-md">Scheduled calls to maintain routine, offer reassurance, and monitor wellbeing.</p>
           </div>
-          <h3 class="text-xl font-semibold text-foreground mb-3">Step-Down Support</h3>
-          <p class="text-muted-foreground">Gradual reduction in physical presence as independence and confidence increase.</p>
         </div>
-        <div class="bg-card border border-border rounded-lg p-6">
-          <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
-            <Icon name="tabler:phone-check" class="w-6 h-6" />
+        
+        <!-- Row 3: Featured left + regular right (mirrors row 1) -->
+        <div class="group relative rounded-2xl overflow-hidden bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 lg:col-span-2 min-h-[300px]">
+          <img 
+            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80"
+            alt="Step-Down Support"
+            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-card via-card/80 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent"></div>
+          
+          <div class="relative h-full flex flex-col justify-end p-8">
+            <div class="mb-4">
+              <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/95 text-primary shadow-xl ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Icon name="tabler:stairs-down" class="w-6 h-6" />
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">Step-Down Support</h3>
+            <p class="text-base text-muted-foreground leading-relaxed max-w-md">Gradual reduction in physical presence as independence and confidence increase.</p>
           </div>
-          <h3 class="text-xl font-semibold text-foreground mb-3">Daily Check-Ins</h3>
-          <p class="text-muted-foreground">Scheduled calls to maintain routine, offer reassurance, and monitor wellbeing.</p>
         </div>
-        <div class="bg-card border border-border rounded-lg p-6">
-          <div class="bg-accent/10 text-accent p-3 rounded-lg w-fit mb-4">
-            <Icon name="tabler:devices" class="w-6 h-6" />
+        
+        <div class="group relative p-6 rounded-2xl bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
+          <div class="absolute -inset-px bg-gradient-to-b from-primary/[0.03] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="mb-4">
+              <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Icon name="tabler:devices" class="w-5 h-5" />
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">Technology-Enabled Care</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">Video calls, messaging, and digital tools to stay connected without physical visits.</p>
           </div>
-          <h3 class="text-xl font-semibold text-foreground mb-3">Technology-Enabled Care</h3>
-          <p class="text-muted-foreground">Video calls, messaging, and digital tools to stay connected without physical visits.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 3: Who Benefits -->
-  <section class="py-24 bg-background">
+  <!-- Section 3: Who Benefits - Visual grid with images -->
+  <section class="py-24 bg-muted/30 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-foreground mb-4">Who Benefits from Blended Support?</h2>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Who It's For</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">Who Benefits from Blended Support?</h2>
         <p class="text-lg text-muted-foreground max-w-2xl mx-auto">This model works best for individuals who need emotional support and routine structure, but not constant physical presence.</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <div class="bg-card border border-border rounded-lg p-8">
-          <div class="flex items-start gap-4">
-            <div class="bg-accent/10 text-accent p-2 rounded-lg flex-shrink-0">
-              <Icon name="tabler:home-move" class="w-5 h-5" />
+
+      <!-- Visual 3-column grid with image placeholders -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {whoBenefits.map((benefit, index) => (
+          <div class="group relative rounded-2xl overflow-hidden bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
+            <!-- Image placeholder area -->
+            <div class="relative h-40 overflow-hidden bg-muted">
+              <img 
+                src={[
+                  "https://images.unsplash.com/photo-1574167306337-f25ec8cae342?auto=format&fit=crop&w=600&q=80",
+                  "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80",
+                  "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80",
+                  "https://images.unsplash.com/photo-1529156069898-49953e87b3dc?auto=format&fit=crop&w=600&q=80",
+                  "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=600&q=80"
+                ][index]}
+                alt={benefit.title}
+                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent"></div>
+              
+              <!-- Icon overlay -->
+              <div class="absolute top-4 left-4">
+                <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/95 text-primary shadow-lg ring-1 ring-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                  <Icon name={benefit.icon} class="w-5 h-5" />
+                </div>
+              </div>
             </div>
-            <div>
-              <h3 class="text-lg font-semibold text-foreground mb-2">People Transitioning to Independence</h3>
-              <p class="text-muted-foreground">Moving from supported living to more independent settings, with ongoing reassurance.</p>
-            </div>
-          </div>
-        </div>
-        <div class="bg-card border border-border rounded-lg p-8">
-          <div class="flex items-start gap-4">
-            <div class="bg-accent/10 text-accent p-2 rounded-lg flex-shrink-0">
-              <Icon name="tabler:heart" class="w-5 h-5" />
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-foreground mb-2">Those Needing Emotional, Not Physical Support</h3>
-              <p class="text-muted-foreground">Individuals who benefit from connection and reassurance, without requiring hands-on care.</p>
-            </div>
-          </div>
-        </div>
-        <div class="bg-card border border-border rounded-lg p-8">
-          <div class="flex items-start gap-4">
-            <div class="bg-accent/10 text-accent p-2 rounded-lg flex-shrink-0">
-              <Icon name="tabler:arrow-down" class="w-5 h-5" />
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-foreground mb-2">Stepping Down from Higher-Level Care</h3>
-              <p class="text-muted-foreground">Reducing intensive support packages while maintaining confidence and routine.</p>
-            </div>
-          </div>
-        </div>
-        <div class="bg-card border border-border rounded-lg p-8">
-          <div class="flex items-start gap-4">
-            <div class="bg-accent/10 text-accent p-2 rounded-lg flex-shrink-0">
-              <Icon name="tabler:growth" class="w-5 h-5" />
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-foreground mb-2">Building Self-Management Skills</h3>
-              <p class="text-muted-foreground">Developing confidence in daily routines, decision-making, and personal organisation.</p>
+            
+            <!-- Content -->
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">{benefit.title}</h3>
+              <p class="text-sm text-muted-foreground leading-relaxed">{benefit.description}</p>
             </div>
           </div>
-        </div>
-        <div class="bg-card border border-border rounded-lg p-8 md:col-span-2">
-          <div class="flex items-start gap-4">
-            <div class="bg-accent/10 text-accent p-2 rounded-lg flex-shrink-0">
-              <Icon name="tabler:cloud-rain" class="w-5 h-5" />
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-foreground mb-2">Managing Anxiety, Low Mood, or Routine Challenges</h3>
-              <p class="text-muted-foreground">Regular check-ins and prompts provide structure, reassurance, and a safety net during difficult moments.</p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Section 4: How It Works -->
-  <section class="py-24 bg-secondary/30">
+  <!-- Section 4: How It Works - Horizontal steps -->
+  <section class="py-24 bg-background">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-foreground mb-4">How It Works</h2>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Process</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">How It Works</h2>
         <p class="text-lg text-muted-foreground max-w-2xl mx-auto">A simple, flexible process that evolves with your needs.</p>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="relative">
-          <div class="bg-card border border-border rounded-lg p-8 h-full">
-            <div class="bg-accent/10 text-accent font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center mb-4">1</div>
-            <h3 class="text-xl font-semibold text-foreground mb-3">Assessment</h3>
-            <p class="text-muted-foreground">Understand current needs, goals, and the right balance of in-person and remote support.</p>
-          </div>
+      
+      <!-- Horizontal timeline -->
+      <div class="relative">
+        <div class="hidden lg:block absolute top-12 left-[10%] right-[10%] h-px bg-gradient-to-r from-primary via-accent to-primary/30"></div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {howItWorks.map((step, index) => (
+            <div class="relative group">
+              <div class="relative p-6 rounded-2xl bg-card border border-border/70 hover:border-primary/30 transition-all duration-500 h-full hover:-translate-y-2">
+                <div class="absolute top-0 right-0 w-20 h-20 overflow-hidden rounded-tr-2xl">
+                  <div class="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-primary/10 to-transparent rotate-45 group-hover:from-primary/20 transition-colors duration-300"></div>
+                </div>
+                
+                <div class="mb-4">
+                  <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary text-primary-foreground font-bold text-lg shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform duration-300">
+                    {step.number}
+                  </div>
+                </div>
+                <h3 class="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{step.title}</h3>
+                <p class="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
-        <div class="relative">
-          <div class="bg-card border border-border rounded-lg p-8 h-full">
-            <div class="bg-accent/10 text-accent font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center mb-4">2</div>
-            <h3 class="text-xl font-semibold text-foreground mb-3">Blended Plan</h3>
-            <p class="text-muted-foreground">Create a personalised mix of face-to-face visits and scheduled remote check-ins.</p>
-          </div>
-        </div>
-        <div class="relative">
-          <div class="bg-card border border-border rounded-lg p-8 h-full">
-            <div class="bg-accent/10 text-accent font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center mb-4">3</div>
-            <h3 class="text-xl font-semibold text-foreground mb-3">Regular Review</h3>
-            <p class="text-muted-foreground">Adjust the balance as confidence and skills grow, ensuring support remains relevant.</p>
-          </div>
-        </div>
-        <div class="relative">
-          <div class="bg-card border border-border rounded-lg p-8 h-full">
-            <div class="bg-accent/10 text-accent font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center mb-4">4</div>
-            <h3 class="text-xl font-semibold text-foreground mb-3">Step-Down</h3>
-            <p class="text-muted-foreground">Gradually reduce support as independence increases, celebrating progress along the way.</p>
-          </div>
-        </div>
+      </div>
+      
+      <!-- CTA -->
+      <div class="mt-12 text-center">
+        <a href="/referral" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+          <span>Start Your Journey</span>
+          <Icon name="tabler:arrow-right" class="w-5 h-5" />
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Section 5: A Pathway Forward -->
-  <section class="py-24 bg-background">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="bg-accent/10 text-accent p-4 rounded-full w-fit mx-auto mb-6">
-        <Icon name="tabler:route" class="w-8 h-8" />
-      </div>
-      <h2 class="text-3xl font-bold text-foreground mb-6">A Pathway Forward</h2>
-      <div class="prose prose-lg max-w-none text-muted-foreground">
-        <p>Support is a stepping stone, not a final destination. As independence increases, individuals may reduce on-site support, transition into domiciliary care, or move toward greater autonomy.</p>
-        <p>The goal is always forward movement. Blended support provides the reassurance and structure needed during transitions, without creating unnecessary dependency.</p>
-        <p>Every person's journey is different. Our role is to adapt, encourage, and step back when the time is right.</p>
+  <!-- Section 5: A Pathway Forward - Visual split layout -->
+  <section class="py-24 bg-muted/30 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="relative order-2 lg:order-1">
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-primary/10">
+            <img 
+              src="https://images.unsplash.com/photo-1529156069898-49953e87b3dc?auto=format&fit=crop&w=900&q=80" 
+              alt="Person gaining independence"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-accent/10"></div>
+          </div>
+          
+          <!-- Floating stat cards -->
+          <div class="absolute -bottom-4 -right-4 bg-card border border-border/70 rounded-xl p-4 shadow-xl">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <Icon name="tabler:trending-up" class="w-5 h-5" />
+              </div>
+              <div>
+                <p class="text-xl font-bold text-foreground">85%</p>
+                <p class="text-xs text-muted-foreground">Independence gain</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="absolute -top-4 -left-4 bg-card border border-border/70 rounded-xl p-4 shadow-xl">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-accent/10 flex items-center justify-center text-accent">
+                <Icon name="tabler:heart-check" class="w-5 h-5" />
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-foreground">Person-Centred</p>
+                <p class="text-xs text-muted-foreground">Always</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="order-1 lg:order-2">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">Progression</p>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">A Pathway Forward</h2>
+          <div class="space-y-5 text-lg text-muted-foreground leading-relaxed mb-8">
+            <p>Support is a stepping stone, not a final destination. As independence increases, individuals may reduce on-site support, transition into domiciliary care, or move toward greater autonomy.</p>
+            <p>The goal is always forward movement. Blended support provides the reassurance and structure needed during transitions, without creating unnecessary dependency.</p>
+          </div>
+          
+          <div class="flex flex-wrap gap-3">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
+              <Icon name="tabler:check" class="w-4 h-4" />
+              <span>Adaptable support</span>
+            </div>
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-sm font-medium text-accent-foreground">
+              <Icon name="tabler:check" class="w-4 h-4" />
+              <span>Gradual transition</span>
+            </div>
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
+              <Icon name="tabler:check" class="w-4 h-4" />
+              <span>Celebrating milestones</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
