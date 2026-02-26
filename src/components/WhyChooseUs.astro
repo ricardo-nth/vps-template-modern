@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
+import featuredSection from '@assets/images/featured-section.jpg';
 
 interface Point {
   title: string;
@@ -12,7 +14,7 @@ interface Props {
   heading?: string;
   intro?: string;
   points?: Point[];
-  imageSrc?: string;
+  imageSrc?: ImageMetadata;
   imageAlt?: string;
   ctaText?: string;
   ctaHref?: string;
@@ -24,7 +26,7 @@ const {
   eyebrow = "Why Choose Us",
   heading = "[Your Differentiator Headline]",
   intro = "[Brief explanation of what sets you apart and why clients should choose you]",
-  imageSrc = "https://images.unsplash.com/photo-1584466977773-270f5fcd5864?auto=format&fit=crop&w=900&q=80",
+  imageSrc = featuredSection,
   imageAlt = "[Descriptive alt text]",
   ctaText,
   ctaHref,
@@ -102,11 +104,11 @@ const {
       <!-- Image Column -->
       <div class="order-1 lg:order-2 relative">
         <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/4] group">
-          <img
+          <Image
             src={imageSrc}
             alt={imageAlt}
             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1584466977773-270f5fcd5864?auto=format&fit=crop&w=900&q=80'; this.alt='Healthcare facility image';"
+            loading="lazy"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
           

@@ -1,11 +1,13 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
+import serviceGeneral from '@assets/images/service-general.jpg';
 
 interface Specialty {
   title: string;
   description: string;
   icon: string;
-  imageSrc: string;
+  imageSrc: ImageMetadata;
   features: string[];
 }
 
@@ -23,42 +25,42 @@ const {
       title: "Learning Disabilities",
       description: "Empowering individuals to reach their full potential through personalized support, skill-building, and active community engagement.",
       icon: "tabler:bulb",
-      imageSrc: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80",
+      imageSrc: serviceGeneral,
       features: ["Skill acquisition", "Community integration", "Personalized communication"]
     },
     {
       title: "Autism & Neurodiversity",
       description: "Structured, sensory-aware environments and communication support tailored to neurodiverse needs, reducing anxiety and promoting confidence.",
       icon: "tabler:puzzle",
-      imageSrc: "https://images.unsplash.com/photo-1606092195730-5d7b9af1ef4d?auto=format&fit=crop&w=800&q=80",
+      imageSrc: serviceGeneral,
       features: ["Sensory-friendly spaces", "Routine support", "Specialist staff training"]
     },
     {
       title: "Mental Health Support",
       description: "Recovery-focused support promoting emotional wellbeing, resilience, and community connection for those with enduring mental health needs.",
       icon: "tabler:brain",
-      imageSrc: "https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?auto=format&fit=crop&w=800&q=80",
+      imageSrc: serviceGeneral,
       features: ["Recovery model", "Crisis prevention", "Emotional resilience"]
     },
     {
       title: "Physical Disabilities",
       description: "Accessible housing and adaptive support enabling independence and active participation in daily life and the wider community.",
       icon: "tabler:wheelchair",
-      imageSrc: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80",
+      imageSrc: serviceGeneral,
       features: ["Accessible environments", "Adaptive technology", "Mobility support"]
     },
     {
       title: "Older Adults",
       description: "Dignified support for changing needs, maintaining independence, social connection, and quality of life in later years.",
       icon: "tabler:cane",
-      imageSrc: "https://images.unsplash.com/photo-1576765611791-374770ac4db8?auto=format&fit=crop&w=800&q=80",
+      imageSrc: serviceGeneral,
       features: ["Companionship", "Health monitoring", "Active ageing"]
     },
     {
       title: "Transitional Support",
       description: "Guiding young adults from care, college, or family homes into independent adult life with confidence and practical skill development.",
       icon: "tabler:walk",
-      imageSrc: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
+      imageSrc: serviceGeneral,
       features: ["Life skills training", "Education support", "Tenancy management"]
     }
   ]
@@ -77,11 +79,11 @@ const {
         <div class="group bg-card border border-border rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
           <div class="relative h-48 overflow-hidden">
             <div class="absolute inset-0 bg-primary/20 z-10 group-hover:bg-primary/10 transition-colors duration-300"></div>
-            <img 
+            <Image 
               src={specialty.imageSrc} 
               alt={specialty.title}
               class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80'; this.alt='Healthcare specialty placeholder';"
+              loading="lazy"
             />
             <div class="absolute bottom-4 left-4 z-20 bg-background/90 backdrop-blur-sm p-2 rounded-lg shadow-sm">
               <Icon name={specialty.icon} class="w-6 h-6 text-primary" />

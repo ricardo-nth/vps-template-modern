@@ -1,11 +1,13 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
+import careFacility from '@assets/images/care-facility.jpg';
 
 interface Service {
   title: string;
   description: string;
   href?: string;
-  imageSrc?: string;
+  imageSrc?: ImageMetadata;
   imageAlt?: string;
   icon?: string;
 }
@@ -30,35 +32,35 @@ const {
       title: "[Service 1]",
       description: "[Brief description of this service and its benefits]",
       href: "#service-1",
-      imageSrc: "https://images.unsplash.com/photo-1576765611791-374770ac4db8?auto=format&fit=crop&w=800&q=80",
+      imageSrc: careFacility,
       imageAlt: "[Descriptive alt text]",
     },
     {
       title: "[Service 2]",
       description: "[Brief description of this service and its benefits]",
       href: "#service-2",
-      imageSrc: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80",
+      imageSrc: careFacility,
       imageAlt: "[Descriptive alt text]",
     },
     {
       title: "[Service 3]",
       description: "[Brief description of this service and its benefits]",
       href: "#service-3",
-      imageSrc: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80",
+      imageSrc: careFacility,
       imageAlt: "[Descriptive alt text]",
     },
     {
       title: "[Service 4]",
       description: "[Brief description of this service and its benefits]",
       href: "#service-4",
-      imageSrc: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=800&q=80",
+      imageSrc: careFacility,
       imageAlt: "[Descriptive alt text]",
     },
     {
       title: "[Service 5]",
       description: "[Brief description of this service and its benefits]",
       href: "#service-5",
-      imageSrc: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
+      imageSrc: careFacility,
       imageAlt: "[Descriptive alt text]",
     },
   ],
@@ -107,11 +109,11 @@ const {
         >
           <!-- Image Background -->
           <div class="absolute inset-0">
-            <img
+            <Image
               src={service.imageSrc}
               alt={service.imageAlt || service.title}
               class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80'; this.alt='Healthcare service placeholder';"
+              loading="lazy"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 transition-opacity group-hover:opacity-80"></div>
           </div>

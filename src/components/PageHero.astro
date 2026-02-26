@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
+import heroBg from '@assets/images/hero-bg.jpg';
 
 interface Props {
   heading: string;
@@ -8,7 +10,7 @@ interface Props {
   primaryCtaHref?: string;
   secondaryCtaText?: string;
   secondaryCtaHref?: string;
-  imageSrc?: string;
+  imageSrc?: ImageMetadata;
   imageAlt?: string;
   socialProofTitle?: string;
   socialProofSubtitle?: string;
@@ -22,7 +24,7 @@ const {
   primaryCtaHref = "/contact",
   secondaryCtaText,
   secondaryCtaHref,
-  imageSrc = "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+  imageSrc = heroBg,
   imageAlt = "[Descriptive alt text]",
   socialProofTitle = "[Social Proof Title]",
   socialProofSubtitle = "[Social proof subtitle]",
@@ -62,11 +64,11 @@ const {
         ) : (
           <>
             <div class="absolute inset-0 h-5/6 m-auto bg-gradient-to-tr from-white/10 to-transparent rounded-[2rem] transform rotate-3"></div>
-            <img
+            <Image
               src={imageSrc}
               alt={imageAlt}
               class="relative rounded-[2rem] shadow-2xl object-cover w-full h-5/6 transform -rotate-3 transition-transform hover:rotate-0 duration-700"
-              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=2070&q=80'; this.alt='Healthcare hero image';"
+              loading="eager"
             />
             
             {/* Floating Card */}
