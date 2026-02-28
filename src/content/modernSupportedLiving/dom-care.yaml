@@ -30,6 +30,49 @@ hero:
   socialProofTitle: 420+ Weekly Visits Delivered
   socialProofSubtitle: Continuity-led care with practical daily impact
   socialProofCountLabel: 97% on-time visit performance
+outcomesSnapshot:
+  heading: Domiciliary Care Outcomes Snapshot
+  intro: Operational performance indicators that matter to families and referral teams.
+  stats:
+    - value: 97%
+      label: On-Time Visit Performance
+      detail: Visits delivered within scheduled windows.
+    - value: 95%
+      label: Continuity of Primary Carers
+      detail: Service users regularly see familiar care staff.
+    - value: 96%
+      label: Family Satisfaction
+      detail: Confidence in communication, reliability, and care quality.
+serviceFit:
+  badgeLabel: Service Fit
+  heading: Who This Domiciliary Care Service Is Best For
+  intro: This pathway is designed for adults who need practical day-to-day support at home with dependable scheduling and continuity.
+  suitableForTitle: Usually a Strong Fit For
+  suitableFor:
+    - Adults needing reliable personal care, medication prompts, or mobility support at home.
+    - Families requiring consistent routines and clear communication updates.
+    - Discharge pathways needing structured reablement and reduced readmission risk.
+  alternativeSupportTitle: Better Directed Elsewhere When
+  alternativeSupport:
+    - A tenancy-based supported living pathway is required as the primary model.
+    - The referral requires specialist inpatient or residential provision.
+    - There is no requirement for planned visit scheduling or continuity-led coverage.
+firstThirtyDays:
+  heading: What the First 30 Days Looks Like
+  intro: We prioritise safety, consistency, and practical routine stabilisation from week one.
+  milestones:
+    - dayRange: Days 1-7
+      title: Home Assessment and Immediate Priorities
+      description: Confirm care tasks, medication protocols, risks, and communication expectations with all key contacts.
+      icon: tabler:home-check
+    - dayRange: Days 8-14
+      title: Carer Matching and Routine Lock-In
+      description: Assign continuity-focused carers and stabilise visit windows aligned to the person's daily rhythm.
+      icon: tabler:users-group
+    - dayRange: Days 15-30
+      title: Review, Optimise, and Confirm Outcomes
+      description: Validate visit reliability, check outcomes against agreed goals, and adjust package intensity where needed.
+      icon: tabler:chart-bar
 careDeliveryProcess:
   badgeLabel: The Journey
   heading: How We Deliver Domiciliary Care
@@ -112,6 +155,18 @@ serviceSpecialties:
         - Recovery goals
         - Daily routine rebuilding
         - Progress reviews
+faqSection:
+  heading: Domiciliary Care Referral FAQs
+  intro: Practical answers for families, discharge teams, and commissioners.
+  items:
+    - question: How quickly can domiciliary packages begin?
+      answer: Timelines vary by complexity and risk, but urgent referrals are triaged quickly with clear mobilisation updates and start-date visibility.
+    - question: How do you maintain continuity of carers?
+      answer: We use continuity-led rostering with backup planning so service users have familiar carers while maintaining safe cover for absence.
+    - question: Can visit schedules be changed if needs evolve?
+      answer: Yes. We review care regularly and can increase, decrease, or re-time visits as health, routines, or family circumstances change.
+    - question: How are concerns escalated out of hours?
+      answer: Active packages have escalation pathways and urgent updates are monitored 24/7, with documented communication to relevant contacts.
 contactSection:
   heading: Plan Home Care Around Daily Reality
   intro: Tell us your referral needs and we will shape a practical domiciliary package with clear outcomes.

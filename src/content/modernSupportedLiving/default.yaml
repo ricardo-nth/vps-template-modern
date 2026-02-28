@@ -30,6 +30,49 @@ hero:
   socialProofTitle: 140+ Active Supported Living Placements
   socialProofSubtitle: Outcome-led plans with stable tenancy focus
   socialProofCountLabel: 92% tenancy sustainment after 12 months
+outcomesSnapshot:
+  heading: Supported Living Outcomes Snapshot
+  intro: Clear operational metrics that commissioners, families, and care managers can track.
+  stats:
+    - value: 92%
+      label: Tenancy Sustainment
+      detail: Placements that remain stable at 12 months.
+    - value: 96%
+      label: Family and Commissioner Satisfaction
+      detail: Reported confidence in care quality and communication.
+    - value: 100%
+      label: Mandatory Training Compliance
+      detail: Frontline staff up to date on required competencies.
+serviceFit:
+  badgeLabel: Service Fit
+  heading: Who This Supported Living Service Is Best For
+  intro: We work best where a person has tenancy goals and benefits from structured support that can reduce risk while increasing independence.
+  suitableForTitle: Usually a Strong Fit For
+  suitableFor:
+    - Adults with complex needs moving into or sustaining community tenancies.
+    - Referrals needing measurable life-skills progression and tenancy milestones.
+    - Families or commissioners seeking lower placement-breakdown risk.
+  alternativeSupportTitle: Better Directed Elsewhere When
+  alternativeSupport:
+    - The person needs short-duration clinical intervention as the primary service.
+    - Daily support is limited to brief home visits without tenancy progression goals.
+    - The requested model has no requirement for outcome tracking or review governance.
+firstThirtyDays:
+  heading: What the First 30 Days Looks Like
+  intro: Early delivery focuses on safe onboarding, predictable routines, and baseline outcome visibility.
+  milestones:
+    - dayRange: Days 1-7
+      title: Referral Confirmation and Risk Baseline
+      description: Finalise referral scope, complete baseline risk checks, and align immediate safeguarding actions.
+      icon: tabler:clipboard-check
+    - dayRange: Days 8-14
+      title: Co-Produced Support Plan Activation
+      description: Launch goals, routines, communication preferences, and escalation pathways agreed with key stakeholders.
+      icon: tabler:route
+    - dayRange: Days 15-30
+      title: Outcome Tracking and First Formal Review
+      description: Measure early progress, address friction points, and agree any plan adjustments before month two.
+      icon: tabler:chart-line
 careDeliveryProcess:
   badgeLabel: The Journey
   heading: How We Deliver Supported Living
@@ -112,6 +155,18 @@ serviceSpecialties:
         - Tenancy readiness work
         - Household management skills
         - Family and professional liaison
+faqSection:
+  heading: Supported Living Referral FAQs
+  intro: Practical answers for referral teams and families planning placements.
+  items:
+    - question: How quickly can you start supported living packages?
+      answer: Start timelines depend on risk profile and placement complexity, but we prioritise urgent referrals with a structured readiness process and clear mobilisation milestones.
+    - question: How do you report outcomes to commissioners and families?
+      answer: We provide scheduled progress reviews against agreed goals, with documented actions, risk updates, and measurable outcome status.
+    - question: Can support levels change after the package starts?
+      answer: Yes. Support plans are designed to adapt as needs, risks, and independence goals change, with formal review points and responsive updates in between.
+    - question: Do you support transition from residential settings?
+      answer: Yes. Transition planning is one of our core pathways, including readiness work, routine building, and close liaison with professionals and families.
 contactSection:
   heading: Plan Supported Living Around Clear Outcomes
   intro: Share your referral goals and we will design a practical tenancy-based pathway with transparent review milestones.
