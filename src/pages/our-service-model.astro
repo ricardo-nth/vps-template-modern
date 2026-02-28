@@ -1,52 +1,78 @@
 ---
 import SiteLayout from '@layouts/SiteLayout.astro';
+import { getEntry } from 'astro:content';
 import PageHero from '@components/PageHero.astro';
 import WhyChooseUs from '@components/WhyChooseUs.astro';
 import CqcJourney from '@components/CqcJourney.astro';
 import ContactSection from '@components/ContactSection.astro';
+import { getModernImage } from '@/lib/content/imageRegistry';
 
-const metadata = {
-  title: 'Our Approach - [Business Name]',
-  description: '[Your approach page meta description - summarize your methodology in 150-160 characters]',
-  schema: {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: 'Our Approach',
-    description: '[Your approach description for search engines]'
-  }
-};
+const serviceModelEntry = await getEntry('modernServiceModel', 'default');
+const serviceModelDomEntry = await getEntry('modernServiceModel', 'dom-care');
+if (!serviceModelEntry) {
+  throw new Error('Missing content entry: modernServiceModel/default');
+}
+if (!serviceModelDomEntry) {
+  throw new Error('Missing content entry: modernServiceModel/dom-care');
+}
+
+const metadata = serviceModelEntry.data.metadata;
+const profiles = [
+  { key: 'supported-living', content: serviceModelEntry.data },
+  { key: 'dom-care', content: serviceModelDomEntry.data },
+] as const;
 ---
 
 <SiteLayout metadata={metadata}>
-  <PageHero
-    heading="[Your Approach Headline] <span class='text-accent'>[Highlight]</span>"
-    subheading="[Brief description of your approach and methodology]"
-    primaryCtaText="Contact Us"
-    primaryCtaHref="/contact"
-    secondaryCtaText="Our Values"
-    secondaryCtaHref="#values"
-    imageSrc="https://images.unsplash.com/photo-1584466977773-270f5fcd5864?auto=format&fit=crop&w=2070&q=80"
-    imageAlt="[Descriptive alt text]"
-  />
+  <div data-care-profile-switcher>
+    {profiles.map(({ key, content }) => (
+      <div data-care-profile-panel={key} class:list={{ hidden: key !== 'supported-living' }}>
+        <PageHero
+          heading={content.hero.heading}
+          subheading={content.hero.subheading}
+          primaryCtaText={content.hero.primaryCtaText}
+          primaryCtaHref={content.hero.primaryCtaHref}
+          secondaryCtaText={content.hero.secondaryCtaText}
+          secondaryCtaHref={content.hero.secondaryCtaHref}
+          imageSrc={getModernImage(content.hero.imageKey)}
+          imageAlt={content.hero.imageAlt}
+        />
 
-  <WhyChooseUs
-    eyebrow="Our Ethos"
-    heading="[Why Clients Choose You]"
-    intro="[Brief description of your values and what makes your approach unique]"
-    imageSrc="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-    imageAlt="Healthcare team providing quality care"
-    id="values"
-  />
+        <WhyChooseUs
+          eyebrow={content.whyChooseUs.eyebrow}
+          heading={content.whyChooseUs.heading}
+          intro={content.whyChooseUs.intro}
+          imageSrc={getModernImage(content.whyChooseUs.imageKey)}
+          imageAlt={content.whyChooseUs.imageAlt}
+          id={content.whyChooseUs.id}
+          points={content.whyChooseUs.points}
+          testimonial={content.whyChooseUs.testimonial}
+        />
 
-  <CqcJourney />
+        <CqcJourney
+          badgeLabel={content.cqcJourney.badgeLabel}
+          heading={content.cqcJourney.heading}
+          subheading={content.cqcJourney.subheading}
+          steps={content.cqcJourney.steps}
+        />
 
-  <ContactSection
-    heading="[Your CTA Headline]"
-    intro="[Brief call-to-action encouraging visitors to contact you]"
-    phoneLabel="[Your Phone]"
-    phoneHref="tel:[Your Phone]"
-    emailLabel="[Your Email]"
-    emailHref="mailto:[Your Email]"
-    address="[Your City, Region]"
-  />
+        <ContactSection
+          heading={content.contactSection.heading}
+          intro={content.contactSection.intro}
+          phoneLabel={content.contactSection.phoneLabel}
+          phoneHref={content.contactSection.phoneHref}
+          emailLabel={content.contactSection.emailLabel}
+          emailHref={content.contactSection.emailHref}
+          emailButtonText={content.contactSection.emailButtonText}
+          address={content.contactSection.address}
+          officeTitle={content.contactSection.officeTitle}
+          officeDirectionsText={content.contactSection.officeDirectionsText}
+          officeDirectionsHref={content.contactSection.officeDirectionsHref}
+          hoursTitle={content.contactSection.hoursTitle}
+          officeHours={content.contactSection.officeHours}
+          hoursNote={content.contactSection.hoursNote}
+        />
+      </div>
+    ))}
+  </div>
 </SiteLayout>

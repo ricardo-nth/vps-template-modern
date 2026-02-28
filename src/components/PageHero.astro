@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import heroBg from '@assets/images/hero-bg.jpg';
+import { careProfileConfig } from '@/config/site';
 
 interface Props {
   heading: string;
@@ -15,6 +16,10 @@ interface Props {
   socialProofTitle?: string;
   socialProofSubtitle?: string;
   socialProofCountLabel?: string;
+  profileContent?: {
+    'supported-living'?: { heading?: string; subheading?: string };
+    'dom-care'?: { heading?: string; subheading?: string };
+  };
 }
 
 const {
@@ -29,19 +34,23 @@ const {
   socialProofTitle = "[Social Proof Title]",
   socialProofSubtitle = "[Social proof subtitle]",
   socialProofCountLabel = "[+X]",
+  profileContent = {},
 } = Astro.props as Props;
+
+const profileRootId = `care-profile-content-${Math.random().toString(36).slice(2, 10)}`;
+const { defaultProfile } = careProfileConfig;
 ---
 
-<section class="relative bg-primary py-12 lg:py-2 overflow-hidden">
+<section id={profileRootId} class="relative bg-primary py-12 lg:py-2 overflow-hidden" data-care-profile-content>
   <div class="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       <div class="text-center lg:text-left">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 tracking-tight">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 tracking-tight" data-care-field="heading">
           <Fragment set:html={heading} />
         </h1>
         {subheading && (
-          <p class="text-xl text-primary-foreground/90 max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed">
+          <p class="text-xl text-primary-foreground/90 max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed" data-care-field="subheading">
             {subheading}
           </p>
         )}
@@ -135,3 +144,24 @@ const {
 
   .delay-300 { animation-delay: 300ms; }
 </style>
+
+<script is:inline define:vars={{ profileContent, profileRootId, defaultProfile }}>
+  (() => {
+    const root = document.getElementById(profileRootId);
+    if (!root || !profileContent) return;
+
+    const apply = (profile) => {
+      const data = profileContent[profile];
+      if (!data) return;
+      const headingNode = root.querySelector('[data-care-field="heading"]');
+      const subheadingNode = root.querySelector('[data-care-field="subheading"]');
+      if (headingNode && data.heading) headingNode.innerHTML = data.heading;
+      if (subheadingNode && data.subheading) subheadingNode.textContent = data.subheading;
+    };
+
+    apply(document.documentElement.dataset.careProfile || defaultProfile);
+    window.addEventListener('care-profile-change', (event) => {
+      apply(event.detail?.profile || defaultProfile);
+    });
+  })();
+</script>

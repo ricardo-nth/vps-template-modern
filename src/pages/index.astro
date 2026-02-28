@@ -1,159 +1,113 @@
 ---
-/**
- * index.astro - Homepage
- *
- * Demonstrates the full implementation of:
- * - Two-tier layout system (TechnicalLayout → SiteLayout)
- * - SEO optimization with meta tags and schema markup
- * - Image optimization with Astro's Image component
- * - Tailwind CSS styling
- * - Performance best practices
- */
-
 import SiteLayout from '../layouts/SiteLayout.astro';
-
-// ============================================================================
-// HEALTHCARE IMPORTS (Active)
-// ============================================================================
+import { getEntry } from 'astro:content';
 import Hero from '../components/Hero.astro';
 import ServicesOverview from '../components/ServicesOverview.astro';
 import AboutUs from '../components/AboutUs.astro';
 import WhyChooseUs from '../components/WhyChooseUs.astro';
 import TeamSection from '../components/TeamSection.astro';
 import ContactSection from '../components/ContactSection.astro';
+import { getModernImage } from '@/lib/content/imageRegistry';
 
-// Page metadata
-const metadata = {
-  title: 'Home - [Business Name]',
-  description: '[Your homepage meta description - summarize your business and key services in 150-160 characters]',
-  schema: {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: 'Home - [Business Name]',
-    description: '[Your homepage description for search engines]',
-  },
-};
+const homeEntry = await getEntry('modernHome', 'default');
+const homeDomEntry = await getEntry('modernHome', 'dom-care');
+if (!homeEntry) {
+  throw new Error('Missing content entry: modernHome/default');
+}
+if (!homeDomEntry) {
+  throw new Error('Missing content entry: modernHome/dom-care');
+}
+
+const metadata = homeEntry.data.metadata;
+const profiles = [
+  { key: 'supported-living', content: homeEntry.data },
+  { key: 'dom-care', content: homeDomEntry.data },
+] as const;
 ---
 
 <SiteLayout metadata={metadata}>
+  <div data-care-profile-switcher>
+    {profiles.map(({ key, content }) => (
+      <div data-care-profile-panel={key} class:list={{ hidden: key !== 'supported-living' }}>
+        <Hero
+          heading={content.hero.heading}
+          subheading={content.hero.subheading}
+          profileContent={content.hero.profileContent}
+          primaryCtaText={content.hero.primaryCtaText}
+          primaryCtaHref={content.hero.primaryCtaHref}
+          secondaryCtaText={content.hero.secondaryCtaText}
+          secondaryCtaHref={content.hero.secondaryCtaHref}
+          rating={content.hero.rating}
+          ratingLabel={content.hero.ratingLabel}
+          imageSrc={getModernImage(content.hero.imageKey)}
+          imageAlt={content.hero.imageAlt}
+          socialProofTitle={content.hero.socialProofTitle}
+          socialProofSubtitle={content.hero.socialProofSubtitle}
+          socialProofCountLabel={content.hero.socialProofCountLabel}
+        />
 
-  <!-- ============================================================================
-       HEALTHCARE HOMEPAGE CONTENT (Active)
-       ============================================================================ -->
+        <ServicesOverview
+          eyebrow={content.servicesOverview.eyebrow}
+          heading={content.servicesOverview.heading}
+          intro={content.servicesOverview.intro}
+          ctaText={content.servicesOverview.ctaText}
+          ctaHref={content.servicesOverview.ctaHref}
+          services={content.servicesOverview.services.map(({ imageKey, ...service }) => ({
+            ...service,
+            imageSrc: getModernImage(imageKey),
+          }))}
+        />
 
-  <!-- Hero Section -->
-  <Hero
-    heading="[Your Headline] - [What Makes You Different]"
-    subheading="[Brief description of your services and the value you provide to clients]"
-    primaryCtaText="Our Services"
-    primaryCtaHref="#services"
-    secondaryCtaText="Contact Us"
-    secondaryCtaHref="#contact"
-    rating="[Rating]"
-    ratingLabel="[Rating Source]"
-    imageSrc="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-    imageAlt="[Descriptive alt text for hero image]"
-  />
+        <AboutUs
+          eyebrow={content.aboutUs.eyebrow}
+          heading={content.aboutUs.heading}
+          description={content.aboutUs.description}
+          imageSrc={getModernImage(content.aboutUs.imageKey)}
+          imageAlt={content.aboutUs.imageAlt}
+          phoneLabel={content.aboutUs.phoneLabel}
+          phoneHref={content.aboutUs.phoneHref}
+          sectionId={content.aboutUs.sectionId}
+        />
 
-  <!-- Services Section -->
-  <ServicesOverview
-    eyebrow="Our Services"
-    heading="[Your Services Headline]"
-    intro="[Brief overview of your services and expertise]"
-    ctaText="View Services"
-    ctaHref="/services"
-    services={[
-      {
-        title: "[Service 1]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-1",
-        imageSrc: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
-      },
-      {
-        title: "[Service 2]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-2",
-        imageSrc: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
-      },
-      {
-        title: "[Service 3]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-3",
-        imageSrc: "https://images.unsplash.com/photo-1576765611791-374770ac4db8?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
-      },
-      {
-        title: "[Service 4]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-4",
-        imageSrc: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
-      },
-      {
-        title: "[Service 5]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-5",
-        imageSrc: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
-      }
-    ]}
-  />
+        <WhyChooseUs
+          eyebrow={content.whyChooseUs.eyebrow}
+          heading={content.whyChooseUs.heading}
+          intro={content.whyChooseUs.intro}
+          imageSrc={getModernImage(content.whyChooseUs.imageKey)}
+          imageAlt={content.whyChooseUs.imageAlt}
+          ctaText={content.whyChooseUs.ctaText}
+          ctaHref={content.whyChooseUs.ctaHref}
+          class={content.whyChooseUs.className}
+          points={content.whyChooseUs.points}
+          testimonial={content.whyChooseUs.testimonial}
+        />
 
-  <!-- About Us Section -->
-  <AboutUs
-    imageSrc="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80"
-    imageAlt="Healthcare professionals providing care"
-  />
+        <TeamSection
+          heading={content.teamSection.heading}
+          intro={content.teamSection.intro}
+          members={content.teamSection.members.map(({ imageKey, ...member }) => ({
+            ...member,
+            image: getModernImage(imageKey),
+          }))}
+        />
 
-  <!-- Why Choose Us Section -->
-  <WhyChooseUs
-    eyebrow="Why Choose Us"
-    heading="[Your Differentiator Headline]"
-    intro="[Brief explanation of what sets you apart and why clients should choose you]"
-    imageSrc="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-    imageAlt="Healthcare team collaborating"
-    ctaText="Learn Our Approach"
-    ctaHref="/our-service-model"
-    class="bg-secondary/30"
-    points={[
-      {
-        title: "[Differentiator 1]",
-        description: "[Brief description of this benefit or credential]",
-        iconName: "tabler:shield-check"
-      },
-      {
-        title: "[Differentiator 2]",
-        description: "[Brief description of this benefit or credential]",
-        iconName: "tabler:heart-handshake"
-      },
-      {
-        title: "[Differentiator 3]",
-        description: "[Brief description of this benefit or credential]",
-        iconName: "tabler:users-group"
-      },
-      {
-        title: "[Differentiator 4]",
-        description: "[Brief description of this benefit or credential]",
-        iconName: "tabler:building-community"
-      }
-    ]}
-  />
-
-  <!-- Team Section -->
-  <TeamSection
-    heading="Meet Our Team"
-    intro="[Brief description of your team and their expertise]"
-  />
-
-  <!-- Contact Section -->
-  <ContactSection
-    heading="Get In Touch"
-    intro="[Brief call-to-action encouraging visitors to contact you]"
-    phoneLabel="[Your Phone]"
-    phoneHref="tel:[Your Phone]"
-    address="[Your City, Region]"
-  />
-
+        <ContactSection
+          heading={content.contactSection.heading}
+          intro={content.contactSection.intro}
+          phoneLabel={content.contactSection.phoneLabel}
+          phoneHref={content.contactSection.phoneHref}
+          emailLabel={content.contactSection.emailLabel}
+          emailHref={content.contactSection.emailHref}
+          emailButtonText={content.contactSection.emailButtonText}
+          address={content.contactSection.address}
+          officeTitle={content.contactSection.officeTitle}
+          officeDirectionsText={content.contactSection.officeDirectionsText}
+          officeDirectionsHref={content.contactSection.officeDirectionsHref}
+          hoursTitle={content.contactSection.hoursTitle}
+          officeHours={content.contactSection.officeHours}
+          hoursNote={content.contactSection.hoursNote}
+        />
+      </div>
+    ))}
+  </div>
 </SiteLayout>

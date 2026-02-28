@@ -9,12 +9,14 @@ interface Step {
 }
 
 interface Props {
+  badgeLabel?: string;
   heading?: string;
   subheading?: string;
   steps?: Step[];
 }
 
 const {
+  badgeLabel = 'Registration Status',
   heading = "Our Path to CQC Registration",
   subheading = "We are committed to full regulatory compliance and transparency as we work towards becoming a registered Supported Living provider.",
   steps = [
@@ -55,7 +57,7 @@ const {
     <div class="text-center mb-16">
       <div class="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary mb-6">
         <span class="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
-        Registration Status
+        {badgeLabel}
       </div>
       <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-6">{heading}</h2>
       <p class="text-lg text-muted-foreground">{subheading}</p>

@@ -8,7 +8,14 @@ interface Props {
   phoneHref?: string;
   emailLabel?: string;
   emailHref?: string;
+  emailButtonText?: string;
   address?: string;
+  officeTitle?: string;
+  officeDirectionsText?: string;
+  officeDirectionsHref?: string;
+  hoursTitle?: string;
+  officeHours?: { day: string; time: string }[];
+  hoursNote?: string;
 }
 
 const {
@@ -18,7 +25,18 @@ const {
   phoneHref = "tel:[Your Phone]",
   emailLabel = "[Your Email]",
   emailHref = "mailto:[Your Email]",
-  address = "[Your City, Region]"
+  emailButtonText = "Email Us",
+  address = "[Your City, Region]",
+  officeTitle = "Head Office",
+  officeDirectionsText = "Get Directions",
+  officeDirectionsHref = "#",
+  hoursTitle = "Office Hours",
+  officeHours = [
+    { day: 'Monday - Friday', time: '9:00 AM - 6:00 PM' },
+    { day: 'Saturday', time: '10:00 AM - 4:00 PM' },
+    { day: 'Sunday', time: 'Closed' },
+  ],
+  hoursNote = '* Emergency support available 24/7 for existing clients',
 } = Astro.props as Props;
 ---
 
@@ -54,7 +72,7 @@ const {
             class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-foreground/10 border border-white/30 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
           >
             <Icon name="tabler:mail" size="24" />
-            Email Us
+            {emailButtonText}
           </a>
         </div>
       </div>
@@ -68,12 +86,12 @@ const {
               <Icon name="tabler:map-pin" size="24" class="text-primary" />
             </div>
             <div>
-              <h3 class="text-xl font-bold mb-2">Head Office</h3>
+              <h3 class="text-xl font-bold mb-2">{officeTitle}</h3>
               <p class="text-primary-foreground/80 leading-relaxed">
                 {address}
               </p>
-              <a href="#" class="inline-block mt-4 text-sm font-semibold border-b border-white/40 hover:border-white transition-colors" aria-label="Get directions (coming soon)">
-                Get Directions &rarr;
+              <a href={officeDirectionsHref} class="inline-block mt-4 text-sm font-semibold border-b border-white/40 hover:border-white transition-colors">
+                {officeDirectionsText} &rarr;
               </a>
             </div>
           </div>
@@ -86,23 +104,17 @@ const {
               <Icon name="tabler:clock-hour-4" size="24" class="text-primary" />
             </div>
             <div>
-              <h3 class="text-xl font-bold mb-2">Office Hours</h3>
+              <h3 class="text-xl font-bold mb-2">{hoursTitle}</h3>
               <ul class="space-y-2 text-muted-foreground">
-                <li class="flex justify-between gap-8">
-                  <span>Monday - Friday</span>
-                  <span class="font-medium text-foreground">9:00 AM - 6:00 PM</span>
-                </li>
-                <li class="flex justify-between gap-8">
-                  <span>Saturday</span>
-                  <span class="font-medium text-foreground">10:00 AM - 4:00 PM</span>
-                </li>
-                <li class="flex justify-between gap-8">
-                  <span>Sunday</span>
-                  <span class="font-medium text-foreground">Closed</span>
-                </li>
+                {officeHours.map((slot) => (
+                  <li class="flex justify-between gap-8">
+                    <span>{slot.day}</span>
+                    <span class="font-medium text-foreground">{slot.time}</span>
+                  </li>
+                ))}
               </ul>
               <p class="mt-4 text-xs text-muted-foreground bg-muted p-2 rounded">
-                * Emergency support available 24/7 for existing clients
+                {hoursNote}
               </p>
             </div>
           </div>

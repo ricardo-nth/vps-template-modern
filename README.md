@@ -62,6 +62,24 @@ Includes a supported living example at `/services/supported-living` with complia
 - `pnpm preview` — Preview production build
 - `pnpm astro` — Run Astro CLI
 
+## Dual-Profile Shipping Mode
+
+This template supports canonical-URL dual-profile preview (Supported Living + Domiciliary Care) and a single-profile production mode.
+
+- Preview mode (default):
+  - `PUBLIC_CARE_PROFILE_PREVIEW=true`
+  - Top profile toggle is shown and selection persists with `localStorage`.
+- Production handoff mode:
+  - `PUBLIC_CARE_PROFILE_PREVIEW=false`
+  - `PUBLIC_DEFAULT_CARE_PROFILE=supported-living` or `dom-care`
+  - Toggle UI is hidden and pages render as a single profile on clean URLs.
+
+Example production build for Domiciliary Care:
+
+```bash
+PUBLIC_CARE_PROFILE_PREVIEW=false PUBLIC_DEFAULT_CARE_PROFILE=dom-care pnpm build
+```
+
 ## Need Professional Help?
 
 Visit https://vertexplatformsolutions.com/offers/healthcare-agencies

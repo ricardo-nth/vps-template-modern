@@ -1,157 +1,120 @@
 ---
 import SiteLayout from '@layouts/SiteLayout.astro';
+import { getEntry } from 'astro:content';
 import TeamSection from '@components/TeamSection.astro';
 import PageHero from '@components/PageHero.astro';
 import Icon from '@components/Icon.astro';
+import { getModernImage } from '@/lib/content/imageRegistry';
 
-const metadata = {
-  title: 'About Us - [Business Name]',
-  description: '[Your about page meta description - summarize your company story and values in 150-160 characters]',
-  schema: {
-    '@context': 'https://schema.org',
-    '@type': 'AboutPage',
-    name: 'About Us',
-    description: '[Your about page description for search engines]'
-  }
-};
+const aboutEntry = await getEntry('modernAbout', 'default');
+const aboutDomEntry = await getEntry('modernAbout', 'dom-care');
+if (!aboutEntry) {
+  throw new Error('Missing content entry: modernAbout/default');
+}
+if (!aboutDomEntry) {
+  throw new Error('Missing content entry: modernAbout/dom-care');
+}
 
-// Data Structures
-const stats = [
-  { value: '[X]+', label: '[Stat 1 Label]' },
-  { value: '[X]+', label: '[Stat 2 Label]' },
-  { value: '[X]%', label: '[Stat 3 Label]' },
-  { value: '[X]', label: '[Stat 4 Label]' },
-];
-
-const values = [
-  {
-    title: '[Value 1]',
-    description: '[Brief description of this core value and how it guides your work]',
-    icon: 'tabler:heart'
-  },
-  {
-    title: '[Value 2]',
-    description: '[Brief description of this core value and how it guides your work]',
-    icon: 'tabler:award'
-  },
-  {
-    title: '[Value 3]',
-    description: '[Brief description of this core value and how it guides your work]',
-    icon: 'tabler:user'
-  },
-  {
-    title: '[Value 4]',
-    description: '[Brief description of this core value and how it guides your work]',
-    icon: 'tabler:users-group'
-  }
-];
-
-const storyContent = {
-  heading: "Our Journey",
-  subheading: "[Your story subheadline]",
-  paragraphs: [
-    "[First paragraph about how your company started and your founding vision]",
-    "[Second paragraph about your growth and what you've achieved]",
-    "[Third paragraph about your current impact and future aspirations]"
-  ]
-};
-
+const metadata = aboutEntry.data.metadata;
+const profiles = [
+  { key: 'supported-living', content: aboutEntry.data },
+  { key: 'dom-care', content: aboutDomEntry.data },
+] as const;
 ---
 
 <SiteLayout metadata={metadata}>
-  
-  <PageHero
-    heading='[Your About Page Headline] <span class="text-accent">[Highlight]</span>'
-    subheading="[Brief description of your team and mission]"
-    primaryCtaText="Get in Touch"
-    primaryCtaHref="/contact"
-    secondaryCtaText="Read Our Story"
-    secondaryCtaHref="#story"
-    imageSrc="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-    imageAlt="[Descriptive alt text]"
-  >
-    <div slot="visual" class="grid grid-cols-2 gap-4 sm:gap-6">
-      {stats.map((stat) => (
-        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/20 transition-colors duration-300">
-          <div class="text-3xl sm:text-4xl font-bold text-white mb-2">{stat.value}</div>
-          <div class="text-sm sm:text-base text-white/80 font-medium">{stat.label}</div>
-        </div>
-      ))}
-    </div>
-  </PageHero>
-
-  {/* Our Story Section */}
-  <section id="story" class="py-24 bg-background">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="relative">
-          <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-muted">
-             {/* Placeholder for a real image - using a colored div for now to represent image area */}
-             <div class="w-full h-full bg-gradient-to-br from-primary/20 to-secondary flex items-center justify-center text-muted-foreground">
-                <span class="text-lg font-medium">Team/Office Image</span>
-             </div>
-          </div>
-          {/* Decorative element */}
-          <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-accent rounded-full opacity-50 blur-2xl"></div>
-          <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary rounded-full opacity-20 blur-3xl"></div>
-        </div>
-        
-        <div>
-          <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-6">{storyContent.heading}</h2>
-          <h3 class="text-xl text-primary font-medium mb-6">{storyContent.subheading}</h3>
-          <div class="space-y-4 text-muted-foreground leading-relaxed text-lg">
-            {storyContent.paragraphs.map((paragraph) => (
-              <p>{paragraph}</p>
+  <div data-care-profile-switcher>
+    {profiles.map(({ key, content }) => (
+      <div data-care-profile-panel={key} class:list={{ hidden: key !== 'supported-living' }}>
+        <PageHero
+          heading={content.hero.heading}
+          subheading={content.hero.subheading}
+          primaryCtaText={content.hero.primaryCtaText}
+          primaryCtaHref={content.hero.primaryCtaHref}
+          secondaryCtaText={content.hero.secondaryCtaText}
+          secondaryCtaHref={content.hero.secondaryCtaHref}
+          imageSrc={getModernImage(content.hero.imageKey)}
+          imageAlt={content.hero.imageAlt}
+          socialProofTitle={content.hero.socialProofTitle}
+          socialProofSubtitle={content.hero.socialProofSubtitle}
+          socialProofCountLabel={content.hero.socialProofCountLabel}
+        >
+          <div slot="visual" class="grid grid-cols-2 gap-4 sm:gap-6">
+            {content.stats.map((stat) => (
+              <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/20 transition-colors duration-300">
+                <div class="text-3xl sm:text-4xl font-bold text-white mb-2">{stat.value}</div>
+                <div class="text-sm sm:text-base text-white/80 font-medium">{stat.label}</div>
+              </div>
             ))}
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        </PageHero>
 
-  {/* Values Section */}
-  <section class="py-24 bg-secondary/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-6">Our Core Values</h2>
-        <p class="text-lg text-muted-foreground">
-          These principles guide every interaction, every care plan, and every decision we make. They are the foundation of our service.
-        </p>
-      </div>
+        <section id="story" class="py-24 bg-background">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+              <div class="relative">
+                <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-muted">
+                  <div class="w-full h-full bg-gradient-to-br from-primary/20 to-secondary flex items-center justify-center text-muted-foreground">
+                    <span class="text-lg font-medium">{content.story.imagePlaceholderLabel}</span>
+                  </div>
+                </div>
+                <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-accent rounded-full opacity-50 blur-2xl"></div>
+                <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary rounded-full opacity-20 blur-3xl"></div>
+              </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {values.map((value) => (
-          <div class="bg-card border border-border rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 group">
-            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300 text-primary">
-              <Icon name={value.icon} size={24} />
+              <div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-6">{content.story.heading}</h2>
+                <h3 class="text-xl text-primary font-medium mb-6">{content.story.subheading}</h3>
+                <div class="space-y-4 text-muted-foreground leading-relaxed text-lg">
+                  {content.story.paragraphs.map((paragraph) => (
+                    <p>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold text-foreground mb-3">{value.title}</h3>
-            <p class="text-muted-foreground leading-relaxed">
-              {value.description}
-            </p>
           </div>
-        ))}
+        </section>
+
+        <section class="py-24 bg-secondary/30">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+              <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-6">{content.valuesSection.heading}</h2>
+              <p class="text-lg text-muted-foreground">{content.valuesSection.intro}</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {content.values.map((value) => (
+                <div class="bg-card border border-border rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 group">
+                  <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300 text-primary">
+                    <Icon name={value.icon} size={24} />
+                  </div>
+                  <h3 class="text-xl font-bold text-foreground mb-3">{value.title}</h3>
+                  <p class="text-muted-foreground leading-relaxed">{value.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <TeamSection
+          heading={content.teamSection.heading}
+          intro={content.teamSection.intro}
+          members={content.teamSection.members.map(({ imageKey, ...member }) => ({
+            ...member,
+            image: getModernImage(imageKey),
+          }))}
+        />
+
+        <section class="py-20 bg-primary text-primary-foreground">
+          <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">{content.ctaSection.heading}</h2>
+            <p class="text-xl opacity-90 mb-10 max-w-2xl mx-auto">{content.ctaSection.intro}</p>
+            <a href={content.ctaSection.buttonHref} target="_blank" rel="noopener" class="inline-block bg-white text-primary font-bold py-4 px-10 rounded-full hover:bg-accent hover:text-accent-foreground transition-all duration-300 shadow-lg transform hover:-translate-y-1">
+              {content.ctaSection.buttonText}
+            </a>
+          </div>
+        </section>
       </div>
-    </div>
-  </section>
-
-  {/* Team Section - Reusing existing component */}
-  <TeamSection
-    heading="Meet Our Leadership"
-    intro="[Brief description of your leadership team and their expertise]"
-  />
-
-  {/* CTA Section */}
-  <section class="py-20 bg-primary text-primary-foreground">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl sm:text-4xl font-bold mb-6">[Your CTA Headline]</h2>
-      <p class="text-xl opacity-90 mb-10 max-w-2xl mx-auto">
-        [Brief call-to-action encouraging visitors to take the next step]
-      </p>
-      <a href="https://vertexplatformsolutions.com/offers/healthcare-agencies" target="_blank" rel="noopener" class="inline-block bg-white text-primary font-bold py-4 px-10 rounded-full hover:bg-accent hover:text-accent-foreground transition-all duration-300 shadow-lg transform hover:-translate-y-1">
-        Get This Site Built For You
-      </a>
-    </div>
-  </section>
-
+    ))}
+  </div>
 </SiteLayout>

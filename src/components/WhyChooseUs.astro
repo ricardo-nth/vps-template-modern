@@ -18,6 +18,12 @@ interface Props {
   imageAlt?: string;
   ctaText?: string;
   ctaHref?: string;
+  testimonial?: {
+    quote: string;
+    initials: string;
+    author: string;
+    role: string;
+  };
   class?: string;
   id?: string;
 }
@@ -30,6 +36,12 @@ const {
   imageAlt = "[Descriptive alt text]",
   ctaText,
   ctaHref,
+  testimonial = {
+    quote: "[Client testimonial - what they loved about working with you]",
+    initials: "[X]",
+    author: "[Client Name]",
+    role: "[Client Role/Relationship]",
+  },
   class: className = "bg-background",
   id,
   points = [
@@ -120,15 +132,15 @@ const {
               ))}
             </div>
             <p class="text-foreground font-medium italic mb-4">
-              "[Client testimonial - what they loved about working with you]"
+              "{testimonial.quote}"
             </p>
             <div class="flex items-center gap-3">
               <div class="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
-                [X]
+                {testimonial.initials}
               </div>
               <div>
-                <p class="text-sm font-bold text-foreground">[Client Name]</p>
-                <p class="text-xs text-muted-foreground">[Client Role/Relationship]</p>
+                <p class="text-sm font-bold text-foreground">{testimonial.author}</p>
+                <p class="text-xs text-muted-foreground">{testimonial.role}</p>
               </div>
             </div>
           </div>

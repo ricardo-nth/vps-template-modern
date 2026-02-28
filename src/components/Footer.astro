@@ -1,5 +1,6 @@
 ---
 import Icon from '@components/Icon.astro';
+import { sharedContactConfig, siteConfig } from '@/config/site';
 
 interface FooterLink {
   label: string;
@@ -20,13 +21,13 @@ interface Props {
 }
 
 const {
-  brandName = "[Business Name]",
-  tagline = "[Your company tagline - a brief statement about your mission and values]",
-  address = "[Your City, Region]",
-  phoneLabel = "[Your Phone]",
-  phoneHref = "tel:[Your Phone]",
-  emailLabel = "[Your Email]",
-  emailHref = "mailto:[Your Email]",
+  brandName = siteConfig.name,
+  tagline = siteConfig.description,
+  address = sharedContactConfig.address,
+  phoneLabel = sharedContactConfig.phoneLabel,
+  phoneHref = sharedContactConfig.phoneHref,
+  emailLabel = sharedContactConfig.emailLabel,
+  emailHref = sharedContactConfig.emailHref,
   navLinks = [
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },

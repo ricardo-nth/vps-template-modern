@@ -9,12 +9,14 @@ interface Pillar {
 }
 
 interface Props {
+  badgeLabel?: string;
   heading?: string;
   subheading?: string;
   pillars?: Pillar[];
 }
 
 const {
+  badgeLabel = 'CQC Standards',
   heading = "CQC Outstanding Across All 5 Pillars",
   subheading = "Regulators trust our evidence-based approach. Service users love our outcomes. Families choose us for peace of mind.",
   pillars = [
@@ -60,7 +62,7 @@ const {
     <div class="text-center max-w-3xl mx-auto mb-20">
       <div class="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary mb-6">
         <span class="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-        CQC Standards
+        {badgeLabel}
       </div>
       <h2 class="text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6">
         {heading}

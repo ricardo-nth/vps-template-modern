@@ -1,6 +1,6 @@
 ---
 import SiteLayout from '@layouts/SiteLayout.astro';
-import { siteConfig } from '@/config/site';
+import { getEntry } from 'astro:content';
 import PageHero from '@components/PageHero.astro';
 import ServicesOverview from '@components/ServicesOverview.astro';
 import SupportedLivingFeatures from '@components/SupportedLivingFeatures.astro';
@@ -8,122 +8,97 @@ import ServiceSpecialties from '@components/ServiceSpecialties.astro';
 import CompliancePillars from '@components/CompliancePillars.astro';
 import CareDeliveryProcess from '@components/CareDeliveryProcess.astro';
 import ContactSection from '@components/ContactSection.astro';
+import { getModernImage } from '@/lib/content/imageRegistry';
 
-const metadata = {
-  title: `Services - ${siteConfig.name}`,
-  description: `[Your services page meta description - summarize your services in 150-160 characters]`,
-  schema: {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: '[Your Services]',
-    description: '[Your services description for search engines]',
-    mainEntity: {
-      '@type': 'Service',
-      name: '[Your Main Service]',
-      description: '[Brief description of your main service offering]',
-      serviceType: '[Service Type]',
-      provider: {
-        '@type': 'Organization',
-        name: siteConfig.name
-      },
-      areaServed: '[Your Service Area]',
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: '[Your Services]',
-        itemListElement: [
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: '[Service 1]'
-            }
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: '[Service 2]'
-            }
-          }
-        ]
-      }
-    }
-  }
-};
+const servicesEntry = await getEntry('modernServices', 'default');
+const servicesDomEntry = await getEntry('modernServices', 'dom-care');
+if (!servicesEntry) {
+  throw new Error('Missing content entry: modernServices/default');
+}
+if (!servicesDomEntry) {
+  throw new Error('Missing content entry: modernServices/dom-care');
+}
+
+const metadata = servicesEntry.data.metadata;
+const profiles = [
+  { key: 'supported-living', content: servicesEntry.data },
+  { key: 'dom-care', content: servicesDomEntry.data },
+] as const;
 ---
 
 <SiteLayout metadata={metadata}>
-  <PageHero
-    heading="[Your Services Page Headline]"
-    subheading="[Brief description of your services and how they help clients]"
-    primaryCtaText="Enquire Today"
-    primaryCtaHref="/contact"
-    secondaryCtaText="Explore Services"
-    secondaryCtaHref="#features"
-    imageSrc="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-    imageAlt="[Descriptive alt text]"
-  />
+  <div data-care-profile-switcher>
+    {profiles.map(({ key, content }) => (
+      <div data-care-profile-panel={key} class:list={{ hidden: key !== 'supported-living' }}>
+        <PageHero
+          heading={content.hero.heading}
+          subheading={content.hero.subheading}
+          primaryCtaText={content.hero.primaryCtaText}
+          primaryCtaHref={content.hero.primaryCtaHref}
+          secondaryCtaText={content.hero.secondaryCtaText}
+          secondaryCtaHref={content.hero.secondaryCtaHref}
+          imageSrc={getModernImage(content.hero.imageKey)}
+          imageAlt={content.hero.imageAlt}
+        />
 
-  <ServicesOverview
-    eyebrow="Service Categories"
-    heading="[Your Services Overview Headline]"
-    intro="[Brief overview of your key service areas and who they support]"
-    services={[
-      {
-        title: "Supported Living",
-        description: "[Brief description of your supported living offering and outcomes]",
-        href: "/services/supported-living",
-        imageSrc: "https://images.unsplash.com/photo-1576765611791-374770ac4db8?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
-      },
-      {
-        title: "[Service 2]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-2",
-        imageSrc: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
-      },
-      {
-        title: "[Service 3]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-3",
-        imageSrc: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
-      },
-      {
-        title: "[Service 4]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-4",
-        imageSrc: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
-      },
-      {
-        title: "[Service 5]",
-        description: "[Brief description of this service and its benefits]",
-        href: "#service-5",
-        imageSrc: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "[Descriptive alt text]"
-      }
-    ]}
-  />
+        <ServicesOverview
+          eyebrow={content.servicesOverview.eyebrow}
+          heading={content.servicesOverview.heading}
+          intro={content.servicesOverview.intro}
+          services={content.servicesOverview.services.map(({ imageKey, ...service }) => ({
+            ...service,
+            imageSrc: getModernImage(imageKey),
+          }))}
+        />
 
-  <section id="features">
-    <SupportedLivingFeatures />
-  </section>
+        <section id="features">
+          <SupportedLivingFeatures
+            heading={content.supportedLivingFeatures.heading}
+            subheading={content.supportedLivingFeatures.subheading}
+            features={content.supportedLivingFeatures.features}
+          />
+        </section>
 
-  <ServiceSpecialties />
+        <ServiceSpecialties
+          heading={content.serviceSpecialties.heading}
+          subheading={content.serviceSpecialties.subheading}
+          specialties={content.serviceSpecialties.specialties.map(({ imageKey, ...specialty }) => ({
+            ...specialty,
+            imageSrc: getModernImage(imageKey),
+          }))}
+        />
 
-  <CompliancePillars />
+        <CompliancePillars
+          badgeLabel={content.compliancePillars.badgeLabel}
+          heading={content.compliancePillars.heading}
+          subheading={content.compliancePillars.subheading}
+          pillars={content.compliancePillars.pillars}
+        />
 
-  <CareDeliveryProcess />
+        <CareDeliveryProcess
+          badgeLabel={content.careDeliveryProcess.badgeLabel}
+          heading={content.careDeliveryProcess.heading}
+          subheading={content.careDeliveryProcess.subheading}
+          steps={content.careDeliveryProcess.steps}
+        />
 
-  <ContactSection
-    heading="Ready to Get Started?"
-    intro="[Brief call-to-action encouraging visitors to contact you about your services]"
-    phoneLabel="[Your Phone]"
-    phoneHref="tel:[Your Phone]"
-    emailLabel="[Your Email]"
-    emailHref="mailto:[Your Email]"
-    address="[Your City, Region]"
-  />
+        <ContactSection
+          heading={content.contactSection.heading}
+          intro={content.contactSection.intro}
+          phoneLabel={content.contactSection.phoneLabel}
+          phoneHref={content.contactSection.phoneHref}
+          emailLabel={content.contactSection.emailLabel}
+          emailHref={content.contactSection.emailHref}
+          emailButtonText={content.contactSection.emailButtonText}
+          address={content.contactSection.address}
+          officeTitle={content.contactSection.officeTitle}
+          officeDirectionsText={content.contactSection.officeDirectionsText}
+          officeDirectionsHref={content.contactSection.officeDirectionsHref}
+          hoursTitle={content.contactSection.hoursTitle}
+          officeHours={content.contactSection.officeHours}
+          hoursNote={content.contactSection.hoursNote}
+        />
+      </div>
+    ))}
+  </div>
 </SiteLayout>

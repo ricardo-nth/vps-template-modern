@@ -9,12 +9,14 @@ interface Step {
 }
 
 interface Props {
+  badgeLabel?: string;
   heading?: string;
   subheading?: string;
   steps?: Step[];
 }
 
 const {
+  badgeLabel = 'The Journey',
   heading = "Our Proven Delivery Process",
   subheading = "Streamlined from assessment to excellence - designed for CQC compliance and exceptional outcomes.",
   steps = [
@@ -54,7 +56,7 @@ const {
     <div class="text-center max-w-3xl mx-auto mb-20">
       <div class="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary mb-6">
         <span class="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-        The Journey
+        {badgeLabel}
       </div>
       <h2 class="text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6">
         {heading}

@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import heroBg from '@assets/images/hero-bg.jpg';
+import { careProfileConfig } from '@/config/site';
 
 interface Props {
   heading?: string;
@@ -14,6 +15,13 @@ interface Props {
   ratingLabel?: string;
   imageSrc?: ImageMetadata;
   imageAlt?: string;
+  socialProofTitle?: string;
+  socialProofSubtitle?: string;
+  socialProofCountLabel?: string;
+  profileContent?: {
+    'supported-living'?: { heading?: string; subheading?: string };
+    'dom-care'?: { heading?: string; subheading?: string };
+  };
 }
 
 const {
@@ -27,10 +35,17 @@ const {
   ratingLabel = "[Rating Source]",
   imageSrc = heroBg,
   imageAlt = "[Descriptive alt text for hero image]",
+  socialProofTitle = "Verified Excellence",
+  socialProofSubtitle = "Top-rated care provider",
+  socialProofCountLabel = "+2k",
+  profileContent = {},
 } = Astro.props as Props;
+
+const profileRootId = `care-profile-content-${Math.random().toString(36).slice(2, 10)}`;
+const { defaultProfile } = careProfileConfig;
 ---
 
-<section class="relative overflow-hidden bg-background py-8 md:py-12 lg:py-18">
+<section id={profileRootId} class="relative overflow-hidden bg-background py-8 md:py-12 lg:py-18" data-care-profile-content>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
       <!-- Content Column -->
@@ -45,12 +60,12 @@ const {
         </div>
 
         <!-- Heading -->
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance mb-6 animate-fade-in-up delay-100">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance mb-6 animate-fade-in-up delay-100" data-care-field="heading">
           {heading}
         </h1>
 
         <!-- Subheading -->
-        <p class="text-lg sm:text-xl text-muted-foreground text-balance mb-8 animate-fade-in-up delay-200">
+        <p class="text-lg sm:text-xl text-muted-foreground text-balance mb-8 animate-fade-in-up delay-200" data-care-field="subheading">
           {subheading}
         </p>
 
@@ -98,28 +113,28 @@ const {
         />
         
         <!-- Floating Card -->
-        <div class="absolute bottom-12 -left-12 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-xl max-w-xs border border-white/20 animate-bounce-slow">
+        <div class="absolute bottom-12 -left-12 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-xl max-w-sm border border-white/20 animate-bounce-slow">
           <div class="flex items-center gap-4 mb-3">
             <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
               <Icon name="tabler:check" class="h-6 w-6" />
             </div>
             <div>
-              <p class="font-semibold text-foreground">Verified Excellence</p>
-              <p class="text-xs text-muted-foreground">Top-rated care provider</p>
+              <p class="font-semibold text-foreground leading-tight">{socialProofTitle}</p>
+              <p class="text-sm text-muted-foreground leading-tight">{socialProofSubtitle}</p>
             </div>
           </div>
-          <div class="flex -space-x-2">
-            {[1, 2, 3, 4].map((i) => (
-              <img
-                class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                src={`https://randomuser.me/api/portraits/women/${i + 40}.jpg`}
-                alt=""
-                onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=User&background=e5e7eb&color=6b7280&size=128';"
-              />
-            ))}
-            <div class="h-8 w-8 rounded-full bg-muted flex items-center justify-center text-xs font-medium ring-2 ring-white">
-              +2k
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex -space-x-2 shrink-0">
+              {[1, 2, 3, 4].map((i) => (
+                <img
+                  class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                  src={`https://randomuser.me/api/portraits/women/${i + 40}.jpg`}
+                  alt=""
+                  onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=User&background=e5e7eb&color=6b7280&size=128';"
+                />
+              ))}
             </div>
+            <p class="text-sm font-semibold text-foreground whitespace-nowrap">{socialProofCountLabel}</p>
           </div>
         </div>
       </div>
@@ -178,3 +193,24 @@ const {
   .delay-300 { animation-delay: 300ms; }
   .delay-500 { animation-delay: 500ms; }
 </style>
+
+<script is:inline define:vars={{ profileContent, profileRootId, defaultProfile }}>
+  (() => {
+    const root = document.getElementById(profileRootId);
+    if (!root || !profileContent) return;
+
+    const apply = (profile) => {
+      const data = profileContent[profile];
+      if (!data) return;
+      const headingNode = root.querySelector('[data-care-field="heading"]');
+      const subheadingNode = root.querySelector('[data-care-field="subheading"]');
+      if (headingNode && data.heading) headingNode.textContent = data.heading;
+      if (subheadingNode && data.subheading) subheadingNode.textContent = data.subheading;
+    };
+
+    apply(document.documentElement.dataset.careProfile || defaultProfile);
+    window.addEventListener('care-profile-change', (event) => {
+      apply(event.detail?.profile || defaultProfile);
+    });
+  })();
+</script>

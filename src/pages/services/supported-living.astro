@@ -1,57 +1,90 @@
 ---
 import SiteLayout from '@layouts/SiteLayout.astro';
-import { siteConfig } from '@/config/site';
+import { getEntry } from 'astro:content';
 import PageHero from '@components/PageHero.astro';
 import CareDeliveryProcess from '@components/CareDeliveryProcess.astro';
 import CompliancePillars from '@components/CompliancePillars.astro';
 import ServiceSpecialties from '@components/ServiceSpecialties.astro';
 import ContactSection from '@components/ContactSection.astro';
+import { getModernImage } from '@/lib/content/imageRegistry';
 
-const metadata = {
-  title: `Supported Living Services - ${siteConfig.name}`,
-  description: '[Your supported living services meta description - summarize this service offering in 150-160 characters]',
-  schema: {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: 'Supported Living Services',
-    description: '[Your supported living services description for search engines]',
-    serviceType: '[Service Type]',
-    provider: {
-      '@type': 'Organization',
-      name: siteConfig.name
-    },
-    areaServed: '[Your Service Area]'
-  }
-};
+const supportedLivingEntry = await getEntry('modernSupportedLiving', 'default');
+const domCareEntry = await getEntry('modernSupportedLiving', 'dom-care');
+if (!supportedLivingEntry) {
+  throw new Error('Missing content entry: modernSupportedLiving/default');
+}
+if (!domCareEntry) {
+  throw new Error('Missing content entry: modernSupportedLiving/dom-care');
+}
+
+const metadata = supportedLivingEntry.data.metadata;
+const profiles = [
+  { key: 'supported-living', content: supportedLivingEntry.data },
+  { key: 'dom-care', content: domCareEntry.data },
+] as const;
 ---
 
 <SiteLayout metadata={metadata}>
-  <PageHero
-    heading="Supported Living Services"
-    subheading="[Brief description of your supported living services and how you help clients build independence]"
-    primaryCtaText="Speak With Our Team"
-    primaryCtaHref="/contact"
-    secondaryCtaText="Our Care Process"
-    secondaryCtaHref="#care-process"
-    imageSrc="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-    imageAlt="[Descriptive alt text]"
-  />
+  <div data-care-profile-switcher>
+    {profiles.map(({ key, content }) => (
+      <div data-care-profile-panel={key} class:list={{ hidden: key !== 'supported-living' }}>
+        <PageHero
+          heading={content.hero.heading}
+          subheading={content.hero.subheading}
+          profileContent={content.hero.profileContent}
+          primaryCtaText={content.hero.primaryCtaText}
+          primaryCtaHref={content.hero.primaryCtaHref}
+          secondaryCtaText={content.hero.secondaryCtaText}
+          secondaryCtaHref={content.hero.secondaryCtaHref}
+          imageSrc={getModernImage(content.hero.imageKey)}
+          imageAlt={content.hero.imageAlt}
+          socialProofTitle={content.hero.socialProofTitle}
+          socialProofSubtitle={content.hero.socialProofSubtitle}
+          socialProofCountLabel={content.hero.socialProofCountLabel}
+        />
 
-  <section id="care-process">
-    <CareDeliveryProcess />
-  </section>
+        <section id="care-process">
+          <CareDeliveryProcess
+            badgeLabel={content.careDeliveryProcess.badgeLabel}
+            heading={content.careDeliveryProcess.heading}
+            subheading={content.careDeliveryProcess.subheading}
+            steps={content.careDeliveryProcess.steps}
+          />
+        </section>
 
-  <CompliancePillars />
+        <CompliancePillars
+          badgeLabel={content.compliancePillars.badgeLabel}
+          heading={content.compliancePillars.heading}
+          subheading={content.compliancePillars.subheading}
+          pillars={content.compliancePillars.pillars}
+        />
 
-  <ServiceSpecialties />
+        <ServiceSpecialties
+          heading={content.serviceSpecialties.heading}
+          subheading={content.serviceSpecialties.subheading}
+          specialties={content.serviceSpecialties.specialties.map(({ imageKey, ...specialty }) => ({
+            ...specialty,
+            imageSrc: getModernImage(imageKey),
+          }))}
+        />
 
-  <ContactSection
-    heading="Plan Care That Fits Your Needs"
-    intro="[Brief call-to-action encouraging visitors to discuss supported living services]"
-    phoneLabel="[Your Phone]"
-    phoneHref="tel:[Your Phone]"
-    emailLabel="[Your Email]"
-    emailHref="mailto:[Your Email]"
-    address="[Your City, Region]"
-  />
+        <ContactSection
+          heading={content.contactSection.heading}
+          intro={content.contactSection.intro}
+          phoneLabel={content.contactSection.phoneLabel}
+          phoneHref={content.contactSection.phoneHref}
+          emailLabel={content.contactSection.emailLabel}
+          emailHref={content.contactSection.emailHref}
+          emailButtonText={content.contactSection.emailButtonText}
+          address={content.contactSection.address}
+          officeTitle={content.contactSection.officeTitle}
+          officeDirectionsText={content.contactSection.officeDirectionsText}
+          officeDirectionsHref={content.contactSection.officeDirectionsHref}
+          hoursTitle={content.contactSection.hoursTitle}
+          officeHours={content.contactSection.officeHours}
+          hoursNote={content.contactSection.hoursNote}
+        />
+      </div>
+    ))}
+  </div>
 </SiteLayout>

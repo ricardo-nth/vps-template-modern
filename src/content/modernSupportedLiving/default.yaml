@@ -1,0 +1,135 @@
+metadata:
+  title: Supported Living Services - Harbor Care Services
+  description: Outcome-led supported living services that help adults sustain tenancies, build life skills, and increase independence safely.
+  schema:
+    '@context': https://schema.org
+    '@type': Service
+    name: Supported Living Services
+    description: Outcome-led supported living with person-centred planning, positive risk management, and structured progress reviews.
+    serviceType: Supported Living
+    provider:
+      '@type': Organization
+      name: Harbor Care Services
+    areaServed: London and surrounding boroughs
+hero:
+  heading: Supported Living Services
+  subheading: Structured tenancy support that helps adults grow confidence, maintain stability, and progress toward greater independence.
+  profileContent:
+    supported-living:
+      heading: Supported Living Services
+      subheading: Structured tenancy support that helps adults grow confidence, maintain stability, and progress toward greater independence.
+    dom-care:
+      heading: Domiciliary Care Services
+      subheading: Reliable home visits that support daily routines, wellbeing, and safer independent living in familiar surroundings.
+  primaryCtaText: Speak With Our Team
+  primaryCtaHref: /contact
+  secondaryCtaText: Our Delivery Process
+  secondaryCtaHref: '#care-process'
+  imageKey: unsplash-hero
+  imageAlt: Support worker and resident reviewing supported living goals
+  socialProofTitle: 140+ Active Supported Living Placements
+  socialProofSubtitle: Outcome-led plans with stable tenancy focus
+  socialProofCountLabel: 92% tenancy sustainment after 12 months
+careDeliveryProcess:
+  badgeLabel: The Journey
+  heading: How We Deliver Supported Living
+  subheading: A transparent pathway balancing person-centred goals, safeguarding standards, and measurable progress.
+  steps:
+    - number: 1
+      icon: tabler:clipboard-search
+      title: Referral and Discovery
+      description: We review needs, risk context, and desired outcomes with commissioners, families, and professionals.
+    - number: 2
+      icon: tabler:file-text
+      title: Outcome Plan Design
+      description: We co-produce structured support plans covering tenancy goals, life-skills milestones, and review points.
+    - number: 3
+      icon: tabler:users
+      title: Team and Tenancy Setup
+      description: We align staffing, rota stability, and communication pathways before support begins.
+    - number: 4
+      icon: tabler:refresh
+      title: Measure and Adapt
+      description: We track progress and adjust support as goals, risks, and circumstances evolve.
+compliancePillars:
+  badgeLabel: CQC Standards
+  heading: Supported Living Quality You Can Evidence
+  subheading: Delivery is backed by clear governance, documentation, and frontline practice aligned to regulatory expectations.
+  pillars:
+    - icon: tabler:shield-check
+      title: Safe
+      description: Risk management and safeguarding controls are built into every support plan.
+      cqcEvidence: Incident, safeguarding, and risk audits completed monthly
+    - icon: tabler:target-arrow
+      title: Effective
+      description: Goals are practical, measurable, and reviewed with all relevant stakeholders.
+      cqcEvidence: Outcome tracking in each formal review cycle
+    - icon: tabler:heart-handshake
+      title: Caring
+      description: Teams are matched for communication needs, continuity, and trusted relationships.
+      cqcEvidence: Positive family and service-user feedback patterns
+    - icon: tabler:list-details
+      title: Responsive
+      description: Plans adapt quickly when needs, risks, or personal priorities change.
+      cqcEvidence: Time-bound update and escalation records
+    - icon: tabler:crown
+      title: Well-Led
+      description: Leadership and supervision frameworks maintain consistent quality standards.
+      cqcEvidence: Governance calendar with documented actions
+serviceSpecialties:
+  heading: Supported Living Specialties
+  subheading: Specialist pathways helping adults progress safely in community-based tenancy settings.
+  specialties:
+    - title: Positive Behaviour Support
+      description: PBS-informed approaches that reduce restrictive practice and improve routine stability.
+      icon: tabler:hand-stop
+      imageKey: service-general
+      features:
+        - Trigger-aware support planning
+        - De-escalation strategies
+        - Consistent communication tools
+    - title: Autism Support
+      description: Sensory-aware support structures that improve predictability and daily engagement.
+      icon: tabler:puzzle
+      imageKey: service-general
+      features:
+        - Structured routines
+        - Sensory adjustment planning
+        - Visual communication support
+    - title: Mental Health Recovery
+      description: Recovery-focused support linking daily structure with wellbeing and tenancy sustainment.
+      icon: tabler:brain
+      imageKey: service-general
+      features:
+        - Relapse prevention planning
+        - Collaborative wellbeing reviews
+        - Community reintegration support
+    - title: Transition to Independence
+      description: Step-by-step pathways from residential or family settings into stable independent living.
+      icon: tabler:walk
+      imageKey: service-general
+      features:
+        - Tenancy readiness work
+        - Household management skills
+        - Family and professional liaison
+contactSection:
+  heading: Plan Supported Living Around Clear Outcomes
+  intro: Share your referral goals and we will design a practical tenancy-based pathway with transparent review milestones.
+  phoneLabel: 0208 555 0199
+  phoneHref: tel:+442085550199
+  emailLabel: referrals@harborcare.co.uk
+  emailHref: mailto:referrals@harborcare.co.uk
+  emailButtonText: Send Referral Brief
+  address: Unit 12, Healthcare Business Park, London, SE1 7PB
+  officeTitle: Supported Living Referrals
+  officeDirectionsText: Get Directions
+  officeDirectionsHref: https://www.google.com/maps/dir//London+Eye,+Riverside+Building,+County+Hall,+London+SE1+7PB
+  hoursTitle: Referrals and Assessments
+  officeHours:
+    - day: Monday - Friday
+      time: 8:30 AM - 6:30 PM
+    - day: Saturday
+      time: By appointment
+    - day: Sunday
+      time: Closed
+  hoursNote: Urgent updates for active service users are monitored 24/7.
